@@ -6,9 +6,12 @@ export default (
   <Router>
     <Switch>
       <Route exact path="/" component={App} />
-      <Route exact path="/comments/id" component={SongSingle} />
+      <Route exact path="/comments/id" component={CommentSingle} />
       <Route path="/comments/new" component={CommentAddForm} />
-      <Route path="/comments/:id/edit" component={SongEditForm} />
+      <Route path="/comments/:id/edit" component={CommentEditForm} />
+      <Route exact path="/recipies/id" component={RecipieSingle} />
+      <Route path="/recipies/new" component={RecipieAddForm} />
+      <Route path="/recipies/:id/edit" component={RecipieEditForm} />
     </Switch>
   </Router>
 );

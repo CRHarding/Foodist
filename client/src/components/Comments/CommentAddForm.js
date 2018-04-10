@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import ApiServices from '../../services';
+import ApiServices from '../../services/CommentServices';
 
 class CommentAddForm extends React.Component {
   constructor() {
@@ -27,7 +27,7 @@ class CommentAddForm extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    ApiServices.createSong(this.state)
+    ApiServices.createComment(this.state)
       .then(data => {
         this.setState({
           fireRedirect: true,

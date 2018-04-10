@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Services from '../../services';
+import Services from '../../services/CommentServices';
 import Comment from './CommentSingle';
 
 class CommentList extends Component {
@@ -33,7 +33,7 @@ class CommentList extends Component {
   render() {
     return (
       <div className="comment-list">
-        {this.state.apiDataLoaded ? this.renderSongs() : <h1>Loading...</h1>}
+        {this.state.apiDataLoaded ? this.renderComments() : <h1>Loading...</h1>}
       </div>
     );
   }

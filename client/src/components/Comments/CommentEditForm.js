@@ -1,8 +1,8 @@
 import React from 'react';
-import ApiServices from '../../services';
+import ApiServices from '../../services/CommentServices';
 import { Redirect } from 'react-router-dom';
 
-class SongEditForm extends React.Component {
+class CommentEditForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -42,7 +42,7 @@ class SongEditForm extends React.Component {
 
   handleFormSubmit(e) {
     e.preventDefault();
-    ApiServices.editSong(this.state, this.props.match.params.id)
+    ApiServices.editComment(this.state, this.props.match.params.id)
       .then(comment => {
         this.setState({
           fireRedirect: true,
@@ -90,4 +90,4 @@ class SongEditForm extends React.Component {
   }
 }
 
-export default SongEditForm;
+export default CommentEditForm;

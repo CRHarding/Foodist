@@ -1,5 +1,5 @@
 import React from 'react';
-import Services from '../../services';
+import Services from '../../services/CommentServices';
 
 class CommentSingle extends Component {
   constructor() {
@@ -9,7 +9,7 @@ class CommentSingle extends Component {
       apiData: null,
       fireRedirect: false,
     };
-    this.deleteSong = this.deleteSong.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
   }
 
   componentDidMount() {
@@ -25,7 +25,7 @@ class CommentSingle extends Component {
       });
   }
 
-  deleteSong() {
+  deleteComment() {
     ApiServices.deleteComment(this.props.match.params.id)
       .then(data => {
         this.setState({
@@ -37,17 +37,17 @@ class CommentSingle extends Component {
       });
   }
 
-  renderSong() {
+  renderComment() {
     return (
       <div className="single-comment">
         <h2>Author: {props.poster_id}</h2>
         <p>About Recipe: {props.recipe_id}</p>
         <p>Comment: {props.description}</p>
         <p>Votes: {props.comment_votes}</p>
-        <Link to={`/songs/${this.state.apiData.song.id}/edit`}>
+        <Link to={`/comments/${this.state.apiData.comment.id}/edit`}>
           Edit this song?
         </Link>
-        <button onClick={this.deleteSong}>Delete This Song?</button>
+        <button onClick={this.deleteComment}>Delete This Comment?</button>
       </div>
     );
   }

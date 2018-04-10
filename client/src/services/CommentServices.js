@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-class Services {
+class CommentServices {
   getAllSongs() {
     return axios.get('/api/songs');
   }
@@ -45,4 +45,4 @@ class Services {
   }
 }
 
-export default new Services();
+export default new CommentServices();
