@@ -2,21 +2,22 @@ import React, { Component } from 'react';
 import Services from '../../services/RecipeServices';
 import Recipe from './RecipeSingle';
 
-class CommentList extends Component {
+class RecipeList extends Component {
   constructor() {
     super();
     this.state = {
       apiDataLoaded: false,
       apiData: null,
     };
+    this.renderRecipes = this.renderRecipes.bind(this);
   }
 
   componentDidMount() {
-    Services.getAllRecipies()
-      .then(comments => {
+    Services.getAllRecipes()
+      .then(recipes => {
         this.setState({
           apiDataLoaded: true,
-          apiData: recipies.data.recipies,
+          apiData: recipes.data.data,
         });
       })
       .catch(err => {
@@ -24,17 +25,19 @@ class CommentList extends Component {
       });
   }
 
-  renderRecipies() {
-    return this.state.apiData.recipies.map(recipie => (
-      <Recipe {...recipie} key={recipie.id} />
+  renderRecipes() {
+    return this.state.apiData.map(recipe => (
+      <Recipe {...recipe} id={recipe.id} />
     ));
   }
 
   render() {
     return (
-      <div className="recipie-list">
-        {this.state.apiDataLoaded ? this.renderRecipies() : <h1>Loading...</h1>}
+      <div className="recipe-list">
+        {this.state.apiDataLoaded ? this.renderRecipes() : <h1>Loading...</h1>}
       </div>
     );
   }
 }
+
+export default RecipeList;

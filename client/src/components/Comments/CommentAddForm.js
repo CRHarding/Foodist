@@ -60,12 +60,12 @@ class CommentAddForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="Title"
           />
-          <input type="hidden" name="poster_id" value={current_user} />
-          <input type="hidden" name="recipe_id" value={current_recipe} />
+          <input type="hidden" name="poster_id" value='' />
+          <input type="hidden" name="recipe_id" value='' />
           <input
             type="hidden"
             name="previous_comment"
-            value={previous_comment}
+            value=''
           />
         </form>
         {this.state.fireRedirect ? <Redirect to="/comments" /> : ''}

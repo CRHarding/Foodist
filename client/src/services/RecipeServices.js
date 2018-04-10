@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 class RecipeServices {
-  getAllSongs() {
-    return axios.get('/api/recipies');
+  getAllRecipes() {
+    return axios.get('/api/recipes');
   }
 
-  getOneSong() {
-    return axios.get(`/api/recipies${id}`);
+  getOneRecipe(id) {
+    return axios.get(`/api/recipes/${id}`);
   }
 
   createRecipe(recipe) {

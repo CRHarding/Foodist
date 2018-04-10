@@ -1,23 +1,35 @@
-import React from 'react';
-import Services from '../../services/CommentServices';
+import React, { Component } from 'react';
+import ApiServices from '../../services/CommentServices';
+import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 class CommentSingle extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       apiDataLoaded: false,
       apiData: null,
       fireRedirect: false,
+      id: null,
     };
     this.deleteComment = this.deleteComment.bind(this);
   }
 
   componentDidMount() {
-    ApiServices.getOneComment(Number(this.props.match.params.id))
+    let getId;
+    if (!this.props.id) {
+      getId = this.props.match.params.id;
+    } else {
+      getId = this.props.id;
+    }
+
+    ApiServices.getOneComment(getId)
       .then(comment => {
+        console.log(comment.data.comment);
         this.setState({
           apiDataLoaded: true,
-          apiData: comment.data,
+          apiData: comment.data.comment,
+          id: getId,
         });
       })
       .catch(err => {
@@ -26,7 +38,7 @@ class CommentSingle extends Component {
   }
 
   deleteComment() {
-    ApiServices.deleteComment(this.props.match.params.id)
+    ApiServices.deleteComment(this.state.id)
       .then(data => {
         this.setState({
           fireRedirect: true,
@@ -40,12 +52,12 @@ class CommentSingle extends Component {
   renderComment() {
     return (
       <div className="single-comment">
-        <h2>Author: {props.poster_id}</h2>
-        <p>About Recipe: {props.recipe_id}</p>
-        <p>Comment: {props.description}</p>
-        <p>Votes: {props.comment_votes}</p>
-        <Link to={`/comments/${this.state.apiData.comment.id}/edit`}>
-          Edit this song?
+        <h2>Author: {this.state.apiData.poster_id}</h2>
+        <p>About Recipe: {this.state.apiData.recipe_id}</p>
+        <p>Comment: {this.state.apiData.description}</p>
+        <p>Votes: {this.state.apiData.comment_votes}</p>
+        <Link to={`/comments/${this.state.apiData.id}/edit`}>
+          Edit this comment?
         </Link>
         <button onClick={this.deleteComment}>Delete This Comment?</button>
       </div>
@@ -55,8 +67,11 @@ class CommentSingle extends Component {
   render() {
     return (
       <div className="single-container">
-        {this.state.apiDataLoaded ? this.renderSong() : ''}
+        {this.state.apiDataLoaded ? this.renderComment() : ''}
+        {this.state.fireRedirect ? <Redirect to='/comments'/> : '' }
       </div>
     );
   }
 }
+
+export default CommentSingle;

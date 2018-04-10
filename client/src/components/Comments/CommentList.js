@@ -14,9 +14,10 @@ class CommentList extends Component {
   componentDidMount() {
     Services.getAllComments()
       .then(comments => {
+        console.log(comments.data.data);
         this.setState({
           apiDataLoaded: true,
-          apiData: comments.data.comments,
+          apiData: comments.data.data,
         });
       })
       .catch(err => {
@@ -25,8 +26,8 @@ class CommentList extends Component {
   }
 
   renderComments() {
-    return this.state.apiData.comments.map(comment => (
-      <Comment {...comment} key={comment.id} />
+    return this.state.apiData.map(comment => (
+      <Comment {...comment} id={comment.id} />
     ));
   }
 
@@ -38,3 +39,5 @@ class CommentList extends Component {
     );
   }
 }
+
+export default CommentList;

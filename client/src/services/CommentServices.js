@@ -1,12 +1,12 @@
 import axios from 'axios';
 
 class CommentServices {
-  getAllSongs() {
-    return axios.get('/api/songs');
+  getAllComments() {
+    return axios.get('/api/comments');
   }
 
-  getOneSong() {
-    return axios.get(`/api/songs${id}`);
+  getOneComment(id) {
+    return axios.get(`/api/comments/${id}`);
   }
 
   createComment(comment) {
@@ -18,8 +18,8 @@ class CommentServices {
         recipe_id: comment.recipe_id,
         title: comment.title,
         description: comment.description,
-        previous_comment: previous_comment,
-        next_comment: next_comment,
+        previous_comment: comment.previous_comment,
+        next_comment: comment.next_comment,
         comment_votes: comment.comment_votes,
       },
     });

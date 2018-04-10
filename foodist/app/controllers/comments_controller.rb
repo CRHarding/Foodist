@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:show, :update, :destroy]
   def index
     @comments = Comment.all
     render json: {
@@ -45,5 +46,9 @@ class CommentsController < ApplicationController
   private
   def comment_params
     params.require(:comments).permit(:poster_id, :recipe_id, :description, :previous_comment, :next_comment, :comment_votes)
+  end
+
+  def set_comment
+    @comment = Comment.find(params[:id])
   end
 end

@@ -2,7 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ApiServices from '../../services/RecipeServices';
 
-class RecipieAddForm extends React.Component {
+class RecipeAddForm extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -60,7 +60,7 @@ class RecipieAddForm extends React.Component {
             onChange={this.handleInputChange}
             placeholder="Instructions"
           />
-          <input type="hidden" name="user_id" value={current_user} />
+          <input type="hidden" name="user_id" value='' />
         </form>
         {this.state.fireRedirect ? <Redirect to="/comments" /> : ''}
       </div>
@@ -68,4 +68,4 @@ class RecipieAddForm extends React.Component {
   }
 }
 
-export default CommentAddForm;
+export default RecipeAddForm;
