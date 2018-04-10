@@ -1,4 +1,5 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: [:show, :update, :destroy]
   def index
     @recipes = Recipe.all
     render json: {
@@ -44,6 +45,10 @@ class RecipesController < ApplicationController
 
   private
   def recipe_params
-    params.require(:recipes).permit(:name, :ingredient_list, :instruction_list, :user_id, :votes)
+    params.permit(:name, :ingredient_list, :instruction_list, :user_id, :votes)
+  end
+
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
   end
 end

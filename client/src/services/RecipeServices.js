@@ -28,9 +28,11 @@ class RecipeServices {
       method: 'PUT',
       url: `/api/recipes/${id}`,
       data: {
-        name: recipe.recipe_id,
-        ingredient_list: recipe.title,
-        instruction_list: recipe.description,
+        name: recipe.name,
+        ingredient_list: recipe.ingredient_list,
+        instruction_list: recipe.instruction_list,
+        user_id: recipe.user_id,
+        votes: recipe.votes,
       },
     });
   }

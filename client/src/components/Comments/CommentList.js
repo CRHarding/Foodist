@@ -14,7 +14,6 @@ class CommentList extends Component {
   componentDidMount() {
     Services.getAllComments()
       .then(comments => {
-        console.log(comments.data.data);
         this.setState({
           apiDataLoaded: true,
           apiData: comments.data.data,

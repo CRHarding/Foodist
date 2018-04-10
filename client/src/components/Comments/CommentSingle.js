@@ -25,7 +25,6 @@ class CommentSingle extends Component {
 
     ApiServices.getOneComment(getId)
       .then(comment => {
-        console.log(comment.data.comment);
         this.setState({
           apiDataLoaded: true,
           apiData: comment.data.comment,
@@ -52,6 +51,7 @@ class CommentSingle extends Component {
   renderComment() {
     return (
       <div className="single-comment">
+        <h1>Title: {this.state.apiData.title}</h1>
         <h2>Author: {this.state.apiData.poster_id}</h2>
         <p>About Recipe: {this.state.apiData.recipe_id}</p>
         <p>Comment: {this.state.apiData.description}</p>

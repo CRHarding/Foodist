@@ -26,12 +26,17 @@ class CommentServices {
   }
 
   editComment(comment, id) {
+    console.log(comment, id);
     return axios({
       method: 'PUT',
       url: `/api/comments/${id}`,
       data: {
+        poster_id: comment.poster_id,
+        recipe_id: comment.recipe_id,
         title: comment.title,
         description: comment.description,
+        previous_comment: comment.previous_comment,
+        next_comment: comment.next_comment,
         comment_votes: comment.comment_votes,
       },
     });

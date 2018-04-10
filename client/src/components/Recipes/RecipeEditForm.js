@@ -20,12 +20,14 @@ class RecipeEditForm extends React.Component {
   componentDidMount() {
     ApiServices.getOneRecipe(this.props.match.params.id)
       .then(recipe => {
+        console.log(recipe.data.recipe);
         this.setState({
           apiDataLoaded: true,
-          apiData: recipe.data,
           name: recipe.data.recipe.name,
           ingredient_list: recipe.data.recipe.ingredient_list,
-          instruction_list: recipe.data.recipe.instruction_list
+          instruction_list: recipe.data.recipe.instruction_list,
+          user_id: recipe.data.recipe.user_id,
+          votes: recipe.data.recipe.votes,
         });
       })
       .catch(err => {
@@ -44,7 +46,8 @@ class RecipeEditForm extends React.Component {
   handleFormSubmit(e) {
     e.preventDefault();
     ApiServices.editRecipe(this.state, this.props.match.params.id)
-      .then(comment => {
+      .then(recipe => {
+        console.log('UPDATED RECIPE--->', recipe);
         this.setState({
           fireRedirect: true,
         });
@@ -57,24 +60,25 @@ class RecipeEditForm extends React.Component {
   renderEditForm() {
     return (
       <form className="form" onSubmit={this.handleFormSubmit}>
-        <input
+        <p>Name: </p><input
           type="text"
           name="name"
           onChange={this.handleInputChange}
           value={this.state.name}
         />
-        <input
+        <p>Ingredient List: </p><input
           type="text"
           name="ingredient_list"
           onChange={this.handleInputChange}
           value={this.state.ingredient_list}
         />
-        <input
+        <p>Instruction List: </p><input
           type="text"
           name="instruction_list"
           onChange={this.handleInputChange}
           value={this.state.instruction_list}
         />
+        <input type="submit" value="Let's edit it" />
       </form>
     );
   }
@@ -88,7 +92,7 @@ class RecipeEditForm extends React.Component {
           <h1>Loading your data</h1>
         )}
         {this.state.fireRedirect ? (
-          <Redirect to={`/recipies/${this.props.match.params.id}`} />
+          <Redirect to={`/recipes/${this.props.match.params.id}`} />
         ) : (
           ''
         )}

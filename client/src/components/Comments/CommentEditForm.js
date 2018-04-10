@@ -9,8 +9,12 @@ class CommentEditForm extends React.Component {
       title: '',
       description: '',
       poster_id: '',
+      recipe_id: '',
+      previous_comment: null,
+      next_comment: null,
       votes: null,
       fireRedirect: false,
+      apiDataLoaded: false,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
@@ -19,12 +23,16 @@ class CommentEditForm extends React.Component {
   componentDidMount() {
     ApiServices.getOneComment(this.props.match.params.id)
       .then(comment => {
+        console.log(comment);
         this.setState({
           apiDataLoaded: true,
-          apiData: comment.data,
           title: comment.data.comment.title,
           description: comment.data.comment.description,
           poster_id: comment.data.comment.poster_id,
+          previous_comment: comment.data.comment.previous_comment,
+          recipe_id: comment.data.comment.recipe_id,
+          next_comment: comment.data.comment.next_comment,
+          comment_votes: comment.data.comment.comment_votes,
         });
       })
       .catch(err => {
@@ -56,18 +64,19 @@ class CommentEditForm extends React.Component {
   renderEditForm() {
     return (
       <form className="form" onSubmit={this.handleFormSubmit}>
-        <input
+        <p>Title: </p><input
           type="text"
           name="title"
           onChange={this.handleInputChange}
           value={this.state.title}
         />
-        <input
+        <p>Description</p><input
           type="text"
           name="description"
           onChange={this.handleInputChange}
-          value={this.state.title}
+          value={this.state.description}
         />
+        <input type="submit" value="Let's edit it" />
       </form>
     );
   }

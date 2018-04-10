@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
 
   private
   def comment_params
-    params.require(:comments).permit(:poster_id, :recipe_id, :description, :previous_comment, :next_comment, :comment_votes)
+    params.permit(:poster_id, :recipe_id, :title, :description, :previous_comment, :next_comment, :comment_votes)
   end
 
   def set_comment

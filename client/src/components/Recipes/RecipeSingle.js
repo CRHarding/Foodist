@@ -24,7 +24,6 @@ class RecipeSingle extends Component {
     }
     ApiServices.getOneRecipe(getId)
       .then(recipe => {
-        console.log(recipe.data.recipe);
         this.setState({
           apiDataLoaded: true,
           apiData: recipe.data.recipe,
@@ -56,7 +55,7 @@ class RecipeSingle extends Component {
         <p>Ingredient List: {this.state.apiData.ingredient_list}</p>
         <p>Instruction List: {this.state.apiData.instruction_list}</p>
         <p>Votes: {this.state.apiData.votes}</p>
-        <Link to={`/recipies/${this.state.apiData.id}/edit`}>
+        <Link to={`/recipes/${this.state.apiData.id}/edit`}>
           Edit this recipe?
         </Link>
         <button onClick={this.deleteRecipe}>Delete This Recipe?</button>
