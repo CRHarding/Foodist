@@ -1,0 +1,359 @@
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (25.4ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRecipes (20180410140848)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateRecipes (20180410140848)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.0ms)[0m  [1m[35mCREATE TABLE "recipes" ("id" bigserial primary key, "name" character varying, "ingredient_list" character varying, "instruction_list" character varying, "user_id" integer, "votes" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180410140848"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2018-04-10 14:15:29.559933"], ["updated_at", "2018-04-10 14:15:29.559933"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangingIngredientListAndInstructionListToArrays (20180410141909)
+  [1m[35m (2.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangingIngredientListAndInstructionListToArrays (20180410141909)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangingIngredientListAndInstructionListToArrays (20180410141909)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.7ms)[0m  [1m[35mALTER TABLE "recipes" ALTER COLUMN "ingredient_list" TYPE character varying[][0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangingIngredientListAndInstructionListToArrays (20180410141909)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangingIngredientListAndInstructionListToArrays (20180410141909)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to ChangingIngredientListAndInstructionListToArrays (20180410141909)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.2ms)[0m  [1m[35mALTER TABLE "recipes" ALTER COLUMN "ingredient_list" TYPE varchar[] USING (string_to_array(ingredient_list, ','))[0m
+  [1m[35m (2.8ms)[0m  [1m[35mALTER TABLE "recipes" ALTER COLUMN "instruction_list" TYPE varchar[] USING (string_to_array(instruction_list, ','))[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180410141909"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.5ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:36:17.648181"], ["updated_at", "2018-04-10 14:36:17.648181"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:36:17.663948"], ["updated_at", "2018-04-10 14:36:17.663948"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:36:17.666329"], ["updated_at", "2018-04-10 14:36:17.666329"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:36:24.680640"], ["updated_at", "2018-04-10 14:36:24.680640"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:36:24.689457"], ["updated_at", "2018-04-10 14:36:24.689457"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:36:24.692103"], ["updated_at", "2018-04-10 14:36:24.692103"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20180410143925)
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.8ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "poster_id" integer, "recipe_id" integer, "description" character varying, "comment_votes" integer, "previous_comment" integer, "next_comment" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180410143925"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:47:57.590094"], ["updated_at", "2018-04-10 14:47:57.590094"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:47:57.599094"], ["updated_at", "2018-04-10 14:47:57.599094"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:47:57.601473"], ["updated_at", "2018-04-10 14:47:57.601473"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:48:13.567222"], ["updated_at", "2018-04-10 14:48:13.567222"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:48:13.576472"], ["updated_at", "2018-04-10 14:48:13.576472"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:48:13.579342"], ["updated_at", "2018-04-10 14:48:13.579342"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:48:30.626553"], ["updated_at", "2018-04-10 14:48:30.626553"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:48:30.635126"], ["updated_at", "2018-04-10 14:48:30.635126"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:48:30.637154"], ["updated_at", "2018-04-10 14:48:30.637154"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 2], ["recipe_id", 1], ["description", "This thing sucks. Add in pepper!"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 2], ["created_at", "2018-04-10 14:48:30.648069"], ["updated_at", "2018-04-10 14:48:30.648069"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 3], ["recipe_id", 2], ["description", "This thing sucks. Add in pepper!"], ["comment_votes", 0], ["previous_comment", 1], ["next_comment", 3], ["created_at", "2018-04-10 14:48:30.650298"], ["updated_at", "2018-04-10 14:48:30.650298"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 2], ["recipe_id", 1], ["description", "This thing sucks. Add in pepper!"], ["comment_votes", 0], ["previous_comment", 2], ["next_comment", 0], ["created_at", "2018-04-10 14:48:30.652346"], ["updated_at", "2018-04-10 14:48:30.652346"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:49:48.273658"], ["updated_at", "2018-04-10 14:49:48.273658"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:49:48.282191"], ["updated_at", "2018-04-10 14:49:48.282191"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 14:49:48.284853"], ["updated_at", "2018-04-10 14:49:48.284853"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 2], ["recipe_id", 1], ["description", "This thing sucks. Add in pepper!"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 2], ["created_at", "2018-04-10 14:49:48.296790"], ["updated_at", "2018-04-10 14:49:48.296790"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 3], ["recipe_id", 2], ["description", "Best recipe ever!"], ["comment_votes", 0], ["previous_comment", 1], ["next_comment", 3], ["created_at", "2018-04-10 14:49:48.298686"], ["updated_at", "2018-04-10 14:49:48.298686"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 2], ["recipe_id", 1], ["description", "What's the deal with this guy?"], ["comment_votes", 0], ["previous_comment", 2], ["next_comment", 0], ["created_at", "2018-04-10 14:49:48.300484"], ["updated_at", "2018-04-10 14:49:48.300484"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2018-04-10 11:02:41 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as */*
+  Parameters: {"welcome"=>{}}
+  Rendering /Users/caseyrharding/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/caseyrharding/.rbenv/versions/2.5.0/lib/ruby/gems/2.5.0/gems/railties-5.1.6/lib/rails/templates/rails/welcome/index.html.erb (2.5ms)
+Completed 200 OK in 54ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/comment" for 127.0.0.1 at 2018-04-10 11:02:46 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/comment"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.3) lib/puma/configuration.rb:225:in `call'
+puma (3.11.3) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.3) lib/puma/server.rb:438:in `process_client'
+puma (3.11.3) lib/puma/server.rb:302:in `block in run'
+puma (3.11.3) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/comments" for 127.0.0.1 at 2018-04-10 11:02:48 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/comments"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.3) lib/puma/configuration.rb:225:in `call'
+puma (3.11.3) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.3) lib/puma/server.rb:438:in `process_client'
+puma (3.11.3) lib/puma/server.rb:302:in `block in run'
+puma (3.11.3) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:03:33 -0400
+  
+SyntaxError (/Users/caseyrharding/wdi/PROJECTS/Foodist/Foodist/foodist/app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+...vious_comment, :next_comment. :comment_votes)
+...                              ^):
+  
+app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:04:24 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:04:34 -0400
+  
+SyntaxError (/Users/caseyrharding/wdi/PROJECTS/Foodist/Foodist/foodist/app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+...vious_comment, :next_comment. :comment_votes)
+...                              ^):
+  
+app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+  
+SyntaxError (/Users/caseyrharding/wdi/PROJECTS/Foodist/Foodist/foodist/app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+...vious_comment, :next_comment. :comment_votes)
+...                              ^):
+  
+app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:04:39 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/caseyrharding/wdi/PROJECTS/Foodist/Foodist/foodist/app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+...vious_comment, :next_comment. :comment_votes)
+...                              ^):
+  
+app/controllers/comments_controller.rb:47: syntax error, unexpected tSYMBEG, expecting '('
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:05:07 -0400
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#show as */*
+  Parameters: {"comment"=>{}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 5ms (ActiveRecord: 4.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=):
+  
+app/controllers/comments_controller.rb:11:in `show'
+Started GET "/api/comments/1" for 127.0.0.1 at 2018-04-10 11:06:58 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/api/comments/1"):
+  
+actionpack (5.1.6) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.6) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.6) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.6) lib/rails/rack/logger.rb:24:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.4) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.6) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.6) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.4) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.6) lib/rails/engine.rb:522:in `call'
+puma (3.11.3) lib/puma/configuration.rb:225:in `call'
+puma (3.11.3) lib/puma/server.rb:624:in `handle_request'
+puma (3.11.3) lib/puma/server.rb:438:in `process_client'
+puma (3.11.3) lib/puma/server.rb:302:in `block in run'
+puma (3.11.3) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:07:10 -0400
+Processing by CommentsController#show as */*
+  Parameters: {"comment"=>{}}
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+Completed 404 Not Found in 12ms (ActiveRecord: 5.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Comment with 'id'=):
+  
+app/controllers/comments_controller.rb:11:in `show'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:10:06 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"comment"=>{}}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 15ms (Views: 13.2ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/comments/1" for 127.0.0.1 at 2018-04-10 11:10:10 -0400
+Processing by CommentsController#show as */*
+  Parameters: {"id"=>"1", "comment"=>{}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/comments/2" for 127.0.0.1 at 2018-04-10 11:10:11 -0400
+Processing by CommentsController#show as */*
+  Parameters: {"id"=>"2", "comment"=>{}}
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT  "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-10 11:10:18 -0400
+Processing by CommentsController#index as */*
+  Parameters: {"comment"=>{}}
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-10 11:12:00 -0400
+Processing by RecipesController#index as */*
+  Parameters: {"recipe"=>{}}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 9ms (Views: 7.8ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/recipes/1" for 127.0.0.1 at 2018-04-10 11:12:03 -0400
+Processing by RecipesController#show as */*
+  Parameters: {"id"=>"1", "recipe"=>{}}
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT  "recipes".* FROM "recipes" WHERE "recipes"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(3041692512692063160)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddingTitleToComments (20180410155250)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "comments" ADD "title" character varying[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20180410155250"]]
+  [1m[35m (6.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(3041692512692063160)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken Parm"], ["ingredient_list", "{\"1/2 lb Chicken Breasts\",\"1 Cup Breadcrumbs\",\"2 Fresh, Ripe Tomatos\",\"All the luck you can muster!\"}"], ["instruction_list", "{\"Put the chicken in the pan over medium heat\",\"Add breadcrumbs\",\"Cook that baby until it's black!\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 15:54:22.546822"], ["updated_at", "2018-04-10 15:54:22.546822"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Pizza"], ["ingredient_list", "{\"2 dough balls\",\"1 ball mozz cheese\",\"2 Fresh, Ripe Tomatos\",Basil}"], ["instruction_list", "{\"Stretch out those balls\",\"Top with sauce\",\"Top with cheese\",\"Bake the hell out of it!\",\"Top with basil\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 15:54:22.555082"], ["updated_at", "2018-04-10 15:54:22.555082"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cereal"], ["ingredient_list", "{\"1 package cereal\",\"1 Cup milk\"}"], ["instruction_list", "{\"Put the cereal in a bowl\",\"Add milk\"}"], ["user_id", 1], ["votes", 0], ["created_at", "2018-04-10 15:54:22.557143"], ["updated_at", "2018-04-10 15:54:22.557143"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 2], ["recipe_id", 1], ["description", "This thing sucks. Add in pepper!"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 2], ["created_at", "2018-04-10 15:54:22.568416"], ["updated_at", "2018-04-10 15:54:22.568416"], ["title", "Bad!"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 3], ["recipe_id", 2], ["description", "Best recipe ever!"], ["comment_votes", 0], ["previous_comment", 1], ["next_comment", 3], ["created_at", "2018-04-10 15:54:22.570171"], ["updated_at", "2018-04-10 15:54:22.570171"], ["title", "I love this!!!"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 2], ["recipe_id", 1], ["description", "What's the deal with this guy?"], ["comment_votes", 0], ["previous_comment", 2], ["next_comment", 0], ["created_at", "2018-04-10 15:54:22.571734"], ["updated_at", "2018-04-10 15:54:22.571734"], ["title", "This guy sucks..."]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
