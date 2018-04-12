@@ -3,10 +3,10 @@ const byId = (state = {}, action) => {
     return {
       ...state,
       ...action.response.entities.recipes,
-    }
+    };
   }
   return state;
-}
+};
 
 export default byId;
 

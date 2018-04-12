@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { getVisibleRecipes } from '../../reducers';
+import { getVisibleRecipes, getErrorMessage, getIsFetching } from '../reducers';
 import RecipeList from './RecipeList';
+import FetchError from './FetchError';
 
 class VisibleRecipeList extends Component {
   componentDidMount() {
@@ -16,19 +17,29 @@ class VisibleRecipeList extends Component {
   }
 
   fetchData() {
-    const { filter, fetchTodos } = this.props;
-    fetchTodos(filter);
+    const { filter, fetchRecipes } = this.props;
+    fetchRecipes(filter);
   }
 
   render() {
-    const { toggleRecipe, recipes } = this.props;
+    const { isFetching, errorMessage, toggleRecipe, recipes } = this.props;
+    if (isFetching && !recipes.length) {
+      return <p>Loading...</p>;
+    }
+    if (errorMessage && !recipes.length) {
+      return (
+        <FetchError message={errorMessage} onRetry={() => this.fetchData()} />
+      );
+    }
     return <RecipeList recipes={recipes} onRecipeClick={toggleRecipe} />;
   }
 }
 
 const mapStateToProps = (state, { params }) => {
-  const filter = params.filter || 'all';
+  const filter = params || 'all';
   return {
+    isFetching: getIsFetching(state, filter),
+    errorMessgae: getErrorMessage(state, filter),
     recipes: getVisibleRecipes(state, filter),
     filter,
   };

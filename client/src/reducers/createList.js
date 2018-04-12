@@ -5,13 +5,13 @@ const createList = filter => {
     const { result: toggleId, entities } = action.response;
     const { favorite } = entities.recipes[toggleId];
     const shouldRemove = !favorite && filter === 'favorite';
-    return shouldRemove ? state.filter(id => is !== toggleId) : state;
+    return shouldRemove ? state.filter(id => id !== toggleId) : state;
   };
 
   const ids = (state = [], action) => {
     switch (action.type) {
       case 'FETCH_RECIPES_SUCCESS':
-        return filter === action.filter ? action.response.result : state;
+        return action.recipes.data.data
       case 'TOGGLE_RECIPE_SUCCESS':
         return handleToggle(state, action);
       default:

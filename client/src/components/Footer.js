@@ -1,13 +1,13 @@
 import React from 'react';
-import FilterLink from '../containers/FilterLink';
+import FilterLink from './FilterLink';
 
 const Footer = () => (
   <p>
-    Show: <FilterLink filter={'SHOW_ALL'}>All</FilterLink>
+    Show: <FilterLink filter={'all'}>All</FilterLink>
     {', '}
-    <FilterLink filter={'SHOW_FAVORITE'}>Favorites</FilterLink>
+    <FilterLink filter={'favorite'}>Favorites</FilterLink>
     {', '}
-    <FilterLink filter={'SHOW_NONFAVORITE'}>Not Favorites</FilterLink>
+    <FilterLink filter={'nonfavorite'}>Not Favorites</FilterLink>
   </p>
 );
 

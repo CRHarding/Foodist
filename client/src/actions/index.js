@@ -2,6 +2,9 @@ import RecipeServices from '../services/RecipeServices';
 import CommentServices from '../services/CommentServices';
 import Firebase from 'firebase';
 import { browserHistory } from 'react-router';
+import * as api from '../api';
+import { getIsFetching } from '../reducers';
+import axios from 'axios';
 
 export const REQUEST_ONE_RECIPE = 'REQUEST_ONE_RECIPE';
 export const REQUEST_ALL_RECIPES = 'REQUEST_ALL_RECIPES';
@@ -166,16 +169,38 @@ export function authError(error) {
   };
 }
 
-export const setVisibilityFilter = filter => {
-  return {
-    type: 'SET_VISIBILITY_FILTER',
+export const fetchRecipes = filter => (dispatch, getState) => {
+  if (getIsFetching(getState(), filter)) {
+    return Promise.resolve();
+  }
+
+  dispatch({
+    type: 'FETCH_RECIPES_REQUEST',
     filter,
-  };
+  });
+
+  return axios.get('/api/recipes').then(
+    recipes => {
+      dispatch({
+        type: 'FETCH_RECIPES_SUCCESS',
+        filter,
+        recipes: recipes,
+      });
+    },
+    error => {
+      dispatch({
+        type: 'FETCH_RECIPES_FAILURE',
+        filter,
+        message: error.message || 'Something went wrong.',
+      });
+    },
+  );
 };
 
-export const toggleRecipe = (id) => {
-  return {
-    type: 'TOGGLE_RECIPE',
-    id,
-  };
-};
+export const toggleRecipe = id => dispatch =>
+  api.toggleRecipe(id).then(response => {
+    dispatch({
+      type: 'TOGGLE_RECIPE_SUCCESS',
+      response: response,
+    });
+  });

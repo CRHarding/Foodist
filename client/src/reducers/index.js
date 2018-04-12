@@ -16,7 +16,10 @@ export default recipes;
 
 export const getVisibleRecipes = (state, filter) => {
   const ids = fromList.getIds(state.listByFilter[filter]);
-  return ids.map(id => fromById.getRecipe(state.byId, id));
+  console.log(ids);
+  const newIds = ids.map(id => fromById.getRecipe(state.byId, id));
+  console.log(newIds);
+  return newIds;
 };
 
 export const getIsFetching = (state, filter) =>
