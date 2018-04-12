@@ -1,10 +1,10 @@
 import React from 'react';
-import CommentList from '../components/Comments/CommentList';
-import RecipeList from '../components/Recipes/RecipeList';
+import VisibleCommentList from './VisibleCommentList';
+import VisibleRecipeList from './VisibleRecipeList';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../actions';
-import SearchBar from '../components/SearchBar';
+import SearchBar from './SearchBar';
 import '../index.css';
 
 class Home extends React.Component {
@@ -14,8 +14,8 @@ class Home extends React.Component {
     return (
       <div>
         <SearchBar onTermChange={this.props.actions.requestRecipe} />
-        <CommentList comments={this.props.comments} />
-        <RecipeList
+        <VisibleCommentList comments={this.props.comments} />
+        <VisibleRecipeList
           recipes={this.props.recipes}
           onFavoriteSelect={selectedRecipe =>
             this.props.actions.favoriteRecipe({ selectedRecipe })
@@ -31,8 +31,8 @@ class Home extends React.Component {
 }
 
 function mapStateToProps(state) {
+  console.log(state);
   return {
-    authenticated: state.auth.authenticated,
     comments: state.comments.data,
     recipes: state.recipes.data,
   };

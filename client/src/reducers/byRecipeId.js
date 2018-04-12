@@ -1,4 +1,4 @@
-const byId = (state = {}, action) => {
+const byRecipeId = (state = {}, action) => {
   if (action.response) {
     return {
       ...state,
@@ -8,6 +8,6 @@ const byId = (state = {}, action) => {
   return state;
 };
 
-export default byId;
+export default byRecipeId;
 
 export const getRecipe = (state, id) => state[id];

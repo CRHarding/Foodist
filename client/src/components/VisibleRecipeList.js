@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../actions';
-import { getVisibleRecipes, getErrorMessage, getIsFetching } from '../reducers';
+import { getVisibleRecipes, getRecipeErrorMessage, getIsRecipeFetching, getVisibleComments, getCommentErrorMessage, getIsCommentFetching } from '../reducers';
 import RecipeList from './RecipeList';
 import FetchError from './FetchError';
 
@@ -22,13 +22,13 @@ class VisibleRecipeList extends Component {
   }
 
   render() {
-    const { isFetching, errorMessage, toggleRecipe, recipes } = this.props;
-    if (isFetching && !recipes.length) {
+    const { isRecipeFetching, recipeErrorMessage, toggleRecipe, recipes } = this.props;
+    if (isRecipeFetching && !recipes.length) {
       return <p>Loading...</p>;
     }
-    if (errorMessage && !recipes.length) {
+    if (recipeErrorMessage && !recipes.length) {
       return (
-        <FetchError message={errorMessage} onRetry={() => this.fetchData()} />
+        <FetchError message={recipeErrorMessage} onRetry={() => this.fetchData()} />
       );
     }
     return <RecipeList recipes={recipes} onRecipeClick={toggleRecipe} />;
@@ -38,8 +38,8 @@ class VisibleRecipeList extends Component {
 const mapStateToProps = (state, { params }) => {
   const filter = params || 'all';
   return {
-    isFetching: getIsFetching(state, filter),
-    errorMessgae: getErrorMessage(state, filter),
+    isRecipeFetching: getIsRecipeFetching(state, filter),
+    recipeErrorMessage: getRecipeErrorMessage(state, filter),
     recipes: getVisibleRecipes(state, filter),
     filter,
   };

@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const createList = filter => {
+const createRecipeList = filter => {
   const handleToggle = (state, action) => {
     const { result: toggleId, entities } = action.response;
     const { favorite } = entities.recipes[toggleId];
@@ -19,7 +19,7 @@ const createList = filter => {
     }
   };
 
-  const isFetching = (state = false, action) => {
+  const isFetchingRecipes = (state = false, action) => {
     if (filter !== action.filter) {
       return state;
     }
@@ -51,13 +51,13 @@ const createList = filter => {
 
   return combineReducers({
     ids,
-    isFetching,
+    isFetchingRecipes,
     errorMessage,
   });
 };
 
-export default createList;
+export default createRecipeList;
 
 export const getIds = (state) => state.ids;
-export const getIsFetching = (state) => state.isFetching;
-export const getErrorMessage = (state) => state.errorMessage;
+export const getIsRecipeFetching = (state) => state.isFetchingRecipes;
+export const getRecipeErrorMessage = (state) => state.errorMessage;

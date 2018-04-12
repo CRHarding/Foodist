@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../actions';
-import RecipeList from '../components/Recipes/RecipeList';
+import VisibleRecipeList from './VisibleRecipeList';
 
 class Favorites extends React.Component {
   componentWillMount() {
@@ -12,7 +12,7 @@ class Favorites extends React.Component {
   render() {
     return (
       <div>
-        <RecipeList
+        <VisibleRecipeList
           recipes={this.props.recipes}
           onFavoriteSelect={selectedRecipe =>
             this.props.actions.favoriteRecipe({ selectedRecipe })

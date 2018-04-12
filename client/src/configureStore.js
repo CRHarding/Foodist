@@ -2,6 +2,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import recipeApp from './reducers';
+import * as Actions from './actions';
 
 const configureStore = () => {
   const middlewares = [reduxThunk];
@@ -9,7 +10,11 @@ const configureStore = () => {
     middlewares.push(createLogger());
   }
 
-  return createStore(recipeApp, applyMiddleware(...middlewares));
+  const store = createStore(recipeApp, applyMiddleware(...middlewares));
+
+  store.dispatch(Actions.verifyAuth());
+
+  return store;
 };
 
 export default configureStore;

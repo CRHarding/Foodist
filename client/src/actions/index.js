@@ -3,7 +3,7 @@ import CommentServices from '../services/CommentServices';
 import Firebase from 'firebase';
 import { browserHistory } from 'react-router';
 import * as api from '../api';
-import { getIsFetching } from '../reducers';
+import { getIsRecipeFetching, getIsCommentFetching } from '../reducers';
 import axios from 'axios';
 
 export const REQUEST_ONE_RECIPE = 'REQUEST_ONE_RECIPE';
@@ -119,6 +119,7 @@ export function signUpUser(credentials) {
       });
   };
 }
+
 export function signInUser(credentials) {
   return function(dispatch) {
     Firebase.auth()
@@ -170,7 +171,7 @@ export function authError(error) {
 }
 
 export const fetchRecipes = filter => (dispatch, getState) => {
-  if (getIsFetching(getState(), filter)) {
+  if (getIsRecipeFetching(getState(), filter)) {
     return Promise.resolve();
   }
 
@@ -190,6 +191,34 @@ export const fetchRecipes = filter => (dispatch, getState) => {
     error => {
       dispatch({
         type: 'FETCH_RECIPES_FAILURE',
+        filter,
+        message: error.message || 'Something went wrong.',
+      });
+    },
+  );
+};
+
+export const fetchComments = filter => (dispatch, getState) => {
+  if (getIsCommentFetching(getState(), filter)) {
+    return Promise.resolve();
+  }
+
+  dispatch({
+    type: 'FETCH_COMMENTS_REQUEST',
+    filter,
+  });
+
+  return axios.get('/api/comments').then(
+    comments => {
+      dispatch({
+        type: 'FETCH_COMMENTS_SUCCESS',
+        filter,
+        comments: comments,
+      });
+    },
+    error => {
+      dispatch({
+        type: 'FETCH_COMMENTS_FAILURE',
         filter,
         message: error.message || 'Something went wrong.',
       });

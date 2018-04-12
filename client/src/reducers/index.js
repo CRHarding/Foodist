@@ -1,29 +1,46 @@
 import { combineReducers } from 'redux';
-import byId, * as fromById from './byId';
-import createList, * as fromList from './createList';
+import byRecipeId, * as fromByRecipeId from './byRecipeId';
+import byCommentId, * as fromByCommentId from './byCommentId';
+import createRecipeList, * as fromRecipeList from './createRecipeList';
+import createCommentList, * as fromCommentList from './createCommentList';
 
-const listByFilter = combineReducers({
-  all: createList('all'),
-  favorite: createList('favorite'),
+const listByRecipeFilter = combineReducers({
+  all: createRecipeList('all'),
+  favorite: createRecipeList('favorite'),
+});
+
+const listByCommentFilter = combineReducers({
+  all: createCommentList('all'),
+  favorite: createCommentList('favorite'),
 });
 
 const recipes = combineReducers({
-  byId,
-  listByFilter,
+  byRecipeId,
+  byCommentId,
+  listByRecipeFilter,
+  listByCommentFilter,
 });
 
 export default recipes;
 
 export const getVisibleRecipes = (state, filter) => {
-  const ids = fromList.getIds(state.listByFilter[filter]);
-  console.log(ids);
-  const newIds = ids.map(id => fromById.getRecipe(state.byId, id));
-  console.log(newIds);
-  return newIds;
+  const ids = fromRecipeList.getIds(state.listByRecipeFilter[filter]);
+  return ids;
 };
 
-export const getIsFetching = (state, filter) =>
-  fromList.getIsFetching(state.listByFilter[filter]);
+export const getVisibleComments = (state, filter) => {
+  const ids = fromCommentList.getIds(state.listByCommentFilter[filter]);
+  return ids;
+}
 
-export const getErrorMessage = (state, filter) =>
-  fromList.getErrorMessage(state.listByFilter[filter]);
+export const getIsRecipeFetching = (state, filter) =>
+  fromRecipeList.getIsRecipeFetching(state.listByRecipeFilter[filter]);
+
+export const getIsCommentFetching = (state, filter) =>
+  fromCommentList.getIsCommentFetching(state.listByCommentFilter[filter]);
+
+export const getRecipeErrorMessage = (state, filter) =>
+  fromRecipeList.getRecipeErrorMessage(state.listByRecipeFilter[filter]);
+
+export const getCommentErrorMessage = (state, filter) =>
+  fromCommentList.getCommentErrorMessage(state.listByCommentFilter[filter]);

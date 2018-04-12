@@ -1,4 +1,3 @@
-import { v4 } from 'node-uuid';
 import axios from 'axios';
 
 export const fetchRecipes = filter => {
@@ -10,6 +9,21 @@ export const fetchRecipes = filter => {
         return recipes.filter(t => t.favorite);
       case 'nonfavorite':
         return recipes.filter(t => t.nonfavorite);
+      default:
+        throw new Error(`Unknown filter: ${filter}`);
+    }
+  });
+};
+
+export const fetchComments = filter => {
+  axios.get('/api/comments').then(comments => {
+    switch (filter) {
+      case 'all':
+        return comments;
+      case 'favorite':
+        return comments.filter(t => t.favorite);
+      case 'nonfavorite':
+        return comments.filter(t => t.nonfavorite);
       default:
         throw new Error(`Unknown filter: ${filter}`);
     }
