@@ -1,24 +1,15 @@
-import { createStore, compose, applyMiddleware } from 'redux';
-import ReduxPromise from 'redux-promise';
-import rootReducer from '../reducers/index';
+import { createStore, applyMiddleware } from 'redux';
+import reduxThunk from 'redux-thunk';
+import createLogger from 'redux-logger';
+import recipeApp from './reducers';
 
-export default function configureStore(initialState) {
-  const store = createStore(
-    rootReducer,
-    initialState,
-    compose(
-      applyMiddleware(ReduxPromise),
-      window.devToolsExtension ? window.devToolsExtension() : f => f,
-    ),
-  );
-
-  if (module.hot) {
-    //enable webpack hot module replacement for reducers
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers').default;
-      store.replaceReducer(nextRootReducer);
-    });
+const configureStore = () => {
+  const middlewares = [reduxThunk];
+  if (process.env.NODE_ENV !== 'production') {
+    middlewares.push(createLogger());
   }
 
-  return store;
-}
+  return createStore(recipeApp, applyMiddleware(...middlewares));
+};
+
+export default configureStore;

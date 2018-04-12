@@ -1,10 +1,26 @@
 import { combineReducers } from 'redux';
-import RecipesReducer from './RecipesReducer';
-import CommentsReducer from './CommentsReducer';
+import byId, * as fromById from './byId';
+import createList, * as fromList from './createList';
 
-const rootReducer = combineReducers({
-  comments: CommentsReducer,
-  recipes: RecipesReducer,
+const listByFilter = combineReducers({
+  all: createList('all'),
+  favorite: createList('favorite'),
 });
 
-export default rootReducer;
+const recipes = combineReducers({
+  byId,
+  listByFilter,
+});
+
+export default recipes;
+
+export const getVisibleRecipes = (state, filter) => {
+  const ids = fromList.getIds(state.listByFilter[filter]);
+  return ids.map(id => fromById.getRecipe(state.byId, id));
+};
+
+export const getIsFetching = (state, filter) =>
+  fromList.getIsFetching(state.listByFilter[filter]);
+
+export const getErrorMessage = (state, filter) =>
+  fromList.getErrorMessage(state.listByFilter[filter]);

@@ -1,15 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
-const Recipe = props => {
-  console.log('PROPS IN Recipe.JS--->', props);
-  return (
-    <li className="recipe">
-      <p>
-        <Link to={`/recipies/${props.id}`}>{props.name}</Link>
-      </p>
-    </li>
-  );
-};
+const Recipe = ({ onClick, completed, text }) => (
+  <li
+    className="recipe"
+    onClick={onClick}
+    style={{ textDecoration: completed ? 'line-through' : 'none' }}
+  >
+    {text}
+  </li>
+);
 
 export default Recipe;

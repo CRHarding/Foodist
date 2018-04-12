@@ -2,10 +2,12 @@ import axios from 'axios';
 
 class CommentServices {
   getAllComments() {
+    console.log('HERE IN GET ALL COMMENTS');
     return axios.get('/api/comments');
   }
 
   getOneComment(id) {
+    console.log('HERE IN GET ONE COMMENT');
     return axios.get(`/api/comments/${id}`);
   }
 

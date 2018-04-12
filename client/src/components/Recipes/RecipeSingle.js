@@ -4,73 +4,49 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 
 class RecipeSingle extends Component {
-  constructor() {
-    super();
-    this.state = {
-      apiDataLoaded: false,
-      apiData: null,
-      fireRedirect: false,
-      id: null,
-    };
-    this.deleteRecipe = this.deleteRecipe.bind(this);
-  }
-
-  componentDidMount() {
-    let getId;
-    if (!this.props.id) {
-      getId = this.props.match.params.id;
-    } else {
-      getId = this.props.id;
-    }
-    ApiServices.getOneRecipe(getId)
-      .then(recipe => {
-        this.setState({
-          apiDataLoaded: true,
-          apiData: recipe.data.recipe,
-          id: getId,
-        });
-      })
-      .catch(err => {
-        console.log('ERROR IN COMPONENTDIDMOUNT RECIPESINGLE --->', err);
-      });
-  }
-
-  deleteRecipe() {
-    ApiServices.deleteRecipe(this.state.id)
-      .then(data => {
-        this.setState({
-          fireRedirect: true,
-        });
-      })
-      .catch(err => {
-        console.log('ERROR IN DELETESONG IN RECIPESINGLE', err);
-      });
-  }
-
-  renderRecipe() {
-    return (
-      <div className="single-recipe">
-        <h2>Author: {this.state.apiData.user_id}</h2>
-        <p>Name: {this.state.apiData.name}</p>
-        <p>Ingredient List: {this.state.apiData.ingredient_list}</p>
-        <p>Instruction List: {this.state.apiData.instruction_list}</p>
-        <p>Votes: {this.state.apiData.votes}</p>
-        <Link to={`/recipes/${this.state.apiData.id}/edit`}>
-          Edit this recipe?
-        </Link>
-        <button onClick={this.deleteRecipe}>Delete This Recipe?</button>
-      </div>
-    );
-  }
-
-  render() {
-    return (
-      <div className="single-container">
-        {this.state.apiDataLoaded ? this.renderRecipe() : ''}
-        {this.state.fireRedirect ? <Redirect to='/recipes'/> : '' }
-      </div>
-    );
-  }
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       favorited: this.props.isFavorite,
+//     };
+//     this.deleteRecipe = this.deleteRecipe.bind(this);
+//   }
+//
+//   favoriteRecipe() {
+//     this.setState({ favorited: true });
+//     this.props.onFavoriteSelect(this.props.recipe);
+//   }
+//
+//   unfavoriteRecipe() {
+//     this.setState({ favotited: false });
+//     this.props.onFavoriteDeselect(this.props.gif);
+//   }
+//
+//   renderFavoriteHeart() {
+//     if (!this.props.isAuthenticated) {
+//       return '';
+//     }
+//
+//     if (this.state.favorited) {
+//       return <p>THIS IS A FAVORITE</p>;
+//     }
+//   }
+//
+//   render() {
+//     return (
+//       <div className="single-recipe">
+//         <h2>Author: {this.props.user_id}</h2>
+//         <p>Name: {this.props.name}</p>
+//         <p>Ingredient List: {this.props.ingredient_list}</p>
+//         <p>Instruction List: {this.props.instruction_list}</p>
+//         <p>Votes: {this.props.votes}</p>
+//         <Link to={`/recipes/${this.props.id}/edit`}>
+//           Edit this recipe?
+//         </Link>
+//         <button onClick={this.deleteRecipe}>Delete This Recipe?</button>
+//       </div>
+//     );
+//   }
 }
 
 export default RecipeSingle;
