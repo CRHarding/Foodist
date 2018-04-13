@@ -6,14 +6,16 @@ import CommentList from './CommentList';
 import FetchError from './FetchError';
 
 class VisibleCommentList extends Component {
-  componentDidMount() {
-    this.fetchData();
+  constructor(props) {
+    super(props);
+    this.state = {
+      expandToggle: false,
+    };
+    this.expandEdit = this.expandEdit.bind(this);
   }
 
-  componentDidUpdate(prevProps) {
-    if (this.props.filter !== prevProps.filter) {
-      this.fetchData();
-    }
+  componentDidMount() {
+    this.fetchData();
   }
 
   fetchData() {
@@ -21,17 +23,29 @@ class VisibleCommentList extends Component {
     fetchComments(filter);
   }
 
+  expandEdit() {
+    this.setState({
+      expandToggle: !this.state.expandToggle,
+    });
+  }
+
   render() {
-    const { isFetching, errorMessage, toggleComment, comments } = this.props;
+    const { isFetching, errorMessage, comments } = this.props;
     if (isFetching && !comments.length) {
       return <p>Loading...</p>;
     }
+
     if (errorMessage && !comments.length) {
       return (
         <FetchError message={errorMessage} onRetry={() => this.fetchData()} />
       );
     }
-    return <CommentList comments={comments} onCommentClick={toggleComment} />;
+
+    return (
+      <div>
+        <CommentList comments={comments} onEditClick={this.expandEdit} toggle={this.state.expandToggle}/>
+      </div>
+    );
   }
 }
 

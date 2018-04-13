@@ -10,6 +10,7 @@ export const REQUEST_ONE_RECIPE = 'REQUEST_ONE_RECIPE';
 export const REQUEST_ALL_RECIPES = 'REQUEST_ALL_RECIPES';
 export const REQUEST_ONE_COMMENT = 'REQUEST_ONE_COMMENT';
 export const REQUEST_ALL_COMMENTS = 'REQUEST_ALL_COMMENTS';
+export const EDIT_COMMENT_SUBMIT = 'EDIT_COMMENT_SUBMIT';
 export const FETCH_FAVORITED_RECIPES = 'FETCH_FAVORITED_RECIPES';
 export const SIGN_IN_USER = 'SIGN_IN_USER';
 export const SIGN_OUT_USER = 'SIGN_OUT_USER';
@@ -224,6 +225,35 @@ export const fetchComments = filter => (dispatch, getState) => {
       });
     },
   );
+};
+
+export const editCommentSubmit = id => dispatch => {
+  axios.get(`/api/comments/${id}`).then(comment => {
+    return axios({
+      method: 'PUT',
+      url: `/api/comments/${id}`,
+      data: {
+        poster_id: comment.poster_id,
+        recipe_id: comment.recipe_id,
+        title: comment.title,
+        description: comment.description,
+        previous_comment: comment.previous_comment,
+        next_comment: comment.next_comment,
+        comment_votes: comment.comment_votes,
+      },
+    }).then(comment => {
+      dispatch({
+        type: 'EDIT_COMMENT_SUCCESS',
+        comment: comment,
+      });
+    });
+    error => {
+      dispatch({
+        type: 'EDIT_COMMENT_FAILURE',
+        message: error.message || 'Something went wrong.',
+      });
+    };
+  });
 };
 
 export const toggleRecipe = id => dispatch =>
