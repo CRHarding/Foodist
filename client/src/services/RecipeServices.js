@@ -5,28 +5,29 @@ class RecipeServices {
     return axios.get('/api/recipes');
   }
 
-  getOneRecipe(id) {
-    return axios.get(`/api/recipes/${id}`);
+  getOneRecipe(recipe) {
+    return axios.get(`/api/recipes/${recipe.id}`);
   }
 
   createRecipe(recipe) {
+    console.log(recipe);
     return axios({
       method: 'POST',
       url: '/api/recipes',
       data: {
-        user_id: recipe.poster_id,
-        name: recipe.recipe_id,
-        ingredient_list: recipe.title,
-        instruction_list: recipe.description,
-        votes: recipe.votes,
+        user_id: 2,
+        name: recipe.name,
+        ingredient_list: recipe.ingredient_list,
+        instruction_list: recipe.instruction_list,
+        votes: 0,
       },
     });
   }
 
-  editRecipe(recipe, id) {
+  updateRecipe(recipe) {
     return axios({
       method: 'PUT',
-      url: `/api/recipes/${id}`,
+      url: `/api/recipes/${recipe.id}`,
       data: {
         name: recipe.name,
         ingredient_list: recipe.ingredient_list,
@@ -37,10 +38,10 @@ class RecipeServices {
     });
   }
 
-  deleteRecipe(id) {
+  deleteRecipe(recipe) {
     return axios({
       method: 'DELETE',
-      url: `/api/recipes/${id}`,
+      url: `/api/recipes/${recipe.id}`,
     });
   }
 }

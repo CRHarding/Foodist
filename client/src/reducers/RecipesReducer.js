@@ -1,38 +1,28 @@
-import {
-  REQUEST_ALL_RECIPES,
-  REQUEST_ONE_RECIPE,
-  FETCH_FAVORITED_RECIPES,
-} from '../actions/index';
+import * as types from '../actions/actionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  data: [],
-  favorites: [],
-};
-
-export default function recipes(state = initialState, action) {
+export default function recipeReducer(state = initialState.recipes, action) {
   switch (action.type) {
-    case REQUEST_ALL_RECIPES:
-      return {
-        ...state,
-        data: action.payload.body.data,
-      };
-    case REQUEST_ONE_RECIPE:
-      return {
-        ...state,
-        data: action.payload.body.data,
-      };
-    case FETCH_FAVORITED_RECIPES:
-      let arr = [];
-      for (let i in action.payload) {
-        if (action.payload.hasOwnProperty(i)) {
-          arr.push(action.payload[i]);
-        }
-      }
-
-      return {
-        ...state,
-        favorites: arr,
-      };
+    case types.LOAD_RECIPES_SUCCESS:
+      return action.recipes.data.data;
+    case types.UPDATE_RECIPE_SUCCESS:
+      return [
+        ...state.filter(recipe => recipe.id !== action.recipe.id),
+        Object.assign({}, action.recipe),
+      ];
+    case types.CREATE_RECIPE_SUCCESS:
+      return [
+        ...state.filter(recipe => recipe.id !== action.recipe.id),
+        Object.assign({}, action.recipe),
+      ];
+    case types.DELETE_RECIPE_SUCCESS: {
+      const newState = Object.assign([], state);
+      const indexOfRecipeToDelete = state.findIndex(recipe => {
+        return recipe.id === action.recipe.id;
+      });
+      newState.splice(indexOfRecipeToDelete, 1);
+      return newState;
+    }
     default:
       return state;
   }

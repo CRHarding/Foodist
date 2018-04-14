@@ -4,17 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as sessionActions from '../actions/sessionActions';
 
-class SignupPage extends React.Component {
+class LogInPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      credentials: {
-        email: 'casey@casey.com',
-        password: 'aqswdefr',
-        password_confirmation: 'aqswdefr',
-        fname: 'casey',
-        lname: 'harding',
-      },
+      credentials: { email: 'casey@casey.com', password: '' },
     };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
@@ -29,7 +23,7 @@ class SignupPage extends React.Component {
 
   onSave(event) {
     event.preventDefault();
-    this.props.actions.signupUser(this.state.credentials);
+    this.props.actions.loginUser(this.state.credentials);
   }
 
   render() {
@@ -43,29 +37,10 @@ class SignupPage extends React.Component {
             onChange={this.onChange}
           />
           <TextInput
-            name="fname"
-            label="First Name"
-            value={this.state.credentials.fname}
-            onChange={this.onChange}
-          />
-          <TextInput
-            name="lname"
-            label="Last Name"
-            value={this.state.credentials.lname}
-            onChange={this.onChange}
-          />
-          <TextInput
             name="password"
-            label="Password"
+            label="password"
             type="password"
             value={this.state.credentials.password}
-            onChange={this.onChange}
-          />
-          <TextInput
-            name="password_confirmation"
-            label="password confirmation"
-            type="password"
-            value={this.state.credentials.password_confirmation}
             onChange={this.onChange}
           />
           <input
@@ -84,4 +59,4 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(sessionActions, dispatch),
   };
 }
-export default connect(null, mapDispatchToProps)(SignupPage);
+export default connect(null, mapDispatchToProps)(LogInPage);

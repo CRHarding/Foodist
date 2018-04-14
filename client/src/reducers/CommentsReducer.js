@@ -1,21 +1,15 @@
-import { REQUEST_ALL_COMMENTS, REQUEST_ONE_COMMENT } from '../actions/index';
+import * as types from '../actions/actionTypes';
+import initialState from './initialState';
 
-const initialState = {
-  data: [],
-};
-
-export default function comments(state = initialState, action) {
+export default function commentReducer(state = initialState.comments, action) {
   switch (action.type) {
-    case REQUEST_ALL_COMMENTS:
-      return {
-        ...state,
-        data: action.payload.body.data,
-      };
-    case REQUEST_ONE_COMMENT:
-      return {
-        ...state,
-        data: action.payload.body.data,
-      };
+    case types.LOAD_COMMENTS_SUCCESS:
+      return action.comments.data.data;
+    // case REQUEST_ONE_COMMENT:
+    //   return {
+    //     ...state,
+    //     data: action.payload.body.data,
+    //   };
     default:
       return state;
   }

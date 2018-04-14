@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as Actions from '../actions';
-import VisibleRecipeList from './VisibleRecipeList';
 
 class Favorites extends React.Component {
   componentWillMount() {

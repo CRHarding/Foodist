@@ -1,9 +1,14 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom';
-import Root from './components/Root';
+import NewRoot from './containers/NewRoot';
 import configureStore from './configureStore';
+import { loadRecipes } from './actions/recipeActions';
+import { loadComments } from './actions/commentActions';
 
 const store = configureStore();
 
-render(<Root store={store} />, document.getElementById('root'));
+store.dispatch(loadRecipes());
+store.dispatch(loadComments());
+
+render(<NewRoot store={store} />, document.getElementById('root'));

@@ -1,8 +1,11 @@
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import recipeApp from './reducers';
 import * as Actions from './actions';
+import rootReducer from './reducers/rootReducer';
+import createHistory from 'history/createBrowserHistory';
+
+export const history = createHistory();
 
 const configureStore = () => {
   const middlewares = [reduxThunk];
@@ -10,9 +13,7 @@ const configureStore = () => {
     middlewares.push(createLogger());
   }
 
-  const store = createStore(recipeApp, applyMiddleware(...middlewares));
-
-  store.dispatch(Actions.verifyAuth());
+  const store = createStore(rootReducer, applyMiddleware(...middlewares));
 
   return store;
 };
