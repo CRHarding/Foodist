@@ -4,12 +4,14 @@ import { bindActionCreators } from 'redux';
 import * as recipeActions from '../../actions/recipeActions';
 import CommentList from '../newComments/CommentList';
 import RecipeForm from './RecipeForm';
+import history from '../components/history';
 
 class RecipePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       isEditing: false,
+      saving: false,
       recipe: this.props.recipe,
       comments: this.props.Recipecomments,
     };
@@ -17,10 +19,11 @@ class RecipePage extends React.Component {
     this.updateRecipeState = this.updateRecipeState.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
+    this.redirect = this.redirect.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.state.recipe.id !== nextProps.recipe.id) {
+    if (this.props.recipe.id !== nextProps.recipe.id) {
       this.setState({ recipe: nextProps.recipe });
     }
 
@@ -29,6 +32,8 @@ class RecipePage extends React.Component {
         this.setState({ comments: nextProps.comments });
       }
     }
+
+    this.setState({ saving: false, isEditing: false });
   }
 
   updateRecipeState(event) {
@@ -40,6 +45,7 @@ class RecipePage extends React.Component {
 
   saveRecipe(event) {
     event.preventDefault();
+    this.setState({ saving: true });
     this.props.actions.updateRecipe(this.state.recipe);
   }
 
@@ -49,6 +55,10 @@ class RecipePage extends React.Component {
 
   toggleEdit() {
     this.setState({ isEditing: !this.state.isEditing });
+  }
+
+  redirect() {
+    history.push('/recipes');
   }
 
   render() {
@@ -63,6 +73,7 @@ class RecipePage extends React.Component {
             instruction_list={this.state.recipe.instruction_list}
             onSave={this.saveRecipe}
             onChange={this.updateRecipeState}
+            saving={this.state.saving}
           />
         </div>
       );
@@ -78,12 +89,24 @@ class RecipePage extends React.Component {
               <p>Instructions: {this.state.recipe.instruction_list}</p>
               <p>Votes: {this.state.recipe.votes}</p>
               <div className="card-reveal">
-                <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right">close</i></span>
+                <span className="card-title grey-text text-darken-4">
+                  Comments<i className="material-icons right">close</i>
+                </span>
                 <CommentList comments={this.props.Recipecomments} />
               </div>
               <div className="card-action">
-                <button className="waves-effect waves-light btn" onClick={this.toggleEdit}>Edit</button>
-                <button className="waves-effect waves-light btn" onClick={this.deleteRecipe}>Delete</button>
+                <button
+                  className="waves-effect waves-light btn"
+                  onClick={this.toggleEdit}
+                >
+                  Edit
+                </button>
+                <button
+                  className="waves-effect waves-light btn"
+                  onClick={this.deleteRecipe}
+                >
+                  Delete
+                </button>
               </div>
             </div>
           </div>
@@ -94,7 +117,7 @@ class RecipePage extends React.Component {
 }
 
 function collectRecipeComments(comments, recipe, id) {
-  let selected = comments.map(comment => {
+  let selected = comments.data.map(comment => {
     if (comment.recipe_id === id) {
       return comment;
     }
@@ -103,7 +126,6 @@ function collectRecipeComments(comments, recipe, id) {
 }
 
 function getRecipeById(recipes, id) {
-  console.log(recipes, id);
   let recipe = recipes.find(recipe => recipe.id === id);
   return Object.assign({}, recipe);
 }
@@ -120,7 +142,7 @@ function mapStateToProps(state, ownProps) {
   let Recipecomments = {};
   const recipeId = parseInt(ownProps.match.params.id);
 
-  if (recipeId && state.recipes.length > 0 && state.comments.length > 0) {
+  if (recipeId && state.recipes.length > 0 && state.comments.data) {
     recipe = getRecipeById(state.recipes, recipeId);
     Recipecomments = collectRecipeComments(state.comments, recipe, recipeId);
   }

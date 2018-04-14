@@ -1,7 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, BrowserRouter, Switch } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
+import { Router, Route } from 'react-router-dom';
 import RecipesPage from '../components/newRecipes/RecipesPage';
 import RecipePage from '../components/newRecipes/RecipePage';
 import history from '../components/history';

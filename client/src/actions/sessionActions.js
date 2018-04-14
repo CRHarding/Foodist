@@ -1,7 +1,6 @@
 import * as types from './actionTypes';
 import sessionApi from '../services/SessionApi';
 import auth from '../auth/authenticator';
-import history from '../components/history';
 
 export function loginSuccess() {
   return { type: types.LOG_IN_SUCCESS };

@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import TextInput from './common/TextInput';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';

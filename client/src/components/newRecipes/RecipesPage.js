@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as recipeActions from '../../actions/recipeActions';
 import RecipeList from './RecipeList';
 import Header from '../common/Header';
 

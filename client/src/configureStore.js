@@ -1,7 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
-import * as Actions from './actions';
 import rootReducer from './reducers/rootReducer';
 
 const configureStore = () => {
