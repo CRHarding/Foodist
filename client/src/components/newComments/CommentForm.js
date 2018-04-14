@@ -1,33 +1,29 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 
-class RecipeForm extends React.Component {
+class CommentForm extends React.Component {
   render() {
     return (
       <div>
         <form className="form">
           <TextInput
             type="text"
-            name="name"
+            name="title"
+            label="Title"
             onChange={this.props.onChange}
-            value={this.props.recipe.name}
+            value={this.props.comment.title}
           />
           <TextInput
             type="text"
-            name="ingredient_list"
+            name="description"
+            label="Description"
             onChange={this.props.onChange}
-            value={this.props.recipe.ingredient_list}
-          />
-          <TextInput
-            type="text"
-            name="instruction_list"
-            onChange={this.props.onChange}
-            value={this.props.recipe.instruction_list}
+            value={this.props.comment.description}
           />
           <input
             type="submit"
             disabled={this.props.saving}
-            value="Submit"
+            value="Comment"
             onClick={this.props.onSave}
           />
         </form>
@@ -36,4 +32,4 @@ class RecipeForm extends React.Component {
   }
 }
 
-export default RecipeForm;
+export default CommentForm;

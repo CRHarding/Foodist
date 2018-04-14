@@ -13,6 +13,24 @@ export function loadComments() {
   };
 }
 
+export function createComment(comment) {
+  return function(dispatch) {
+    return CommentService.createComment(comment)
+      .then(responseComment => {
+        dispatch(createCommentSuccess(responseComment));
+        return responseComment;
+      })
+      .catch(err => {
+        console.log(err);
+        throw err;
+      });
+  };
+}
+
 export function loadCommentsSuccess(comments) {
   return { type: types.LOAD_COMMENTS_SUCCESS, comments };
+}
+
+export function createCommentSuccess(comment) {
+  return { type: types.CREATE_COMMENT_SUCCESS, comment };
 }

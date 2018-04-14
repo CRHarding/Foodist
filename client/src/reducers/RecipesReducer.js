@@ -1,16 +1,19 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
+import history from '../components/history';
 
 export default function recipeReducer(state = initialState.recipes, action) {
   switch (action.type) {
     case types.LOAD_RECIPES_SUCCESS:
       return action.recipes.data.data;
     case types.UPDATE_RECIPE_SUCCESS:
+      history.push('/recipes');
       return [
         ...state.filter(recipe => recipe.id !== action.recipe.id),
         Object.assign({}, action.recipe),
       ];
     case types.CREATE_RECIPE_SUCCESS:
+      history.push('/recipes');
       return [
         ...state.filter(recipe => recipe.id !== action.recipe.id),
         Object.assign({}, action.recipe),

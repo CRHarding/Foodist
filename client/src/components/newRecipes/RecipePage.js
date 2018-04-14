@@ -2,24 +2,41 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as recipeActions from '../../actions/recipeActions';
+import * as commentActions from '../../actions/commentActions';
 import CommentList from '../newComments/CommentList';
 import RecipeForm from './RecipeForm';
-import history from '../components/history';
+import CommentForm from '../newComments/CommentForm';
+import history from '../history';
 
 class RecipePage extends React.Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
       isEditing: false,
+      isCommenting: false,
       saving: false,
       recipe: this.props.recipe,
+      comment: {
+        title: '',
+        description: '',
+        poster_id: '',
+        recipe_id: this.props.recipe.id,
+        previous_comment: null,
+        next_comment: null,
+        comment_votes: 0,
+      },
       comments: this.props.Recipecomments,
     };
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.toggleComment = this.toggleComment.bind(this);
     this.updateRecipeState = this.updateRecipeState.bind(this);
+    this.updateCommentState = this.updateCommentState.bind(this);
     this.saveRecipe = this.saveRecipe.bind(this);
+    this.createComment = this.createComment.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
+    this.deleteComment = this.deleteComment.bind(this);
     this.redirect = this.redirect.bind(this);
+    this.renderCommentForm = this.renderCommentForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,22 +60,62 @@ class RecipePage extends React.Component {
     return this.setState({ recipe: recipe });
   }
 
+  updateCommentState(event) {
+    const field = event.target.name;
+    const comment = this.state.comment;
+    comment[field] = event.target.value;
+    return this.setState({ comment: comment });
+  }
+
   saveRecipe(event) {
     event.preventDefault();
     this.setState({ saving: true });
-    this.props.actions.updateRecipe(this.state.recipe);
+    this.props.actions.recipeActions.updateRecipe(this.state.recipe);
+  }
+
+  createComment(event) {
+    event.preventDefault();
+    this.setState({ saving: true });
+    this.props.actions.commentActions.createComment(this.state.comment);
   }
 
   deleteRecipe(event) {
-    this.props.actions.deleteRecipe(this.state.recipe);
+    this.props.actions.recipeActions.deleteRecipe(this.state.recipe);
+  }
+
+  deleteComment(event) {
+    this.props.actions.commentActions.deleteComment(this.state.comment);
   }
 
   toggleEdit() {
     this.setState({ isEditing: !this.state.isEditing });
   }
 
+  toggleComment() {
+    this.setState({ isCommenting: !this.state.isCommenting });
+  }
+
   redirect() {
     history.push('/recipes');
+  }
+
+  renderCommentForm() {
+    return (
+      <div className="col s12 m6">
+        <div className="card light-grey darken-1">
+          <div className="card-content black-text">
+            <CommentForm
+              comment={this.state.comment}
+              name={this.state.comment.name}
+              description={this.state.comment.description}
+              onSave={this.createComment}
+              onChange={this.updateCommentState}
+              saving={this.state.saving}
+            />
+          </div>
+        </div>
+      </div>
+    );
   }
 
   render() {
@@ -97,6 +154,12 @@ class RecipePage extends React.Component {
               <div className="card-action">
                 <button
                   className="waves-effect waves-light btn"
+                  onClick={this.toggleComment}
+                >
+                  Comment
+                </button>
+                <button
+                  className="waves-effect waves-light btn"
                   onClick={this.toggleEdit}
                 >
                   Edit
@@ -111,6 +174,7 @@ class RecipePage extends React.Component {
             </div>
           </div>
         </div>
+        {this.state.isCommenting ? this.renderCommentForm() : ''}
       </div>
     );
   }
@@ -152,7 +216,10 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(recipeActions, dispatch),
+    actions: {
+      recipeActions: bindActionCreators(recipeActions, dispatch),
+      commentActions: bindActionCreators(commentActions, dispatch),
+    },
   };
 }
 
