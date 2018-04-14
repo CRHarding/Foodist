@@ -15,7 +15,14 @@ export function loginUser(credentials) {
     return sessionApi
       .login(credentials)
       .then(response => {
-        sessionStorage.setItem('jwt', response.data.jwt);
+        const jwt = response.data.jwt;
+        console.log(jwt);
+        const user = response.data.user;
+        const name = user.fname + ' ' + user.lname;
+        sessionStorage.setItem('jwt', jwt);
+        sessionStorage.setItem('user_id', user.id);
+        sessionStorage.setItem('email', user.email)
+        sessionStorage.setItem('name', name)
         dispatch(loginSuccess());
       })
       .catch(error => {
@@ -29,8 +36,15 @@ export function signupUser(credentials) {
     return sessionApi
       .signup(credentials)
       .then(response => {
-        console.log(response);
-        sessionStorage.setItem('jwt', response.jwt);
+        const jwt = response.data.jwt;
+        console.log(jwt);
+        const id = response.data.id;
+        const email = response.data.email;
+        const name = response.data.fname + response.data.lname;
+        sessionStorage.setItem('jwt', jwt);
+        sessionStorage.setItem('user_id', id);
+        sessionStorage.setItem('email', email)
+        sessionStorage.setItem('name', name)
         dispatch(signupSuccess());
       })
       .catch(error => {

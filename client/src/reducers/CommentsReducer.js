@@ -5,13 +5,15 @@ import history from '../components/history';
 export default function commentReducer(state = initialState.comments, action) {
   switch (action.type) {
     case types.LOAD_COMMENTS_SUCCESS:
-      return action.comments.data;
+      console.log(action);
+      return action.comments.data.data;
     case types.CREATE_COMMENT_SUCCESS:
-      console.log(action)
       history.push(`/recipes/${action.comment.data.comment.recipe_id}`);
       return [
-        ...state.data.filter(comment => comment.id !== action.comment.id),
-        Object.assign({}, action.comment),
+        ...state.filter(
+          comment => comment.id !== action.comment.data.comment.id,
+        ),
+        Object.assign({}, action.comment.data.comment),
       ];
     default:
       return state;

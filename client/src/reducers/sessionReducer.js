@@ -11,7 +11,7 @@ export default function sessionReducer(state = initialState.session, action) {
       history.push('/recipes');
       return !!sessionStorage.jwt;
     case types.LOG_OUT:
-      history.push('/');
+      history.push('/home');
       return !!sessionStorage.jwt;
     default:
       return state;

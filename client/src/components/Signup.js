@@ -9,11 +9,11 @@ class SignupPage extends React.Component {
     super(props);
     this.state = {
       credentials: {
-        email: 'casey@casey.com',
-        password: 'aqswdefr',
-        password_confirmation: 'aqswdefr',
-        fname: 'casey',
-        lname: 'harding',
+        email: '',
+        password: '',
+        password_confirmation: '',
+        fname: '',
+        lname: '',
       },
     };
     this.onChange = this.onChange.bind(this);

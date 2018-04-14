@@ -27,7 +27,9 @@ class RecipeServices {
       url: '/api/recipes',
       headers: headers,
       data: {
-        user_id: 2,
+        user_id: sessionStorage.user_id,
+        user_email: sessionStorage.email,
+        user_name: sessionStorage.name,
         name: recipe.name,
         ingredient_list: recipe.ingredient_list,
         instruction_list: recipe.instruction_list,
@@ -43,10 +45,12 @@ class RecipeServices {
       url: `/api/recipes/${recipe.id}`,
       headers: headers,
       data: {
+        user_id: sessionStorage.user_id,
+        user_email: sessionStorage.email,
+        user_name: sessionStorage.name,
         name: recipe.name,
         ingredient_list: recipe.ingredient_list,
         instruction_list: recipe.instruction_list,
-        user_id: recipe.user_id,
         votes: recipe.votes,
       },
     });

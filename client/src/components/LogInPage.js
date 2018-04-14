@@ -4,11 +4,11 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as sessionActions from '../actions/sessionActions';
 
-class LogInPage extends React.Component {
+class LoginPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      credentials: { email: 'casey@casey.com', password: '' },
+      credentials: { email: '', password: '' },
     };
     this.onChange = this.onChange.bind(this);
     this.onSave = this.onSave.bind(this);
@@ -59,4 +59,5 @@ function mapDispatchToProps(dispatch) {
     actions: bindActionCreators(sessionActions, dispatch),
   };
 }
-export default connect(null, mapDispatchToProps)(LogInPage);
+
+export default connect(null, mapDispatchToProps)(LoginPage);

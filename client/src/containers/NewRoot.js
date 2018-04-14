@@ -5,16 +5,14 @@ import RecipesPage from '../components/newRecipes/RecipesPage';
 import RecipePage from '../components/newRecipes/RecipePage';
 import history from '../components/history';
 import NewRecipePage from '../components/newRecipes/NewRecipePage';
-import LogInPage from '../components/LogInPage';
-import SignUpPage from '../components/Signup';
+import Home from '../components/Home';
 
 const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
       <div>
         <PrivateRoute path="/" component={RecipesPage} />
-        <Route path="/login" component={LogInPage} />
-        <Route path="/signup" component={SignUpPage} />
+        <Route path="/home" component={Home} />
         <PrivateRoute
           path="/recipes/new"
           component={NewRecipePage}
@@ -37,7 +35,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       ) : (
         <Redirect
           to={{
-            pathname: '/login',
+            pathname: '/home',
           }}
         />
       )

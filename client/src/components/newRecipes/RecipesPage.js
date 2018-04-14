@@ -9,12 +9,12 @@ class RecipesPage extends React.Component {
     return (
       <div>
         <Header />
-        <div className="col-md-12">
-          <h1>Recipes</h1>
-          <Link to={'/recipes/new'} className="btn btn-primary">
-            Add a recipe!
-          </Link>
-          <div className="col-md-4">
+        <div className= "row">
+          <div className="col s4 md6">
+            <h1>Recipes</h1>
+            <Link to={'/recipes/new'} className="btn btn-primary">
+              Add a recipe!
+            </Link>
             <RecipeList recipes={this.props.recipes} />
           </div>
         </div>

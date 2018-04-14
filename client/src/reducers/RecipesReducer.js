@@ -9,14 +9,14 @@ export default function recipeReducer(state = initialState.recipes, action) {
     case types.UPDATE_RECIPE_SUCCESS:
       history.push(`/recipes/${action.recipe.data.recipe.id}`);
       return [
-        ...state.filter(recipe => recipe.id !== action.recipe.id),
-        Object.assign({}, action.recipe),
+        ...state.filter(recipe => recipe.id !== action.recipe.data.recipe.id),
+        Object.assign({}, action.recipe.data.recipe),
       ];
     case types.CREATE_RECIPE_SUCCESS:
       history.push(`/recipes/${action.recipe.data.recipe.id}`);
       return [
-        ...state.filter(recipe => recipe.id !== action.recipe.id),
-        Object.assign({}, action.recipe),
+        ...state.filter(recipe => recipe.id !== action.recipe.data.recipe.id),
+        Object.assign({}, action.recipe.data.recipe),
       ];
     case types.DELETE_RECIPE_SUCCESS: {
       history.push('/');

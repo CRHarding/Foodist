@@ -40,6 +40,7 @@ class RecipePage extends React.Component {
     this.renderCommentForm = this.renderCommentForm.bind(this);
     this.renderComments = this.renderComments.bind(this);
     this.showComments = this.showComments.bind(this);
+    console.log(sessionStorage);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -82,7 +83,7 @@ class RecipePage extends React.Component {
   createComment(event) {
     event.preventDefault();
     this.setState({ saving: true });
-    console.log(this.state.comment);
+    this.setState({ isCommenting: false });
     this.props.actions.commentActions.createComment(this.state.comment);
   }
 
@@ -108,18 +109,20 @@ class RecipePage extends React.Component {
 
   renderCommentForm() {
     return (
-      <div className="col s12 m6">
-        <div className="card light-grey darken-1">
-          <div className="card-content black-text">
-            <CommentForm
-              recipe={this.state.recipe}
-              comment={this.state.comment}
-              name={this.state.comment.name}
-              description={this.state.comment.description}
-              onSave={this.createComment}
-              onChange={this.updateCommentState}
-              saving={this.state.saving}
-            />
+      <div className="row">
+        <div className="col s6 m6">
+          <div className="card light-grey darken-1">
+            <div className="card-content black-text">
+              <CommentForm
+                recipe={this.state.recipe}
+                comment={this.state.comment}
+                name={this.state.comment.name}
+                description={this.state.comment.description}
+                onSave={this.createComment}
+                onChange={this.updateCommentState}
+                saving={this.state.saving}
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -156,7 +159,7 @@ class RecipePage extends React.Component {
     }
     return (
       <div className="row">
-        <div className="col s12 m6">
+        <div className="col s6 m6">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <h4>Name: {this.state.recipe.name}</h4>
@@ -173,7 +176,7 @@ class RecipePage extends React.Component {
                   className="waves-effect waves-light btn"
                   onClick={this.showComments}
                 >
-                  {this.state.showComments ? 'Hide Comments' : 'Show Comments'}
+                  {this.state.showComments ? 'Hide' : 'Show'}
                 </button>
                 <button
                   className="waves-effect waves-light btn"
@@ -205,7 +208,7 @@ class RecipePage extends React.Component {
 }
 
 function collectRecipeComments(comments, recipe, id) {
-  let selected = comments.data.map(comment => {
+  let selected = comments.map(comment => {
     if (comment.recipe_id === id) {
       return comment;
     }
@@ -230,7 +233,7 @@ function mapStateToProps(state, ownProps) {
   let Recipecomments = {};
   const recipeId = parseInt(ownProps.match.params.id);
 
-  if (recipeId && state.recipes.length > 0 && state.comments.data) {
+  if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);
     Recipecomments = collectRecipeComments(state.comments, recipe, recipeId);
   }
