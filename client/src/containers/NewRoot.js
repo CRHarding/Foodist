@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route } from 'react-router-dom';
+import { Router, Route, Redirect, Switch } from 'react-router-dom';
 import RecipesPage from '../components/newRecipes/RecipesPage';
 import RecipePage from '../components/newRecipes/RecipePage';
 import history from '../components/history';
@@ -12,23 +12,37 @@ const Root = ({ store }) => (
   <Provider store={store}>
     <Router history={history}>
       <div>
-        <Route path="/" component={RecipesPage} />
+        <PrivateRoute path="/" component={RecipesPage} />
         <Route path="/login" component={LogInPage} />
         <Route path="/signup" component={SignUpPage} />
-        <Route path="/recipes/new" component={NewRecipePage} onEnter={requireAuth}/>
-        <Route path="/recipes/:id" component={RecipePage} onEnter={requireAuth}/>
+        <PrivateRoute
+          path="/recipes/new"
+          component={NewRecipePage}
+        />
+        <PrivateRoute
+          path="/recipes/:id"
+          component={RecipePage}
+        />
       </div>
     </Router>
   </Provider>
 );
 
-function requireAuth(nextState, replace) {
-  if (!sessionStorage.jwt) {
-    replace({
-      pathname: '/login',
-      state: { nextPathname: nextState.location.pathname },
-    });
-  }
-}
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route
+    {...rest}
+    render={props =>
+      sessionStorage.jwt ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+          }}
+        />
+      )
+    }
+  />
+);
 
 export default Root;

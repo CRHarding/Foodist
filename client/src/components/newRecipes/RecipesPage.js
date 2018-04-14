@@ -17,9 +17,6 @@ class RecipesPage extends React.Component {
           <div className="col-md-4">
             <RecipeList recipes={this.props.recipes} />
           </div>
-          <div className="col-md-8">
-            {this.props.children}
-          </div>
         </div>
       </div>
     );

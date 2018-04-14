@@ -22,14 +22,13 @@ class CommentServices {
 
   createComment(comment) {
     const headers = this.requestHeaders();
-    console.log('WHYNOTWHYNOTWHYNOT!!!!!!', comment);
     return axios({
       method: 'POST',
       url: '/api/comments',
       headers: headers,
       data: {
         poster_id: 4,
-        recipe_id: 7,
+        recipe_id: comment.recipe_id,
         title: comment.title,
         description: comment.description,
         previous_comment: 0,

@@ -7,18 +7,19 @@ export default function recipeReducer(state = initialState.recipes, action) {
     case types.LOAD_RECIPES_SUCCESS:
       return action.recipes.data.data;
     case types.UPDATE_RECIPE_SUCCESS:
-      history.push('/recipes');
+      history.push(`/recipes/${action.recipe.data.recipe.id}`);
       return [
         ...state.filter(recipe => recipe.id !== action.recipe.id),
         Object.assign({}, action.recipe),
       ];
     case types.CREATE_RECIPE_SUCCESS:
-      history.push('/recipes');
+      history.push(`/recipes/${action.recipe.data.recipe.id}`);
       return [
         ...state.filter(recipe => recipe.id !== action.recipe.id),
         Object.assign({}, action.recipe),
       ];
     case types.DELETE_RECIPE_SUCCESS: {
+      history.push('/');
       const newState = Object.assign([], state);
       const indexOfRecipeToDelete = state.findIndex(recipe => {
         return recipe.id === action.recipe.id;

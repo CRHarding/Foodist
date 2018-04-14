@@ -27698,3 +27698,1562 @@ Unpermitted parameter: :comment
 Completed 200 OK in 10ms (Views: 0.6ms | ActiveRecord: 6.4ms)
 
 
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:01:34 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:01:34 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:01:38 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:01:38 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:02:31 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:02:31 -0400
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+Processing by RecipesController#index as HTML
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:02:40 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:02:40 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+Processing by RecipesController#index as HTML
+JWT::DecodeError (Not enough or too many segments):
+  
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:03:05 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:03:05 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:03:30 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:03:30 -0400
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:14:15 -0400
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:14:15 -0400
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:14:47 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:14:48 -0400
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:15:40 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:15:40 -0400
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:15:50 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:15:50 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:15:54 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:15:54 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+  
+JWT::DecodeError (Not enough or too many segments):
+JWT::DecodeError (Not enough or too many segments):
+  
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:15:58 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:15:58 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started POST "/api/login" for 127.0.0.1 at 2018-04-14 11:16:01 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"auth"=>{"email"=>"casey@casey.com", "password"=>"[FILTERED]"}, "session"=>{"auth"=>{"email"=>"casey@casey.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "casey@casey.com"], ["LIMIT", 1]]
+Completed 200 OK in 74ms (Views: 0.2ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:16:24 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:16:24 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 16ms (Views: 7.9ms | ActiveRecord: 4.7ms)
+
+
+Completed 200 OK in 55ms (Views: 13.5ms | ActiveRecord: 36.0ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:18:40 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:18:40 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 9ms (Views: 3.0ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mRecipe Load (2.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api/login" for 127.0.0.1 at 2018-04-14 11:18:49 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"auth"=>{"email"=>"casey@casey.com", "password"=>"[FILTERED]"}, "session"=>{"auth"=>{"email"=>"casey@casey.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "casey@casey.com"], ["LIMIT", 1]]
+Completed 200 OK in 61ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:19:30 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:19:30 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+JWT::DecodeError (Not enough or too many segments):
+  
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:19:33 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:19:33 -0400
+Processing by CommentsController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+  
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:28:in `auth'
+app/controllers/application_controller.rb:10:in `current_user'
+app/controllers/application_controller.rb:5:in `logged_in?'
+app/controllers/application_controller.rb:18:in `authenticate'
+Started POST "/api/login" for 127.0.0.1 at 2018-04-14 11:19:40 -0400
+Processing by SessionsController#create as HTML
+  Parameters: {"auth"=>{"email"=>"casey@casey.com", "password"=>"[FILTERED]"}, "session"=>{"auth"=>{"email"=>"casey@casey.com", "password"=>"[FILTERED]"}}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "casey@casey.com"], ["LIMIT", 1]]
+Completed 200 OK in 61ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 11:20:31 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"The best meatball sandwich", "ingredient_list"=>"meatballs, bread, love", "instruction_list"=>"Put everything in blender, turn on high, drink.", "votes"=>0, "recipe"=>{"name"=>"The best meatball sandwich", "ingredient_list"=>"meatballs, bread, love", "instruction_list"=>"Put everything in blender, turn on high, drink.", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "The best meatball sandwich"], ["ingredient_list", "meatballs, bread, love"], ["instruction_list", "Put everything in blender, turn on high, drink."], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 15:20:31.239780"], ["updated_at", "2018-04-14 15:20:31.239780"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 30ms (Views: 0.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:20:34 -0400
+Processing by RecipesController#index as HTML
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:20:34 -0400
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:22:02 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:22:02 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mRecipe Load (4.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 9ms (Views: 2.1ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:23:44 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:23:44 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 3.6ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mRecipe Load (2.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:24:24 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:24:24 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mRecipe Load (3.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:26:15 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:26:15 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (1.0ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 3.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:27:42 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:27:42 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mRecipe Load (0.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 11:28:16 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 11:28:16 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 3.8ms | ActiveRecord: 2.0ms)
+
+
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 4.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:05:26 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:05:26 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Completed 200 OK in 5ms (Views: 3.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:05:38 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:05:38 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 10ms (Views: 6.3ms | ActiveRecord: 1.5ms)
+
+
+Completed 200 OK in 10ms (Views: 7.6ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:18:14 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:18:14 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 3.5ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mRecipe Load (3.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 2.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:18:18 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:18:18 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mRecipe Load (2.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 5ms (Views: 1.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:18:36 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:18:36 -0400
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Processing by RecipesController#index as HTML
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:18:39 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:18:39 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.5ms | ActiveRecord: 1.8ms)
+
+
+  [1m[36mRecipe Load (2.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.5ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:18:49 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:18:49 -0400
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Processing by RecipesController#index as HTML
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 1.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:18:53 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:18:53 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.1ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mRecipe Load (3.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 1.8ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:19:08 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:19:08 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.3ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mRecipe Load (2.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:19:19 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:19:19 -0400
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Processing by RecipesController#index as HTML
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.0ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:19:38 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:19:38 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mRecipe Load (3.0ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.5ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:21:03 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:21:03 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 3.1ms | ActiveRecord: 2.6ms)
+
+
+  [1m[36mRecipe Load (3.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 1.6ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:21:10 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:21:10 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mRecipe Load (6.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 10ms (Views: 1.7ms | ActiveRecord: 6.3ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 12:21:38 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"Mama's special sauce", "ingredient_list"=>"Catsup, Mustard, Mayo", "instruction_list"=>"Mix 'em together, now, and don't be stingy with the mayo.", "votes"=>0, "recipe"=>{"name"=>"Mama's special sauce", "ingredient_list"=>"Catsup, Mustard, Mayo", "instruction_list"=>"Mix 'em together, now, and don't be stingy with the mayo.", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Mama's special sauce"], ["ingredient_list", "Catsup, Mustard, Mayo"], ["instruction_list", "Mix 'em together, now, and don't be stingy with the mayo."], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 16:21:38.421622"], ["updated_at", "2018-04-14 16:21:38.421622"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:24:30 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:24:30 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:24:40 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:24:40 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:25:02 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:25:02 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mRecipe Load (2.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 12:25:20 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"Grilled Bread", "ingredient_list"=>"Loaf of bread", "instruction_list"=>"Put it in the toaster", "votes"=>0, "recipe"=>{"name"=>"Grilled Bread", "ingredient_list"=>"Loaf of bread", "instruction_list"=>"Put it in the toaster", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Grilled Bread"], ["ingredient_list", "Loaf of bread"], ["instruction_list", "Put it in the toaster"], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 16:25:20.854938"], ["updated_at", "2018-04-14 16:25:20.854938"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:25:53 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:25:53 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 6ms (Views: 3.4ms | ActiveRecord: 1.3ms)
+
+
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 1.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 12:26:12 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"Bread", "ingredient_list"=>"Bread", "instruction_list"=>"It is what it is.", "votes"=>0, "recipe"=>{"name"=>"Bread", "ingredient_list"=>"Bread", "instruction_list"=>"It is what it is.", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Bread"], ["ingredient_list", "Bread"], ["instruction_list", "It is what it is."], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 16:26:12.355196"], ["updated_at", "2018-04-14 16:26:12.355196"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:26:33 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:26:33 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (9.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (16.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 26ms (Views: 4.2ms | ActiveRecord: 16.2ms)
+
+
+  [1m[36mRecipe Load (12.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 28ms (Views: 3.3ms | ActiveRecord: 21.7ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 12:26:44 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"Chicken", "ingredient_list"=>"Chicken", "instruction_list"=>"You'd better cook that through!", "votes"=>0, "recipe"=>{"name"=>"Chicken", "ingredient_list"=>"Chicken", "instruction_list"=>"You'd better cook that through!", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Chicken"], ["ingredient_list", "Chicken"], ["instruction_list", "You'd better cook that through!"], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 16:26:44.096310"], ["updated_at", "2018-04-14 16:26:44.096310"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:27:02 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:27:02 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mRecipe Load (2.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.0ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 12:27:14 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"Catsup", "ingredient_list"=>"Catsup", "instruction_list"=>"How do you spell this again?", "votes"=>0, "recipe"=>{"name"=>"Catsup", "ingredient_list"=>"Catsup", "instruction_list"=>"How do you spell this again?", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Catsup"], ["ingredient_list", "Catsup"], ["instruction_list", "How do you spell this again?"], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 16:27:14.773066"], ["updated_at", "2018-04-14 16:27:14.773066"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 6.3ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:28:37 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:28:37 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 2.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:29:15 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:29:15 -0400
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Processing by RecipesController#index as HTML
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 10ms (Views: 3.5ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/api/recipes" for 127.0.0.1 at 2018-04-14 12:29:33 -0400
+Processing by RecipesController#create as HTML
+  Parameters: {"user_id"=>2, "name"=>"Peas", "ingredient_list"=>"Peas, water, butter", "instruction_list"=>"Put the peas in the boiling water, drain, toss with butter.", "votes"=>0, "recipe"=>{"name"=>"Peas", "ingredient_list"=>"Peas, water, butter", "instruction_list"=>"Put the peas in the boiling water, drain, toss with butter.", "user_id"=>2, "votes"=>0}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :recipe
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "recipes" ("name", "ingredient_list", "instruction_list", "user_id", "votes", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Peas"], ["ingredient_list", "Peas, water, butter"], ["instruction_list", "Put the peas in the boiling water, drain, toss with butter."], ["user_id", 2], ["votes", 0], ["created_at", "2018-04-14 16:29:33.525466"], ["updated_at", "2018-04-14 16:29:33.525466"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:30:58 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:30:58 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.8ms)
+
+
+Completed 200 OK in 7ms (Views: 4.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:34:28 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:34:28 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.9ms)
+
+
+  [1m[36mRecipe Load (2.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 2.8ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:38:04 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:38:04 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.2ms | ActiveRecord: 1.0ms)
+
+
+  [1m[36mRecipe Load (2.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 2.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:41:48 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:41:48 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.7ms | ActiveRecord: 1.4ms)
+
+
+  [1m[36mRecipe Load (2.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 9ms (Views: 3.9ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:42:43 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:42:43 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (5.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mRecipe Load (5.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 13ms (Views: 4.9ms | ActiveRecord: 5.3ms)
+
+
+Completed 200 OK in 11ms (Views: 3.1ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:43:49 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:43:49 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:44:27 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:44:27 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 5.5ms | ActiveRecord: 0.6ms)
+
+
+Completed 200 OK in 7ms (Views: 3.5ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:45:57 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:45:57 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mRecipe Load (2.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:49:07 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:49:07 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 3.7ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mComment Load (3.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:49:49 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:49:49 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 1.4ms)
+
+
+  [1m[36mRecipe Load (3.1ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 9ms (Views: 3.7ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:50:49 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:50:49 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:51:10 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:51:10 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mRecipe Load (2.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:51:46 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:51:46 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.8ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:54:17 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:54:17 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 1.7ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:54:27 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:54:27 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mRecipe Load (2.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 1.9ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:54:52 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:54:52 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 2.4ms | ActiveRecord: 1.2ms)
+
+
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:55:07 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:55:07 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 5ms (Views: 2.2ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:57:55 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:57:55 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mRecipe Load (2.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:58:34 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:58:34 -0400
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Processing by RecipesController#index as HTML
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 1.5ms)
+
+
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 12:59:02 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>7, "title"=>"This recipe SUCKS!", "description"=>"Seriously, the worst chicken I've ever had!", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>7, "description"=>"Seriously, the worst chicken I've ever had!", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"This recipe SUCKS!"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 7], ["description", "Seriously, the worst chicken I've ever had!"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 16:59:02.617435"], ["updated_at", "2018-04-14 16:59:02.617435"], ["title", "This recipe SUCKS!"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 11ms (Views: 0.4ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 12:59:26 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 12:59:26 -0400
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Processing by RecipesController#index as HTML
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 2.2ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:00:14 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:00:14 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.6ms | ActiveRecord: 2.5ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:00:25 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>7, "title"=>"Casey", "description"=>"I hate this thing", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>7, "description"=>"I hate this thing", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"Casey"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 7], ["description", "I hate this thing"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:00:25.978816"], ["updated_at", "2018-04-14 17:00:25.978816"], ["title", "Casey"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:00:40 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:00:40 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 6ms (Views: 2.6ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:00:50 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>7, "title"=>"Casey", "description"=>"I Hate This THING!", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>7, "description"=>"I Hate This THING!", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"Casey"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 7], ["description", "I Hate This THING!"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:00:50.615874"], ["updated_at", "2018-04-14 17:00:50.615874"], ["title", "Casey"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 6.1ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:01:19 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:01:19 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.7ms)
+
+
+  [1m[36mComment Load (2.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 2.9ms | ActiveRecord: 2.7ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:01:30 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>7, "title"=>"George", "description"=>"HATES THIS", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>7, "description"=>"HATES THIS", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"George"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 7], ["description", "HATES THIS"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:01:30.281476"], ["updated_at", "2018-04-14 17:01:30.281476"], ["title", "George"]]
+  [1m[35m (3.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:01:55 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:01:55 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 9ms (Views: 4.2ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:02:03 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>7, "title"=>"This", "description"=>"Pizza Sucks", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>7, "description"=>"Pizza Sucks", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"This"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 7], ["description", "Pizza Sucks"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:02:03.463842"], ["updated_at", "2018-04-14 17:02:03.463842"], ["title", "This"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:04:33 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:04:33 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.5ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mRecipe Load (2.9ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.4ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:04:39 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>7, "title"=>"asdfasdf", "description"=>"asdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>7, "description"=>"asdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asdfasdf"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 7], ["description", "asdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:04:39.958247"], ["updated_at", "2018-04-14 17:04:39.958247"], ["title", "asdfasdf"]]
+  [1m[35m (5.6ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.5ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:05:40 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:05:40 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mUser Load (2.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 7ms (Views: 2.1ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:06:46 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:06:46 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.7ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 5ms (Views: 1.9ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mComment Load (2.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 3.9ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:07:51 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "title"=>"asdfasdf", "description"=>"asdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "description"=>"asdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asdfasdf"}}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 4], ["description", "asdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:07:51.355287"], ["updated_at", "2018-04-14 17:07:51.355287"], ["title", "asdfasdf"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.4ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:08:43 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:08:43 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 9ms (Views: 5.4ms | ActiveRecord: 1.2ms)
+
+
+  [1m[36mRecipe Load (5.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 12ms (Views: 3.6ms | ActiveRecord: 5.9ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:09:15 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:09:15 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 2.0ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mComment Load (2.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 3.0ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:09:23 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>"", "title"=>"asdfsadf", "description"=>"asdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>"", "description"=>"asdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asdfsadf"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 4], ["description", "asdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:09:23.445202"], ["updated_at", "2018-04-14 17:09:23.445202"], ["title", "asdfsadf"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:09:52 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:09:52 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 12ms (Views: 8.6ms | ActiveRecord: 1.6ms)
+
+
+  [1m[36mRecipe Load (8.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 15ms (Views: 4.1ms | ActiveRecord: 9.6ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:10:33 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>"", "title"=>"asDasdsa", "description"=>"asdfdfsa", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>"", "description"=>"asdfdfsa", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asDasdsa"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 4], ["description", "asdfdfsa"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:10:33.800712"], ["updated_at", "2018-04-14 17:10:33.800712"], ["title", "asDasdsa"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:12:47 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:12:47 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.3ms | ActiveRecord: 1.1ms)
+
+
+  [1m[36mRecipe Load (3.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 2.4ms | ActiveRecord: 4.5ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:13:06 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:13:06 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 9ms (Views: 4.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:13:38 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:13:38 -0400
+Processing by RecipesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 1.9ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 7ms (Views: 3.4ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:13:46 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>"", "title"=>"asdfasdf", "description"=>"asdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>"", "description"=>"asdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asdfasdf"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["poster_id", 4], ["description", "asdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:13:46.380760"], ["updated_at", "2018-04-14 17:13:46.380760"], ["title", "asdfasdf"]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 12ms (Views: 0.6ms | ActiveRecord: 6.9ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:14:05 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:14:05 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 5ms (Views: 3.2ms | ActiveRecord: 0.5ms)
+
+
+  [1m[36mUser Load (3.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.4ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 2.2ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:14:13 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>0, "title"=>"asdfasdf", "description"=>"asdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>0, "description"=>"asdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asdfasdf"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 0], ["description", "asdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:14:13.250796"], ["updated_at", "2018-04-14 17:14:13.250796"], ["title", "asdfasdf"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 10ms (Views: 0.5ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:15:42 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:15:42 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 8ms (Views: 5.7ms | ActiveRecord: 0.9ms)
+
+
+  [1m[36mRecipe Load (5.8ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 10ms (Views: 2.1ms | ActiveRecord: 6.0ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:15:52 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>10, "title"=>"asdfasdf", "description"=>"sdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>10, "description"=>"sdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"asdfasdf"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 10], ["description", "sdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:15:52.412038"], ["updated_at", "2018-04-14 17:15:52.412038"], ["title", "asdfasdf"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 7ms (Views: 0.4ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:16:14 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:16:14 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.8ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mRecipe Load (0.3ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 6.0ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/api/comments" for 127.0.0.1 at 2018-04-14 13:17:03 -0400
+Processing by CommentsController#create as HTML
+  Parameters: {"poster_id"=>4, "recipe_id"=>10, "title"=>"rrrreeee", "description"=>"asdfasdf", "previous_comment"=>0, "next_comment"=>0, "comment_votes"=>0, "comment"=>{"poster_id"=>4, "recipe_id"=>10, "description"=>"asdfasdf", "comment_votes"=>0, "previous_comment"=>0, "next_comment"=>0, "title"=>"rrrreeee"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+Unpermitted parameter: :comment
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "comments" ("poster_id", "recipe_id", "description", "comment_votes", "previous_comment", "next_comment", "created_at", "updated_at", "title") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["poster_id", 4], ["recipe_id", 10], ["description", "asdfasdf"], ["comment_votes", 0], ["previous_comment", 0], ["next_comment", 0], ["created_at", "2018-04-14 17:17:03.076443"], ["updated_at", "2018-04-14 17:17:03.076443"], ["title", "rrrreeee"]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:17:10 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:17:10 -0400
+Processing by CommentsController#index as HTML
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.6ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 4ms (Views: 2.4ms | ActiveRecord: 0.8ms)
+
+
+  [1m[36mComment Load (3.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 10ms (Views: 5.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-14 13:18:22 -0400
+Processing by CommentsController#index as HTML
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-14 13:18:22 -0400
+Processing by RecipesController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+Completed 200 OK in 6ms (Views: 3.6ms | ActiveRecord: 1.0ms)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 15], ["LIMIT", 1]]
+  [1m[36mRecipe Load (0.5ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+Completed 200 OK in 8ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+

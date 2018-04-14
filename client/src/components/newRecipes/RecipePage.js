@@ -20,10 +20,11 @@ class RecipePage extends React.Component {
         title: '',
         description: '',
         poster_id: '',
-        recipe_id: this.props.recipe.id,
+        recipe_id: 0,
         previous_comment: null,
         next_comment: null,
         comment_votes: 0,
+        showComments: false,
       },
       comments: this.props.Recipecomments,
     };
@@ -37,11 +38,15 @@ class RecipePage extends React.Component {
     this.deleteComment = this.deleteComment.bind(this);
     this.redirect = this.redirect.bind(this);
     this.renderCommentForm = this.renderCommentForm.bind(this);
+    this.renderComments = this.renderComments.bind(this);
+    this.showComments = this.showComments.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
     if (this.props.recipe.id !== nextProps.recipe.id) {
       this.setState({ recipe: nextProps.recipe });
+    } else {
+      this.setState({ recipe: this.props.recipe });
     }
 
     if (this.props.comments) {
@@ -64,6 +69,7 @@ class RecipePage extends React.Component {
     const field = event.target.name;
     const comment = this.state.comment;
     comment[field] = event.target.value;
+    comment.recipe_id = this.state.recipe.id;
     return this.setState({ comment: comment });
   }
 
@@ -76,6 +82,7 @@ class RecipePage extends React.Component {
   createComment(event) {
     event.preventDefault();
     this.setState({ saving: true });
+    console.log(this.state.comment);
     this.props.actions.commentActions.createComment(this.state.comment);
   }
 
@@ -105,6 +112,7 @@ class RecipePage extends React.Component {
         <div className="card light-grey darken-1">
           <div className="card-content black-text">
             <CommentForm
+              recipe={this.state.recipe}
               comment={this.state.comment}
               name={this.state.comment.name}
               description={this.state.comment.description}
@@ -116,6 +124,14 @@ class RecipePage extends React.Component {
         </div>
       </div>
     );
+  }
+
+  showComments() {
+    this.setState({ showComments: !this.state.showComments });
+  }
+
+  renderComments() {
+    return <CommentList comments={this.props.Recipecomments} />;
   }
 
   render() {
@@ -135,7 +151,9 @@ class RecipePage extends React.Component {
         </div>
       );
     }
-
+    if (!this.state.recipe.id) {
+      return <p />;
+    }
     return (
       <div className="row">
         <div className="col s12 m6">
@@ -149,9 +167,14 @@ class RecipePage extends React.Component {
                 <span className="card-title grey-text text-darken-4">
                   Comments<i className="material-icons right">close</i>
                 </span>
-                <CommentList comments={this.props.Recipecomments} />
               </div>
               <div className="card-action">
+                <button
+                  className="waves-effect waves-light btn"
+                  onClick={this.showComments}
+                >
+                  {this.state.showComments ? 'Hide Comments' : 'Show Comments'}
+                </button>
                 <button
                   className="waves-effect waves-light btn"
                   onClick={this.toggleComment}
@@ -175,6 +198,7 @@ class RecipePage extends React.Component {
           </div>
         </div>
         {this.state.isCommenting ? this.renderCommentForm() : ''}
+        {this.state.showComments ? this.renderComments() : ''}
       </div>
     );
   }
