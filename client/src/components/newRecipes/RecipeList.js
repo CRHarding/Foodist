@@ -12,8 +12,4 @@ const RecipeList = ({ recipes }) => {
   );
 };
 
-// RecipeList.propTypes = {
-//   recipes: PropTypes.object.isRequired,
-// };
-
 export default RecipeList;

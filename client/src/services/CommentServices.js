@@ -1,9 +1,17 @@
 import axios from 'axios';
 
 class CommentServices {
+  requestHeaders() {
+    return { AUTHORIZATION: `Bearer ${sessionStorage.jwt}` };
+  }
+
   getAllComments() {
-    return axios
-      .get('/api/comments')
+    const headers = this.requestHeaders();
+    return axios({
+      method: 'GET',
+      headers: headers,
+      url: '/api/comments',
+    })
       .then(comments => {
         return comments;
       })
@@ -12,14 +20,12 @@ class CommentServices {
       });
   }
 
-  getOneComment(id) {
-    return axios.get(`/api/comments/${id}`);
-  }
-
   createComment(comment) {
+    const headers = this.requestHeaders();
     return axios({
       method: 'POST',
       url: '/api/comments',
+      headers: headers,
       data: {
         poster_id: comment.poster_id,
         recipe_id: comment.recipe_id,
@@ -33,10 +39,11 @@ class CommentServices {
   }
 
   editComment(comment, id) {
-    console.log(comment, id);
+    const headers = this.requestHeaders();
     return axios({
       method: 'PUT',
       url: `/api/comments/${id}`,
+      headers: headers,
       data: {
         poster_id: comment.poster_id,
         recipe_id: comment.recipe_id,
@@ -50,9 +57,11 @@ class CommentServices {
   }
 
   deleteComment(id) {
+    const headers = this.requestHeaders();
     return axios({
       method: 'DELETE',
       url: `/api/comments/${id}`,
+      headers: headers,
     });
   }
 }

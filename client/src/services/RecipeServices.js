@@ -1,19 +1,31 @@
 import axios from 'axios';
 
 class RecipeServices {
-  getAllRecipes() {
-    return axios.get('/api/recipes');
+  requestHeaders() {
+    return { AUTHORIZATION: `Bearer ${sessionStorage.jwt}` };
   }
 
-  getOneRecipe(recipe) {
-    return axios.get(`/api/recipes/${recipe.id}`);
+  getAllRecipes() {
+    const headers = this.requestHeaders();
+    return axios({
+      methond: 'GET',
+      url: '/api/recipes',
+      headers: headers,
+    })
+      .then(recipes => {
+        return recipes;
+      })
+      .catch(err => {
+        return err;
+      });
   }
 
   createRecipe(recipe) {
-    console.log(recipe);
+    const headers = this.requestHeaders();
     return axios({
       method: 'POST',
       url: '/api/recipes',
+      headers: headers,
       data: {
         user_id: 2,
         name: recipe.name,
@@ -25,9 +37,11 @@ class RecipeServices {
   }
 
   updateRecipe(recipe) {
+    const headers = this.requestHeaders();
     return axios({
       method: 'PUT',
       url: `/api/recipes/${recipe.id}`,
+      headers: headers,
       data: {
         name: recipe.name,
         ingredient_list: recipe.ingredient_list,
@@ -39,9 +53,11 @@ class RecipeServices {
   }
 
   deleteRecipe(recipe) {
+    const headers = this.requestHeaders();
     return axios({
       method: 'DELETE',
       url: `/api/recipes/${recipe.id}`,
+      headers: headers,
     });
   }
 }

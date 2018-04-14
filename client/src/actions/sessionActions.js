@@ -1,6 +1,7 @@
 import * as types from './actionTypes';
 import sessionApi from '../services/SessionApi';
 import auth from '../auth/authenticator';
+import history from '../components/history';
 
 export function loginSuccess() {
   return { type: types.LOG_IN_SUCCESS };
@@ -15,7 +16,7 @@ export function loginUser(credentials) {
     return sessionApi
       .login(credentials)
       .then(response => {
-        sessionStorage.setItem('jwt', response.jwt);
+        sessionStorage.setItem('jwt', response.data.jwt);
         dispatch(loginSuccess());
       })
       .catch(error => {
@@ -25,12 +26,11 @@ export function loginUser(credentials) {
 }
 
 export function signupUser(credentials) {
-  console.log(credentials);
-  credentials.user = "casey";
   return function(dispatch) {
     return sessionApi
       .signup(credentials)
       .then(response => {
+        console.log(response);
         sessionStorage.setItem('jwt', response.jwt);
         dispatch(signupSuccess());
       })

@@ -3,9 +3,6 @@ import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import * as Actions from './actions';
 import rootReducer from './reducers/rootReducer';
-import createHistory from 'history/createBrowserHistory';
-
-export const history = createHistory();
 
 const configureStore = () => {
   const middlewares = [reduxThunk];
