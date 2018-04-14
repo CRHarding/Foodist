@@ -4,7 +4,6 @@ import { bindActionCreators } from 'redux';
 import * as recipeActions from '../../actions/recipeActions';
 import CommentList from '../newComments/CommentList';
 import RecipeForm from './RecipeForm';
-import Home from './HomePage';
 
 class RecipePage extends React.Component {
   constructor(props, context) {
@@ -21,7 +20,7 @@ class RecipePage extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.recipe.id !== nextProps.recipe.id) {
+    if (this.state.recipe.id !== nextProps.recipe.id) {
       this.setState({ recipe: nextProps.recipe });
     }
 
@@ -70,25 +69,21 @@ class RecipePage extends React.Component {
     }
 
     return (
-      <div>
-      <Home />
-        <div className="row">
-          <div className="col s12 m6">
-            <div className="card blue-grey darken-1">
-              <div className="card-content white-text">
-                <h4>Name: {this.state.recipe.name}</h4>
-                <p>Ingredients: {this.state.recipe.ingredient_list}</p>
-                <p>Instructions: {this.state.recipe.instruction_list}</p>
-                <p>Votes: {this.state.recipe.votes}</p>
-                <span classname="card-title activator grey-text text-darken-4">Comments<i classname="material-icons right"></i></span>
-                <div classname="card-reveal">
-                  <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right">close</i></span>
-                  <CommentList comments={this.props.Recipecomments} />
-                </div>
-                <div className="card-action">
-                  <button className="waves-effect waves-light btn" onClick={this.toggleEdit}>Edit</button>
-                  <button className="waves-effect waves-light btn" onClick={this.deleteRecipe}>Delete</button>
-                </div>
+      <div className="row">
+        <div className="col s12 m6">
+          <div className="card blue-grey darken-1">
+            <div className="card-content white-text">
+              <h4>Name: {this.state.recipe.name}</h4>
+              <p>Ingredients: {this.state.recipe.ingredient_list}</p>
+              <p>Instructions: {this.state.recipe.instruction_list}</p>
+              <p>Votes: {this.state.recipe.votes}</p>
+              <div className="card-reveal">
+                <span className="card-title grey-text text-darken-4">Comments<i className="material-icons right">close</i></span>
+                <CommentList comments={this.props.Recipecomments} />
+              </div>
+              <div className="card-action">
+                <button className="waves-effect waves-light btn" onClick={this.toggleEdit}>Edit</button>
+                <button className="waves-effect waves-light btn" onClick={this.deleteRecipe}>Delete</button>
               </div>
             </div>
           </div>
@@ -108,6 +103,7 @@ function collectRecipeComments(comments, recipe, id) {
 }
 
 function getRecipeById(recipes, id) {
+  console.log(recipes, id);
   let recipe = recipes.find(recipe => recipe.id === id);
   return Object.assign({}, recipe);
 }
@@ -120,6 +116,7 @@ function mapStateToProps(state, ownProps) {
     user_id: '',
     votes: '',
   };
+
   let Recipecomments = {};
   const recipeId = parseInt(ownProps.match.params.id);
 
@@ -127,7 +124,7 @@ function mapStateToProps(state, ownProps) {
     recipe = getRecipeById(state.recipes, recipeId);
     Recipecomments = collectRecipeComments(state.comments, recipe, recipeId);
   }
-  console.log(Recipecomments);
+
   return { recipe: recipe, Recipecomments: Recipecomments };
 }
 

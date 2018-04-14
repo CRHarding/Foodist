@@ -1,23 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as Actions from '../actions';
+import { bindActionCreators } from 'redux';
+import * as sessionActions from '../../actions/sessionActions';
 
 class Header extends React.Component {
-  handleSignout() {
-    this.props.signOutUser();
+  constructor(props) {
+    super();
+    this.logOut = this.logOut.bind(this);
+  }
+
+  logOut(event) {
+    event.preventDefault();
+    console.log(this.props.actions);
+    this.props.actions.logOutUser();
   }
 
   renderAuthLinks() {
-    if (this.props.authenticated) {
+    if (this.props.logged_in) {
       return [
         <li key={1}>
-          <Link to="/favorites">
-            My Favorites
-          </Link>
+          <Link to="/favorites">My Favorites</Link>
         </li>,
         <li key={2}>
-          <a onClick={() => this.handleSignout()}>
+          <a href="/logout" onClick={this.logOut}>
             Sign Out
           </a>
         </li>,
@@ -25,14 +31,10 @@ class Header extends React.Component {
     } else {
       return [
         <li key={1}>
-          <Link to="/login">
-            Login
-          </Link>
+          <Link to="/login">Login</Link>
         </li>,
         <li key={2}>
-          <Link to="/signup">
-            Sign Up
-          </Link>
+          <Link to="/signup">Sign Up</Link>
         </li>,
       ];
     }
@@ -40,15 +42,13 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className ="navbar-fixed">
+      <div className="navbar-fixed">
         <div className="nav-wrapper">
           <nav>
-            <Link to ="/" className="brand-logo">
+            <Link to="/" className="brand-logo">
               Foodist
             </Link>
-            <ul className="right">
-              {this.renderAuthLinks()}
-            </ul>
+            <ul className="right">{this.renderAuthLinks()}</ul>
           </nav>
         </div>
       </div>
@@ -56,4 +56,14 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+function mapStateToProps(state, ownProps) {
+  return { logged_in: state.session };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(sessionActions, dispatch),
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

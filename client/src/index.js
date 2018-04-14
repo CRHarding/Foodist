@@ -8,7 +8,7 @@ import { loadComments } from './actions/commentActions';
 
 const store = configureStore();
 
-store.dispatch(loadRecipes());
 store.dispatch(loadComments());
+store.dispatch(loadRecipes());
 
 render(<NewRoot store={store} />, document.getElementById('root'));
