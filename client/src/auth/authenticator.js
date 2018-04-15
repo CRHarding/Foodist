@@ -5,6 +5,9 @@ class Auth {
 
   static logOut() {
     sessionStorage.removeItem('jwt');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('user_id');
   }
 }
 

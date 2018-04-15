@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     @newUser = {}
     @newUser[:email] = params[:auth][:email]
     @newUser[:fname] = params[:auth][:fname]
@@ -20,7 +19,9 @@ class UsersController < ApplicationController
 
     @user = User.new(@newUser)
     if @user.save
-      render json: @user, status: 200
+      jwt = Auth.issue({user: @user.id})
+      render json: {jwt: jwt, user: @user}
+      # render json: @user, status: 200
     end
   end
 

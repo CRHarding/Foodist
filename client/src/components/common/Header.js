@@ -12,7 +12,6 @@ class Header extends React.Component {
 
   logOut(event) {
     event.preventDefault();
-    console.log(this.props.actions);
     this.props.actions.logOutUser();
   }
 

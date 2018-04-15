@@ -22,7 +22,6 @@ class CommentServices {
 
   createComment(comment) {
     const headers = this.requestHeaders();
-    console.log(sessionStorage)
     return axios({
       method: 'POST',
       url: '/api/comments',

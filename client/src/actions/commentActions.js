@@ -8,21 +8,18 @@ export function loadComments() {
         dispatch(loadCommentsSuccess(comments));
       })
       .catch(err => {
-        console.log('Error in load comments--->', err);
       });
   };
 }
 
 export function createComment(comment) {
   return function(dispatch) {
-    console.log(comment);
     return CommentService.createComment(comment)
       .then(responseComment => {
         dispatch(createCommentSuccess(responseComment));
         return responseComment;
       })
       .catch(err => {
-        console.log(err);
         throw err;
       });
   };

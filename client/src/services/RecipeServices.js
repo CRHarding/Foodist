@@ -46,9 +46,9 @@ class RecipeServices {
       url: `/api/recipes/${recipe.id}`,
       headers: headers,
       data: {
-        user_id: sessionStorage.user_id,
-        user_email: sessionStorage.email,
-        user_name: sessionStorage.name,
+        user_id: recipe.user_id,
+        user_email: recipe.email,
+        user_name: recipe.user_name,
         name: recipe.name,
         ingredient_list: recipe.ingredient_list,
         instruction_list: recipe.instruction_list,

@@ -17,7 +17,6 @@ class Home extends React.Component {
   }
 
   renderSignUp() {
-    console.log('here again');
     return <SignUp />;
   }
 
@@ -26,7 +25,6 @@ class Home extends React.Component {
   }
 
   signUp() {
-    console.log('here');
     this.setState({ signup: !this.state.signup });
     this.setState({ login: false });
   }

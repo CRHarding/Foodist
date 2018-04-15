@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as recipeActions from '../../actions/recipeActions';
 import * as commentActions from '../../actions/commentActions';
+import * as voteActions from '../../actions/voteActions';
 import CommentList from '../newComments/CommentList';
 import RecipeForm from './RecipeForm';
 import CommentForm from '../newComments/CommentForm';
@@ -17,6 +18,12 @@ class RecipePage extends React.Component {
       saving: false,
       recipe: this.props.recipe,
       canVote: this.props.canVote,
+      canVoteUp: this.props.canVoteUp,
+      canVoteDown: this.props.canVoteDown,
+      comments: this.props.recipeComments,
+      userComments: this.props.recipeUserComments,
+      userVote: this.props.userVotes,
+      didVote: this.props.didVote,
       comment: {
         title: '',
         description: '',
@@ -29,8 +36,6 @@ class RecipePage extends React.Component {
         poster_email: '',
         poster_name: '',
       },
-      comments: this.props.recipeComments,
-      userComments: this.props.recipeUserComments,
     };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.toggleComment = this.toggleComment.bind(this);
@@ -78,6 +83,18 @@ class RecipePage extends React.Component {
       }
     }
 
+    if (this.props.canVoteUp !== nextProps.canVoteUp) {
+      this.setState({ canVoteUp: nextProps.canVoteUp });
+    }
+
+    if (this.props.canVoteDown !== nextProps.canVoteDown) {
+      this.setState({ canVoteDown: nextProps.canVoteDown });
+    }
+
+    if (this.props.didVote !== nextProps.didVote) {
+      this.setState({ didVote: nextProps.didVote });
+    }
+    console.log(this.props.userVote);
     this.setState({ saving: false, isEditing: false });
   }
 
@@ -110,7 +127,6 @@ class RecipePage extends React.Component {
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
-    console.log(comment);
     this.props.actions.commentActions.createComment(comment);
   }
 
@@ -136,26 +152,39 @@ class RecipePage extends React.Component {
 
   voteUp() {
     this.props.actions.recipeActions.updateRecipe(this.state.recipe, 1);
+    if (this.state.didVote) {
+      this.props.actions.voteActions.updateVote(this.props.userVote.id, 'up');
+    } else {
+      this.props.actions.voteActions.createVote(this.state.recipe.id, 'up');
+    }
   }
 
   voteDown() {
     this.props.actions.recipeActions.updateRecipe(this.state.recipe, -1);
+    if (this.state.didVote) {
+      this.props.actions.voteActions.updateVote(this.props.userVote.id, 'down');
+    } else {
+      this.props.actions.voteActions.createVote(this.state.recipe.id, 'down');
+    }
   }
 
-  renderVote() {
+  renderUpVote() {
     return (
-      <ul>
-        <li onClick={this.voteUp}>
-          <i className="material-icons" style={{ cursor: 'pointer' }}>
-            keyboard_arrow_up{' '}
-          </i>
-        </li>
-        <li onClick={this.voteDown}>
-          <i className="material-icons" style={{ cursor: 'pointer' }}>
-            keyboard_arrow_down
-          </i>
-        </li>
-      </ul>
+      <li onClick={this.voteUp}>
+        <i className="material-icons" style={{ cursor: 'pointer' }}>
+          keyboard_arrow_up
+        </i>
+      </li>
+    );
+  }
+
+  renderDownVote() {
+    return (
+      <li onClick={this.voteDown}>
+        <i className="material-icons" style={{ cursor: 'pointer' }}>
+          keyboard_arrow_down
+        </i>
+      </li>
     );
   }
 
@@ -244,7 +273,10 @@ class RecipePage extends React.Component {
         <div className="col s6 m6">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
-              {this.state.canVote ? this.renderVote() : ''}
+              <ul>
+                {this.state.canVoteUp ? this.renderUpVote() : ''}
+                {this.state.canVoteDown ? this.renderDownVote() : ''}
+              </ul>
               <h4>Name: {this.state.recipe.name}</h4>
               <p>Ingredients: {this.state.recipe.ingredient_list}</p>
               <p>Instructions: {this.state.recipe.instruction_list}</p>
@@ -309,9 +341,25 @@ function collectRecipeUserComments(comments, id) {
   return selected.filter(el => el !== undefined);
 }
 
+function collectUserVotes(votes, recipeId) {
+  let selected = votes.map(vote => {
+    if (
+      vote.user_id === parseInt(sessionStorage.user_id) &&
+      vote.voter_id === recipeId
+    ) {
+      return vote;
+    }
+  });
+  return selected.filter(el => el !== undefined);
+}
+
 function getRecipeById(recipes, id) {
   let recipe = recipes.find(recipe => recipe.id === id);
   return Object.assign({}, recipe);
+}
+
+function getVoteId(votes) {
+  let voteId = votes
 }
 
 function mapStateToProps(state, ownProps) {
@@ -325,24 +373,49 @@ function mapStateToProps(state, ownProps) {
 
   let recipeComments = {};
   let recipeUserComments = {};
-  const recipeId = parseInt(ownProps.match.params.id);
+  let userVotes = {};
   let canVote = true;
+  let canVoteUp = false;
+  let canVoteDown = false;
+  let didVote = false;
+
+  const user_id = parseInt(sessionStorage.user_id);
+  const recipeId = parseInt(ownProps.match.params.id);
 
   if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);
     recipeComments = collectRecipeComments(state.comments, recipeId);
     recipeUserComments = collectRecipeUserComments(state.comments, recipeId);
-    console.log(recipe.user_id, parseInt(sessionStorage.user_id));
-    if (recipe.user_id === parseInt(sessionStorage.user_id)) {
+    userVotes = collectUserVotes(state.votes, recipeId);
+
+    if (recipe.user_id === user_id) {
       canVote = false;
+    } else if (userVotes[0]) {
+      if (userVotes[0].user_id === user_id) {
+        didVote = true;
+        if (userVotes[0].down) {
+          canVoteUp = true;
+        }
+
+        if (userVotes[0].up) {
+          canVoteDown = true;
+        }
+      }
+    } else {
+      canVoteUp = true;
+      canVoteDown = true;
     }
   }
-  console.log(canVote);
+
   return {
     recipe: recipe,
     recipeComments: recipeComments,
     recipeUserComments: recipeUserComments,
     canVote: canVote,
+    userVote: userVotes[0],
+    canVoteUp: canVoteUp,
+    canVoteDown: canVoteDown,
+    didVote: didVote,
   };
 }
 
@@ -351,6 +424,7 @@ function mapDispatchToProps(dispatch) {
     actions: {
       recipeActions: bindActionCreators(recipeActions, dispatch),
       commentActions: bindActionCreators(commentActions, dispatch),
+      voteActions: bindActionCreators(voteActions, dispatch),
     },
   };
 }

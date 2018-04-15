@@ -16,7 +16,6 @@ export function loginUser(credentials) {
       .login(credentials)
       .then(response => {
         const jwt = response.data.jwt;
-        console.log(jwt);
         const user = response.data.user;
         const name = user.fname + ' ' + user.lname;
         sessionStorage.setItem('jwt', jwt);
@@ -37,10 +36,9 @@ export function signupUser(credentials) {
       .signup(credentials)
       .then(response => {
         const jwt = response.data.jwt;
-        console.log(response.data);
-        const id = response.data.id;
-        const email = response.data.email;
-        const name = response.data.fname + response.data.lname;
+        const id = response.data.user.id;
+        const email = response.data.user.email;
+        const name = response.data.user.fname + response.data.user.lname;
         sessionStorage.setItem('jwt', jwt);
         sessionStorage.setItem('user_id', id);
         sessionStorage.setItem('email', email)
