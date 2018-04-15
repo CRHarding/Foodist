@@ -16,6 +16,7 @@ class RecipePage extends React.Component {
       isCommenting: false,
       saving: false,
       recipe: this.props.recipe,
+      canVote: this.props.canVote,
       comment: {
         title: '',
         description: '',
@@ -45,6 +46,8 @@ class RecipePage extends React.Component {
     this.showComments = this.showComments.bind(this);
     this.renderUserComments = this.renderUserComments.bind(this);
     this.renderOtherComments = this.renderOtherComments.bind(this);
+    this.voteUp = this.voteUp.bind(this);
+    this.voteDown = this.voteDown.bind(this);
     console.log(sessionStorage);
   }
 
@@ -58,6 +61,20 @@ class RecipePage extends React.Component {
     if (this.props.comments) {
       if (this.props.comments.length < nextProps.comments.length) {
         this.setState({ comments: nextProps.comments });
+      }
+    }
+
+    if (this.props.recipe.votes !== nextProps.recipe.votes) {
+      this.setState({ recipe: nextProps.recipe });
+    } else {
+      this.setState({ recipe: this.props.recipe });
+    }
+
+    if (this.props.recipe.user_id !== nextProps.recipe.user_id) {
+      if (nextProps.recipe.user_id === parseInt(sessionStorage.user_id)) {
+        this.setState({ canVote: false });
+      } else {
+        this.setState({ canVote: true });
       }
     }
 
@@ -81,7 +98,7 @@ class RecipePage extends React.Component {
   saveRecipe(event) {
     event.preventDefault();
     this.setState({ saving: true });
-    this.props.actions.recipeActions.updateRecipe(this.state.recipe);
+    this.props.actions.recipeActions.updateRecipe(this.state.recipe, 0);
   }
 
   createComment(event) {
@@ -117,6 +134,31 @@ class RecipePage extends React.Component {
     history.push('/recipes');
   }
 
+  voteUp() {
+    this.props.actions.recipeActions.updateRecipe(this.state.recipe, 1);
+  }
+
+  voteDown() {
+    this.props.actions.recipeActions.updateRecipe(this.state.recipe, -1);
+  }
+
+  renderVote() {
+    return (
+      <ul>
+        <li onClick={this.voteUp}>
+          <i className="material-icons" style={{ cursor: 'pointer' }}>
+            keyboard_arrow_up{' '}
+          </i>
+        </li>
+        <li onClick={this.voteDown}>
+          <i className="material-icons" style={{ cursor: 'pointer' }}>
+            keyboard_arrow_down
+          </i>
+        </li>
+      </ul>
+    );
+  }
+
   renderCommentForm() {
     return (
       <div className="row">
@@ -144,25 +186,11 @@ class RecipePage extends React.Component {
   }
 
   renderUserComments() {
-    return (
-      <div className="col s6 m6">
-        <div className="card blue-grey darken-1">
-          <div className="card-content white-text">
-            <CommentList comments={this.props.recipeUserComments} />
-          </div>
-        </div>
-      </div>
-    )
+    return <CommentList user="true" comments={this.props.recipeUserComments} />;
   }
 
   renderOtherComments() {
-    <div className="col s6 m6">
-      <div className="card light-grey darken-1">
-        <div className="card-content white-text">
-          <CommentList comments={this.props.recipeComments} />
-        </div>
-      </div>
-    </div>
+    return <CommentList user="false" comments={this.props.recipeComments} />;
   }
 
   renderComments() {
@@ -172,10 +200,19 @@ class RecipePage extends React.Component {
     ) {
       return <div>No Comments!</div>;
     }
+
     return (
-      <div className="row">
-        {this.props.recipeUserComments.length > 0 ? this.renderUserComments() : ''}
-        {this.props.recipeComments.length > 0 ? this.renderOtherComments() : ''}
+      <div>
+        <div className="row">
+          {this.props.recipeUserComments.length > 0
+            ? this.renderUserComments()
+            : ''}
+        </div>
+        <div className="row">
+          {this.props.recipeComments.length > 0
+            ? this.renderOtherComments()
+            : ''}
+        </div>
       </div>
     );
   }
@@ -197,25 +234,21 @@ class RecipePage extends React.Component {
         </div>
       );
     }
+
     if (!this.state.recipe.id) {
       return <p />;
     }
+
     return (
       <div className="row">
         <div className="col s6 m6">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
-              <div>
-                <a href="#">
-                  <i className="material-icons">keyboard_arrow_up</i>
-                </a>
-                <a href="#">
-                  <i className="material-icons">keyboard_arrow_down</i>
-                </a>
-              </div>
+              {this.state.canVote ? this.renderVote() : ''}
               <h4>Name: {this.state.recipe.name}</h4>
               <p>Ingredients: {this.state.recipe.ingredient_list}</p>
               <p>Instructions: {this.state.recipe.instruction_list}</p>
+              <p>votes: {this.state.recipe.votes}</p>
               <div className="card-action">
                 <button
                   className="waves-effect waves-light btn"
@@ -293,17 +326,23 @@ function mapStateToProps(state, ownProps) {
   let recipeComments = {};
   let recipeUserComments = {};
   const recipeId = parseInt(ownProps.match.params.id);
+  let canVote = true;
 
   if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);
     recipeComments = collectRecipeComments(state.comments, recipeId);
     recipeUserComments = collectRecipeUserComments(state.comments, recipeId);
+    console.log(recipe.user_id, parseInt(sessionStorage.user_id));
+    if (recipe.user_id === parseInt(sessionStorage.user_id)) {
+      canVote = false;
+    }
   }
-
+  console.log(canVote);
   return {
     recipe: recipe,
     recipeComments: recipeComments,
     recipeUserComments: recipeUserComments,
+    canVote: canVote,
   };
 }
 

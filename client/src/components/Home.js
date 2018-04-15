@@ -14,7 +14,6 @@ class Home extends React.Component {
     this.renderLogin = this.renderLogin.bind(this);
     this.signUp = this.signUp.bind(this);
     this.login = this.login.bind(this);
-
   }
 
   renderSignUp() {
@@ -40,8 +39,14 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.signUp}>Signup</button>
-        <button onClick={this.login}>Login</button>
+        <button className="btn waves-effect waves-light" onClick={this.signUp}>
+          Signup
+          <i className="material-icons right">send</i>
+        </button>
+        <button className="btn waves-effect waves-light" onClick={this.login}>
+          Login
+          <i className="material-icons right">send</i>
+        </button>
         {this.state.login ? this.renderLogin() : ''}
         {this.state.signup ? this.renderSignUp() : ''}
       </div>

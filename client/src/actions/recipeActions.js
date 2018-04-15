@@ -13,9 +13,9 @@ export function loadRecipes() {
   };
 }
 
-export function updateRecipe(recipe) {
+export function updateRecipe(recipe, num) {
   return function(dispatch) {
-    return RecipeService.updateRecipe(recipe)
+    return RecipeService.updateRecipe(recipe, num)
       .then(responseRecipe => {
         dispatch(updateRecipeSuccess(responseRecipe));
       })

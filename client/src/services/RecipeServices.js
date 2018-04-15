@@ -38,8 +38,9 @@ class RecipeServices {
     });
   }
 
-  updateRecipe(recipe) {
+  updateRecipe(recipe, num) {
     const headers = this.requestHeaders();
+    const newVotes = recipe.votes + num;
     return axios({
       method: 'PUT',
       url: `/api/recipes/${recipe.id}`,
@@ -51,7 +52,7 @@ class RecipeServices {
         name: recipe.name,
         ingredient_list: recipe.ingredient_list,
         instruction_list: recipe.instruction_list,
-        votes: recipe.votes,
+        votes: newVotes,
       },
     });
   }
