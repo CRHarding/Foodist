@@ -15,6 +15,7 @@ export function loadComments() {
 
 export function createComment(comment) {
   return function(dispatch) {
+    console.log(comment);
     return CommentService.createComment(comment)
       .then(responseComment => {
         dispatch(createCommentSuccess(responseComment));

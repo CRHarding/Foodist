@@ -37,7 +37,7 @@ export function signupUser(credentials) {
       .signup(credentials)
       .then(response => {
         const jwt = response.data.jwt;
-        console.log(jwt);
+        console.log(response.data);
         const id = response.data.id;
         const email = response.data.email;
         const name = response.data.fname + response.data.lname;

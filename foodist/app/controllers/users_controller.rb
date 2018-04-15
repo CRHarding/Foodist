@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @newUser = {}
     @newUser[:email] = params[:auth][:email]
     @newUser[:fname] = params[:auth][:fname]

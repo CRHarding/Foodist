@@ -5,3 +5,5 @@ Helpful links:
 
 https://github.com/reactjs/redux/issues/585
 http://www.thegreatcodeadventure.com/building-a-simple-crud-app-with-react-redux-part-1/#table-of-contents
+https://github.com/SophieDeBenedetto/catbook-redux
+http://www.thegreatcodeadventure.com/building-a-simple-crud-app-with-react-redux-part-1/#table-of-contents

@@ -19,14 +19,17 @@ class RecipePage extends React.Component {
       comment: {
         title: '',
         description: '',
-        poster_id: '',
+        poster_id: 0,
         recipe_id: 0,
         previous_comment: null,
         next_comment: null,
         comment_votes: 0,
         showComments: false,
+        poster_email: '',
+        poster_name: '',
       },
-      comments: this.props.Recipecomments,
+      comments: this.props.recipeComments,
+      userComments: this.props.recipeUserComments,
     };
     this.toggleEdit = this.toggleEdit.bind(this);
     this.toggleComment = this.toggleComment.bind(this);
@@ -40,6 +43,8 @@ class RecipePage extends React.Component {
     this.renderCommentForm = this.renderCommentForm.bind(this);
     this.renderComments = this.renderComments.bind(this);
     this.showComments = this.showComments.bind(this);
+    this.renderUserComments = this.renderUserComments.bind(this);
+    this.renderOtherComments = this.renderOtherComments.bind(this);
     console.log(sessionStorage);
   }
 
@@ -70,7 +75,6 @@ class RecipePage extends React.Component {
     const field = event.target.name;
     const comment = this.state.comment;
     comment[field] = event.target.value;
-    comment.recipe_id = this.state.recipe.id;
     return this.setState({ comment: comment });
   }
 
@@ -84,7 +88,13 @@ class RecipePage extends React.Component {
     event.preventDefault();
     this.setState({ saving: true });
     this.setState({ isCommenting: false });
-    this.props.actions.commentActions.createComment(this.state.comment);
+    const comment = this.state.comment;
+    comment.recipe_id = this.state.recipe.id;
+    comment.poster_id = sessionStorage.user_id;
+    comment.poster_name = sessionStorage.name;
+    comment.poster_email = sessionStorage.email;
+    console.log(comment);
+    this.props.actions.commentActions.createComment(comment);
   }
 
   deleteRecipe(event) {
@@ -133,8 +143,41 @@ class RecipePage extends React.Component {
     this.setState({ showComments: !this.state.showComments });
   }
 
+  renderUserComments() {
+    return (
+      <div className="col s6 m6">
+        <div className="card blue-grey darken-1">
+          <div className="card-content white-text">
+            <CommentList comments={this.props.recipeUserComments} />
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  renderOtherComments() {
+    <div className="col s6 m6">
+      <div className="card light-grey darken-1">
+        <div className="card-content white-text">
+          <CommentList comments={this.props.recipeComments} />
+        </div>
+      </div>
+    </div>
+  }
+
   renderComments() {
-    return <CommentList comments={this.props.Recipecomments} />;
+    if (
+      this.props.recipeUserComments.length === 0 &&
+      this.props.recipeComments === 0
+    ) {
+      return <div>No Comments!</div>;
+    }
+    return (
+      <div className="row">
+        {this.props.recipeUserComments.length > 0 ? this.renderUserComments() : ''}
+        {this.props.recipeComments.length > 0 ? this.renderOtherComments() : ''}
+      </div>
+    );
   }
 
   render() {
@@ -162,15 +205,17 @@ class RecipePage extends React.Component {
         <div className="col s6 m6">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
+              <div>
+                <a href="#">
+                  <i className="material-icons">keyboard_arrow_up</i>
+                </a>
+                <a href="#">
+                  <i className="material-icons">keyboard_arrow_down</i>
+                </a>
+              </div>
               <h4>Name: {this.state.recipe.name}</h4>
               <p>Ingredients: {this.state.recipe.ingredient_list}</p>
               <p>Instructions: {this.state.recipe.instruction_list}</p>
-              <p>Votes: {this.state.recipe.votes}</p>
-              <div className="card-reveal">
-                <span className="card-title grey-text text-darken-4">
-                  Comments<i className="material-icons right">close</i>
-                </span>
-              </div>
               <div className="card-action">
                 <button
                   className="waves-effect waves-light btn"
@@ -207,9 +252,24 @@ class RecipePage extends React.Component {
   }
 }
 
-function collectRecipeComments(comments, recipe, id) {
+function collectRecipeComments(comments, id) {
   let selected = comments.map(comment => {
-    if (comment.recipe_id === id) {
+    if (
+      comment.recipe_id === id &&
+      comment.poster_id !== parseInt(sessionStorage.user_id)
+    ) {
+      return comment;
+    }
+  });
+  return selected.filter(el => el !== undefined);
+}
+
+function collectRecipeUserComments(comments, id) {
+  let selected = comments.map(comment => {
+    if (
+      comment.recipe_id === id &&
+      comment.poster_id === parseInt(sessionStorage.user_id)
+    ) {
       return comment;
     }
   });
@@ -230,15 +290,21 @@ function mapStateToProps(state, ownProps) {
     votes: '',
   };
 
-  let Recipecomments = {};
+  let recipeComments = {};
+  let recipeUserComments = {};
   const recipeId = parseInt(ownProps.match.params.id);
 
   if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);
-    Recipecomments = collectRecipeComments(state.comments, recipe, recipeId);
+    recipeComments = collectRecipeComments(state.comments, recipeId);
+    recipeUserComments = collectRecipeUserComments(state.comments, recipeId);
   }
 
-  return { recipe: recipe, Recipecomments: Recipecomments };
+  return {
+    recipe: recipe,
+    recipeComments: recipeComments,
+    recipeUserComments: recipeUserComments,
+  };
 }
 
 function mapDispatchToProps(dispatch) {

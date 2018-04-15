@@ -22,7 +22,7 @@ class CommentServices {
 
   createComment(comment) {
     const headers = this.requestHeaders();
-    console.log(sessionStorage.user)
+    console.log(sessionStorage)
     return axios({
       method: 'POST',
       url: '/api/comments',
@@ -30,6 +30,7 @@ class CommentServices {
       data: {
         poster_email: sessionStorage.email,
         poster_name: sessionStorage.name,
+        poster_id: sessionStorage.user_id,
         recipe_id: comment.recipe_id,
         title: comment.title,
         description: comment.description,
