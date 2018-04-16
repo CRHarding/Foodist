@@ -21,7 +21,6 @@ class CommentServices {
   }
 
   createComment(comment, previousComment) {
-    console.log(comment, previousComment);
     const headers = this.requestHeaders();
     return axios({
       method: 'POST',
@@ -42,9 +41,10 @@ class CommentServices {
   }
 
   updateComment(comment, nextComment) {
+    console.log(comment, nextComment);
     const headers = this.requestHeaders();
     return axios({
-      method: 'POST',
+      method: 'PUT',
       url: `/api/comments/${comment.id}`,
       headers: headers,
       data: {
@@ -55,7 +55,7 @@ class CommentServices {
         title: comment.title,
         description: comment.description,
         previous_comment: comment.previous_comment,
-        next_comment: nextComment,
+        next_comment: nextComment.id,
         comment_votes: comment.comment_votes,
       },
     });

@@ -26,10 +26,26 @@ export function createComment(comment, id) {
   };
 }
 
+export function updateComment(comment, nextComment) {
+  return function(dispatch) {
+    return CommentService.updateComment(comment, nextComment)
+      .then(responseComment => {
+        dispatch(updateCommentSuccess(responseComment));
+      })
+      .catch(err => {
+        throw err;
+      });
+  };
+}
+
 export function loadCommentsSuccess(comments) {
   return { type: types.LOAD_COMMENTS_SUCCESS, comments };
 }
 
 export function createCommentSuccess(comment) {
   return { type: types.CREATE_COMMENT_SUCCESS, comment };
+}
+
+export function updateCommentSuccess(comment) {
+  return { type: types.UPDATE_COMMENT_SUCCESS, comment };
 }

@@ -118,16 +118,20 @@ class RecipePage extends React.Component {
 
   createComment(event) {
     event.preventDefault();
-    this.setState({ saving: true });
-    this.setState({ isCommenting: false });
-    console.log(this.state);
+    this.setState({ saving: true, isCommenting: false });
+
     const comment = this.state.comment;
+
     comment.previous_comment = this.state.previousCommentId;
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
+    console.log(this.props.recipeComments[this.props.recipeComments.length-1]);
     this.props.actions.commentActions.createComment(comment, this.state.previousCommentId);
+    if (this.state.previousCommentId !== 0) {
+      this.props.actions.commentActions.updateComment(this.state.previous_comment, this.props.recipeComments[this.props.recipeComments.length-1])
+    }
   }
 
   renderCommentForm() {
@@ -141,7 +145,7 @@ class RecipePage extends React.Component {
                 comment={this.state.comment}
                 name={this.state.comment.name}
                 description={this.state.comment.description}
-                previous_id={this.state.previousCommentId}
+                previous_comment={this.state.previous_comment}
                 onSave={this.createComment}
                 onChange={this.updateCommentState}
                 saving={this.state.saving}
@@ -184,10 +188,10 @@ class RecipePage extends React.Component {
     this.setState({ isEditing: !this.state.isEditing });
   }
 
-  toggleComment(id) {
+  toggleComment(comment) {
     this.setState({
       isCommenting: !this.state.isCommenting,
-      previousCommentId: id,
+      previous_comment: comment,
     });
   }
 

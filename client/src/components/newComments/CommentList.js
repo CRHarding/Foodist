@@ -19,9 +19,9 @@ class CommentList extends React.Component {
     }
   }
 
-  handleClick(id) {
-    console.log(id);
-    this.props.commentSubmit(id);
+  handleClick(comment) {
+    console.log(comment);
+    this.props.commentSubmit(comment);
   }
 
   renderUser(comment, id) {
@@ -36,7 +36,7 @@ class CommentList extends React.Component {
           <div className="card-action">
             <button
               className="waves-effect waves-light btn"
-              onClick={() => this.handleClick(id)}
+              onClick={() => this.handleClick(comment)}
             >
               Comment
           </button>
@@ -58,7 +58,7 @@ class CommentList extends React.Component {
           <div className="card-action">
             <button
               className="waves-effect waves-light btn"
-              onClick={() => this.handleClick(id)}
+              onClick={() => this.handleClick(comment)}
             >
               Comment
           </button>
