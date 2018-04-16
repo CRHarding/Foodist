@@ -16,9 +16,17 @@ export function createComment(comment, id) {
   return function(dispatch) {
     console.log(comment, id);
     return CommentService.createComment(comment, id)
-      .then(responseComment => {
-        dispatch(createCommentSuccess(responseComment));
-        return responseComment;
+      .then(newComment => {
+        return CommentService.updateComment(comment, newComment)
+          .then(responseComment => {
+            dispatch(createCommentSuccess(newComment));
+            dispatch(updateCommentSuccess(responseComment));
+          })
+          .catch(err => {
+            throw err;
+          });
+        dispatch(createCommentSuccess(newComment));
+        return newComment;
       })
       .catch(err => {
         throw err;

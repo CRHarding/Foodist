@@ -21,6 +21,7 @@ class RecipePage extends React.Component {
       canVoteUp: this.props.canVoteUp,
       canVoteDown: this.props.canVoteDown,
       comments: this.props.recipeComments,
+      allComments: this.props.allComments,
       userVote: this.props.userVotes,
       didVote: this.props.didVote,
       currentComment: null,
@@ -67,6 +68,12 @@ class RecipePage extends React.Component {
       }
     }
 
+    if (this.props.allComments) {
+      if (this.props.allComments.length < nextProps.allComments.length) {
+        this.setState({ allComments: nextProps.allComments });
+      }
+    }
+
     if (this.props.recipe.votes !== nextProps.recipe.votes) {
       this.setState({ recipe: nextProps.recipe });
     } else {
@@ -94,6 +101,7 @@ class RecipePage extends React.Component {
     }
 
     this.setState({ saving: false, isEditing: false });
+    console.log(this.state);
   }
 
   updateRecipeState(event) {
@@ -121,17 +129,23 @@ class RecipePage extends React.Component {
     this.setState({ saving: true, isCommenting: false });
 
     const comment = this.state.comment;
-
-    comment.previous_comment = this.state.previousCommentId;
-    console.log(comment.previous_comment);
+    const oldComment = this.state.previous_comment
+    console.log(this.state.allComments);
+    comment.previous_comment = oldComment;
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
-    this.props.actions.commentActions.createComment(comment, this.state.previousCommentId);
-    if (this.state.previousCommentId !== 0) {
-      this.props.actions.commentActions.updateComment(this.state.previous_comment, this.props.recipeComments[this.props.recipeComments.length-1])
-    }
+    const newComment = this.props.actions.commentActions.createComment(
+      comment,
+      oldComment,
+    );
+    // if (oldComment.id !== 0) {
+    //   this.props.actions.commentActions.updateComment(
+    //     oldComment,
+    //     newComment,
+    //   );
+    // }
   }
 
   renderCommentForm() {
@@ -145,7 +159,6 @@ class RecipePage extends React.Component {
                 comment={this.state.comment}
                 name={this.state.comment.name}
                 description={this.state.comment.description}
-                previous_comment={this.state.previous_comment}
                 onSave={this.createComment}
                 onChange={this.updateCommentState}
                 saving={this.state.saving}
@@ -355,6 +368,8 @@ function mapStateToProps(state, ownProps) {
   let canVoteDown = false;
   let didVote = false;
 
+  const allComments = state.comments;
+
   const user_id = parseInt(sessionStorage.user_id);
   const recipeId = parseInt(ownProps.match.params.id);
 
@@ -396,6 +411,7 @@ function mapStateToProps(state, ownProps) {
     canVoteUp: canVoteUp,
     canVoteDown: canVoteDown,
     didVote: didVote,
+    allComments: allComments,
   };
 }
 

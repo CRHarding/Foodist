@@ -22,6 +22,7 @@ class CommentServices {
 
   createComment(comment, previousComment) {
     const headers = this.requestHeaders();
+    console.log(comment, previousComment);
     return axios({
       method: 'POST',
       url: '/api/comments',
@@ -33,7 +34,7 @@ class CommentServices {
         recipe_id: comment.recipe_id,
         title: comment.title,
         description: comment.description,
-        previous_comment: previousComment,
+        previous_comment: previousComment.id,
         next_comment: 0,
         comment_votes: 0,
       },
@@ -41,26 +42,27 @@ class CommentServices {
   }
 
   updateComment(comment, nextComment) {
-    console.log(comment, nextComment);
-    if (!nextComment.id) {
+    console.log(comment.previous_comment, nextComment.data.comment);
+    const newComment = nextComment.data.comment;
+    if (!nextComment) {
       nextComment.id === 0;
     }
 
     const headers = this.requestHeaders();
     return axios({
       method: 'PUT',
-      url: `/api/comments/${comment.id}`,
+      url: `/api/comments/${comment.previous_comment.id}`,
       headers: headers,
       data: {
-        poster_email: comment.poster_email,
-        poster_name: comment.poster_name,
-        poster_id: comment.poster_id,
-        recipe_id: comment.recipe_id,
-        title: comment.title,
-        description: comment.description,
-        previous_comment: comment.previous_comment,
-        next_comment: nextComment.id,
-        comment_votes: comment.comment_votes,
+        poster_email: comment.previous_comment.poster_email,
+        poster_name: comment.previous_comment.poster_name,
+        poster_id: comment.previous_comment.poster_id,
+        recipe_id: comment.previous_comment.recipe_id,
+        title: comment.previous_comment.title,
+        description: comment.previous_comment.description,
+        previous_comment: comment.previous_comment.id,
+        next_comment: newComment.id,
+        comment_votes: comment.previous_comment.comment_votes,
       },
     });
   }

@@ -20,7 +20,6 @@ class CommentList extends React.Component {
   }
 
   handleClick(comment) {
-    console.log(comment);
     this.props.commentSubmit(comment);
   }
 

@@ -20,7 +20,6 @@ class CommentForm extends React.Component {
             onChange={this.props.onChange}
             value={this.props.comment.description}
           />
-          <input name="previous_comment" type="hidden" value={this.props.previous_comment} />
           <input
             type="submit"
             disabled={this.props.saving}
