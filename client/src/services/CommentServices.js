@@ -42,6 +42,10 @@ class CommentServices {
 
   updateComment(comment, nextComment) {
     console.log(comment, nextComment);
+    if (!nextComment.id) {
+      nextComment.id === 0;
+    }
+
     const headers = this.requestHeaders();
     return axios({
       method: 'PUT',

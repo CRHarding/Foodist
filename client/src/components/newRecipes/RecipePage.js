@@ -123,11 +123,11 @@ class RecipePage extends React.Component {
     const comment = this.state.comment;
 
     comment.previous_comment = this.state.previousCommentId;
+    console.log(comment.previous_comment);
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
-    console.log(this.props.recipeComments[this.props.recipeComments.length-1]);
     this.props.actions.commentActions.createComment(comment, this.state.previousCommentId);
     if (this.state.previousCommentId !== 0) {
       this.props.actions.commentActions.updateComment(this.state.previous_comment, this.props.recipeComments[this.props.recipeComments.length-1])
@@ -261,7 +261,7 @@ class RecipePage extends React.Component {
 
     return (
       <div className="row">
-        <div className="col s6 m6">
+        <div className="col s12">
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <ul>
@@ -314,7 +314,7 @@ function collectRecipeComments(comments, id) {
       return comment;
     }
   });
-  console.log(selected);
+
   return selected.filter(el => el !== undefined);
 }
 
@@ -362,7 +362,7 @@ function mapStateToProps(state, ownProps) {
     recipe = getRecipeById(state.recipes, recipeId);
     recipeComments = collectRecipeComments(state.comments, recipeId);
     userVotes = collectUserVotes(state.votes, recipeId);
-    console.log(recipeComments);
+
     if (recipe.user_id === user_id) {
       canVote = false;
     } else if (userVotes[0]) {
