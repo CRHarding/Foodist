@@ -12,9 +12,10 @@ export function loadComments() {
   };
 }
 
-export function createComment(comment) {
+export function createComment(comment, id) {
   return function(dispatch) {
-    return CommentService.createComment(comment)
+    console.log(comment, id);
+    return CommentService.createComment(comment, id)
       .then(responseComment => {
         dispatch(createCommentSuccess(responseComment));
         return responseComment;

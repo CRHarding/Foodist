@@ -20,7 +20,8 @@ class CommentServices {
       });
   }
 
-  createComment(comment) {
+  createComment(comment, previousComment) {
+    console.log(comment, previousComment);
     const headers = this.requestHeaders();
     return axios({
       method: 'POST',
@@ -33,9 +34,29 @@ class CommentServices {
         recipe_id: comment.recipe_id,
         title: comment.title,
         description: comment.description,
-        previous_comment: 0,
+        previous_comment: previousComment,
         next_comment: 0,
         comment_votes: 0,
+      },
+    });
+  }
+
+  updateComment(comment, nextComment) {
+    const headers = this.requestHeaders();
+    return axios({
+      method: 'POST',
+      url: `/api/comments/${comment.id}`,
+      headers: headers,
+      data: {
+        poster_email: comment.poster_email,
+        poster_name: comment.poster_name,
+        poster_id: comment.poster_id,
+        recipe_id: comment.recipe_id,
+        title: comment.title,
+        description: comment.description,
+        previous_comment: comment.previous_comment,
+        next_comment: nextComment,
+        comment_votes: comment.comment_votes,
       },
     });
   }

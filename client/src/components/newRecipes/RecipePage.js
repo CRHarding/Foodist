@@ -21,9 +21,9 @@ class RecipePage extends React.Component {
       canVoteUp: this.props.canVoteUp,
       canVoteDown: this.props.canVoteDown,
       comments: this.props.recipeComments,
-      userComments: this.props.recipeUserComments,
       userVote: this.props.userVotes,
       didVote: this.props.didVote,
+      currentComment: null,
       comment: {
         title: '',
         description: '',
@@ -49,8 +49,6 @@ class RecipePage extends React.Component {
     this.renderCommentForm = this.renderCommentForm.bind(this);
     this.renderComments = this.renderComments.bind(this);
     this.showComments = this.showComments.bind(this);
-    this.renderUserComments = this.renderUserComments.bind(this);
-    this.renderOtherComments = this.renderOtherComments.bind(this);
     this.voteUp = this.voteUp.bind(this);
     this.voteDown = this.voteDown.bind(this);
     console.log(sessionStorage);
@@ -94,7 +92,7 @@ class RecipePage extends React.Component {
     if (this.props.didVote !== nextProps.didVote) {
       this.setState({ didVote: nextProps.didVote });
     }
-    console.log(this.props.userVote);
+
     this.setState({ saving: false, isEditing: false });
   }
 
@@ -122,12 +120,56 @@ class RecipePage extends React.Component {
     event.preventDefault();
     this.setState({ saving: true });
     this.setState({ isCommenting: false });
+    console.log(this.state);
     const comment = this.state.comment;
+    comment.previous_comment = this.state.previousCommentId;
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
-    this.props.actions.commentActions.createComment(comment);
+    this.props.actions.commentActions.createComment(comment, this.state.previousCommentId);
+  }
+
+  renderCommentForm() {
+    return (
+      <div className="row">
+        <div className="col s6 m6">
+          <div className="card light-grey darken-1">
+            <div className="card-content black-text">
+              <CommentForm
+                recipe={this.state.recipe}
+                comment={this.state.comment}
+                name={this.state.comment.name}
+                description={this.state.comment.description}
+                previous_id={this.state.previousCommentId}
+                onSave={this.createComment}
+                onChange={this.updateCommentState}
+                saving={this.state.saving}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  renderComments() {
+    if (this.props.recipeComments === 0) {
+      return <div>No Comments!</div>;
+    }
+
+    return (
+      <div className="row">
+        <CommentList
+          comments={this.props.recipeComments}
+          commentSubmit={this.toggleComment}
+        />
+      </div>
+    );
+  }
+
+  showComments() {
+    this.setState({ showComments: !this.state.showComments });
   }
 
   deleteRecipe(event) {
@@ -142,8 +184,11 @@ class RecipePage extends React.Component {
     this.setState({ isEditing: !this.state.isEditing });
   }
 
-  toggleComment() {
-    this.setState({ isCommenting: !this.state.isCommenting });
+  toggleComment(id) {
+    this.setState({
+      isCommenting: !this.state.isCommenting,
+      previousCommentId: id,
+    });
   }
 
   redirect() {
@@ -185,64 +230,6 @@ class RecipePage extends React.Component {
           keyboard_arrow_down
         </i>
       </li>
-    );
-  }
-
-  renderCommentForm() {
-    return (
-      <div className="row">
-        <div className="col s6 m6">
-          <div className="card light-grey darken-1">
-            <div className="card-content black-text">
-              <CommentForm
-                recipe={this.state.recipe}
-                comment={this.state.comment}
-                name={this.state.comment.name}
-                description={this.state.comment.description}
-                onSave={this.createComment}
-                onChange={this.updateCommentState}
-                saving={this.state.saving}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  showComments() {
-    this.setState({ showComments: !this.state.showComments });
-  }
-
-  renderUserComments() {
-    return <CommentList user="true" comments={this.props.recipeUserComments} />;
-  }
-
-  renderOtherComments() {
-    return <CommentList user="false" comments={this.props.recipeComments} />;
-  }
-
-  renderComments() {
-    if (
-      this.props.recipeUserComments.length === 0 &&
-      this.props.recipeComments === 0
-    ) {
-      return <div>No Comments!</div>;
-    }
-
-    return (
-      <div>
-        <div className="row">
-          {this.props.recipeUserComments.length > 0
-            ? this.renderUserComments()
-            : ''}
-        </div>
-        <div className="row">
-          {this.props.recipeComments.length > 0
-            ? this.renderOtherComments()
-            : ''}
-        </div>
-      </div>
     );
   }
 
@@ -319,25 +306,11 @@ class RecipePage extends React.Component {
 
 function collectRecipeComments(comments, id) {
   let selected = comments.map(comment => {
-    if (
-      comment.recipe_id === id &&
-      comment.poster_id !== parseInt(sessionStorage.user_id)
-    ) {
+    if (comment.recipe_id === id) {
       return comment;
     }
   });
-  return selected.filter(el => el !== undefined);
-}
-
-function collectRecipeUserComments(comments, id) {
-  let selected = comments.map(comment => {
-    if (
-      comment.recipe_id === id &&
-      comment.poster_id === parseInt(sessionStorage.user_id)
-    ) {
-      return comment;
-    }
-  });
+  console.log(selected);
   return selected.filter(el => el !== undefined);
 }
 
@@ -359,7 +332,7 @@ function getRecipeById(recipes, id) {
 }
 
 function getVoteId(votes) {
-  let voteId = votes
+  let voteId = votes;
 }
 
 function mapStateToProps(state, ownProps) {
@@ -372,7 +345,6 @@ function mapStateToProps(state, ownProps) {
   };
 
   let recipeComments = {};
-  let recipeUserComments = {};
   let userVotes = {};
   let canVote = true;
   let canVoteUp = false;
@@ -385,19 +357,24 @@ function mapStateToProps(state, ownProps) {
   if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);
     recipeComments = collectRecipeComments(state.comments, recipeId);
-    recipeUserComments = collectRecipeUserComments(state.comments, recipeId);
     userVotes = collectUserVotes(state.votes, recipeId);
-
+    console.log(recipeComments);
     if (recipe.user_id === user_id) {
       canVote = false;
     } else if (userVotes[0]) {
       if (userVotes[0].user_id === user_id) {
         didVote = true;
+
         if (userVotes[0].down) {
           canVoteUp = true;
         }
 
         if (userVotes[0].up) {
+          canVoteDown = true;
+        }
+
+        if (!userVotes[0].up && !userVotes[0].down) {
+          canVoteUp = true;
           canVoteDown = true;
         }
       }
@@ -410,7 +387,6 @@ function mapStateToProps(state, ownProps) {
   return {
     recipe: recipe,
     recipeComments: recipeComments,
-    recipeUserComments: recipeUserComments,
     canVote: canVote,
     userVote: userVotes[0],
     canVoteUp: canVoteUp,

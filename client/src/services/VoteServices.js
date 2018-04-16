@@ -56,7 +56,7 @@ class VoteServices {
       up = false;
       down = true;
     }
-    console.log(vote, up, down);
+
     return axios({
       method: 'PUT',
       url: `/api/votes/${vote}`,
