@@ -24,6 +24,8 @@ class RecipePage extends React.Component {
       allComments: this.props.allComments,
       userVote: this.props.userVotes,
       didVote: this.props.didVote,
+      renderFooter: this.props.renderFooter,
+
       currentComment: null,
       comment: {
         title: '',
@@ -100,8 +102,11 @@ class RecipePage extends React.Component {
       this.setState({ didVote: nextProps.didVote });
     }
 
+    if (this.props.renderFooter !== nextProps.renderFooter) {
+      this.setState({ renderFooter: nextProps.renderFooter });
+    }
+
     this.setState({ saving: false, isEditing: false });
-    console.log(this.state);
   }
 
   updateRecipeState(event) {
@@ -127,10 +132,15 @@ class RecipePage extends React.Component {
   createComment(event) {
     event.preventDefault();
     this.setState({ saving: true, isCommenting: false });
-
+    let oldComment;
     const comment = this.state.comment;
-    const oldComment = this.state.previous_comment
-    console.log(this.state.allComments);
+    if (!this.state.previous_comment) {
+      oldComment = 0;
+    } else {
+      oldComment = this.state.previous_comment;
+    }
+
+    console.log('THERE', this.state.allComments);
     comment.previous_comment = oldComment;
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
@@ -140,12 +150,6 @@ class RecipePage extends React.Component {
       comment,
       oldComment,
     );
-    // if (oldComment.id !== 0) {
-    //   this.props.actions.commentActions.updateComment(
-    //     oldComment,
-    //     newComment,
-    //   );
-    // }
   }
 
   renderCommentForm() {
@@ -171,7 +175,7 @@ class RecipePage extends React.Component {
   }
 
   renderComments() {
-    if (this.props.recipeComments === 0) {
+    if (this.props.recipeComments.length === 0) {
       return <div>No Comments!</div>;
     }
 
@@ -240,6 +244,25 @@ class RecipePage extends React.Component {
     );
   }
 
+  renderFooter() {
+    return (
+      <div>
+        <button
+          className="waves-effect waves-light btn"
+          onClick={this.toggleEdit}
+        >
+          Edit
+        </button>
+        <button
+          className="waves-effect waves-light btn"
+          onClick={this.deleteRecipe}
+        >
+          Delete
+        </button>
+      </div>
+    );
+  }
+
   renderDownVote() {
     return (
       <li onClick={this.voteDown}>
@@ -298,18 +321,7 @@ class RecipePage extends React.Component {
                 >
                   Comment
                 </button>
-                <button
-                  className="waves-effect waves-light btn"
-                  onClick={this.toggleEdit}
-                >
-                  Edit
-                </button>
-                <button
-                  className="waves-effect waves-light btn"
-                  onClick={this.deleteRecipe}
-                >
-                  Delete
-                </button>
+                {this.state.renderFooter ? this.renderFooter() : ''}
               </div>
             </div>
           </div>
@@ -367,6 +379,7 @@ function mapStateToProps(state, ownProps) {
   let canVoteUp = false;
   let canVoteDown = false;
   let didVote = false;
+  let renderFooter = false;
 
   const allComments = state.comments;
 
@@ -380,6 +393,7 @@ function mapStateToProps(state, ownProps) {
 
     if (recipe.user_id === user_id) {
       canVote = false;
+      renderFooter = true;
     } else if (userVotes[0]) {
       if (userVotes[0].user_id === user_id) {
         didVote = true;
@@ -412,6 +426,7 @@ function mapStateToProps(state, ownProps) {
     canVoteDown: canVoteDown,
     didVote: didVote,
     allComments: allComments,
+    renderFooter: renderFooter,
   };
 }
 

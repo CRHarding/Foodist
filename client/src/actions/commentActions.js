@@ -7,8 +7,7 @@ export function loadComments() {
       .then(comments => {
         dispatch(loadCommentsSuccess(comments));
       })
-      .catch(err => {
-      });
+      .catch(err => {});
   };
 }
 
@@ -17,14 +16,16 @@ export function createComment(comment, id) {
     console.log(comment, id);
     return CommentService.createComment(comment, id)
       .then(newComment => {
-        return CommentService.updateComment(comment, newComment)
-          .then(responseComment => {
-            dispatch(createCommentSuccess(newComment));
-            dispatch(updateCommentSuccess(responseComment));
-          })
-          .catch(err => {
-            throw err;
-          });
+        if (id.title) {
+          return CommentService.updateComment(comment, newComment)
+            .then(responseComment => {
+              dispatch(createCommentSuccess(newComment));
+              dispatch(updateCommentSuccess(responseComment));
+            })
+            .catch(err => {
+              throw err;
+            });
+        }
         dispatch(createCommentSuccess(newComment));
         return newComment;
       })

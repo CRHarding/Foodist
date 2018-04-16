@@ -44,7 +44,7 @@ class CommentServices {
   updateComment(comment, nextComment) {
     console.log(comment.previous_comment, nextComment.data.comment);
     const newComment = nextComment.data.comment;
-    if (!nextComment) {
+    if (!newComment) {
       nextComment.id === 0;
     }
 

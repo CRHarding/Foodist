@@ -18,9 +18,9 @@ class Header extends React.Component {
   renderAuthLinks() {
     if (this.props.logged_in) {
       return [
-        <li key={1}>
-          <Link to="/favorites">My Favorites</Link>
-        </li>,
+        // <li key={1}>
+        //   <Link to="/favorites">My Favorites</Link>
+        // </li>,
         <li key={2}>
           <a href="/logout" onClick={this.logOut}>
             Sign Out
