@@ -18,6 +18,7 @@ class UsersController < ApplicationController
     @newUser[:password_confirmation] = params[:auth][:password_confirmation]
 
     @user = User.new(@newUser)
+    binding.pry
     if @user.save
       jwt = Auth.issue({user: @user.id})
       render json: {jwt: jwt, user: @user}
