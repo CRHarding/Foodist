@@ -1,6 +1,6 @@
 require 'jwt'
 
-class Auth
+module Auth
   ALGORITHM = 'HS256'
 
   def self.issue(payload)
