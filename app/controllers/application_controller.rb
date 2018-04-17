@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::API
   before_action :authenticate
 
+  def fallback_index_html
+    render :file => 'public/index.html'
+  end
+
   def logged_in?
     !!current_user
   end
