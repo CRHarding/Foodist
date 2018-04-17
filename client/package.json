@@ -9,6 +9,7 @@
     "history": "^4.7.2",
     "node-uuid": "^1.4.8",
     "normalizr": "^3.2.4",
+    "npm": "^5.8.0",
     "react": "^16.3.1",
     "react-dom": "^16.3.1",
     "react-materialize": "^2.2.0",
@@ -24,9 +25,14 @@
     "redux-promise": "^0.5.3",
     "redux-thunk": "^2.2.0"
   },
+  "engines": {
+      "node": "5.6.0"
+  },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "cd client && npm install && npm run build && cd ..",
+    "deploy": "cp -a client/build/. public/",
+    "postinstall": "npm run build && npm run deploy && echo 'Client built!'",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
