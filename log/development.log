@@ -49097,3 +49097,75 @@ Completed 200 OK in 49ms (Views: 14.8ms | ActiveRecord: 22.5ms)
 Completed 200 OK in 31ms (Views: 7.8ms | ActiveRecord: 20.0ms)
 
 
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-17 20:55:28 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-17 20:55:28 -0400
+Started GET "/api/votes" for 127.0.0.1 at 2018-04-17 20:55:28 -0400
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (9.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by CommentsController#index as HTML
+Processing by VotesController#index as HTML
+Processing by RecipesController#index as HTML
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+JWT::DecodeError (Not enough or too many segments):
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms)
+
+
+  
+  
+  
+JWT::DecodeError (Not enough or too many segments):
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:32:in `auth'
+app/controllers/application_controller.rb:14:in `current_user'
+app/controllers/application_controller.rb:9:in `logged_in?'
+app/controllers/application_controller.rb:22:in `authenticate'
+JWT::DecodeError (Not enough or too many segments):
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:32:in `auth'
+app/controllers/application_controller.rb:14:in `current_user'
+app/controllers/application_controller.rb:9:in `logged_in?'
+app/controllers/application_controller.rb:22:in `authenticate'
+  
+lib/auth.rb:16:in `decode'
+app/controllers/application_controller.rb:32:in `auth'
+app/controllers/application_controller.rb:14:in `current_user'
+app/controllers/application_controller.rb:9:in `logged_in?'
+app/controllers/application_controller.rb:22:in `authenticate'
+Started POST "/api/users" for 127.0.0.1 at 2018-04-17 20:55:42 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"auth"=>{"email"=>"robert@robert.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "fname"=>"Robert", "lname"=>"Harding"}, "user"=>{}}
+  [1m[35m (2.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (7.7ms)[0m  [1m[32mINSERT INTO "users" ("fname", "lname", "email", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["fname", "Robert"], ["lname", "Harding"], ["email", "robert@robert.com"], ["created_at", "2018-04-18 00:55:42.426220"], ["updated_at", "2018-04-18 00:55:42.426220"], ["password_digest", "$2a$10$M.eh8Z.tfY9J32ljpYoKjOtTuW5kQWlDtPVY9lt7gXpQLIzvr5aWO"]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Completed 200 OK in 85ms (Views: 0.4ms | ActiveRecord: 23.3ms)
+
+
+Started GET "/api/votes" for 127.0.0.1 at 2018-04-17 20:55:44 -0400
+Started GET "/api/recipes" for 127.0.0.1 at 2018-04-17 20:55:44 -0400
+Started GET "/api/comments" for 127.0.0.1 at 2018-04-17 20:55:44 -0400
+Processing by RecipesController#index as HTML
+Processing by VotesController#index as HTML
+Processing by CommentsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments"[0m
+  [1m[36mRecipe Load (1.2ms)[0m  [1m[34mSELECT "recipes".* FROM "recipes"[0m
+  [1m[36mVote Load (1.0ms)[0m  [1m[34mSELECT "votes".* FROM "votes"[0m
+Completed 200 OK in 37ms (Views: 15.3ms | ActiveRecord: 7.8ms)
+
+
+Completed 200 OK in 44ms (Views: 7.8ms | ActiveRecord: 21.0ms)
+
+
+Completed 200 OK in 54ms (Views: 9.4ms | ActiveRecord: 28.6ms)
+
+
