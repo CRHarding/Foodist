@@ -67,7 +67,9 @@ class CommentServices {
     });
   }
 
-  updateCommentVotes(comment) {
+  updateCommentVotes(comment, num) {
+    console.log(num);
+    comment.comment_votes = comment.comment_votes + num;
     const headers = this.requestHeaders();
     return axios({
       method: 'PUT',

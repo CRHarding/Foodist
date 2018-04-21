@@ -47,9 +47,10 @@ export function updateComment(comment, nextComment) {
   };
 }
 
-export function updateCommentVotes(comment) {
+export function updateCommentVotes(comment, num) {
+  console.log(num);
   return function(dispatch) {
-    return CommentService.updateCommentVotes(comment)
+    return CommentService.updateCommentVotes(comment, num)
       .then(responseComment => {
         dispatch(updateCommentSuccess(responseComment));
       })
