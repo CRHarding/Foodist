@@ -42,7 +42,7 @@ class CommentServices {
   }
 
   updateComment(comment, nextComment) {
-    console.log(comment.previous_comment, nextComment.data.comment);
+    console.log(comment, nextComment);
     const newComment = nextComment.data.comment;
     if (!newComment) {
       nextComment.id === 0;
@@ -63,6 +63,26 @@ class CommentServices {
         previous_comment: comment.previous_comment.id,
         next_comment: newComment.id,
         comment_votes: comment.previous_comment.comment_votes,
+      },
+    });
+  }
+
+  updateCommentVotes(comment) {
+    const headers = this.requestHeaders();
+    return axios({
+      method: 'PUT',
+      url: `/api/comments/${comment.id}`,
+      headers: headers,
+      data: {
+        poster_email: comment.poster_email,
+        poster_name: comment.poster_name,
+        poster_id: comment.poster_id,
+        recipe_id: comment.recipe_id,
+        title: comment.title,
+        description: comment.description,
+        previous_comment: comment.previous_comment,
+        next_comment: comment.next_comment,
+        comment_votes: comment.comment_votes,
       },
     });
   }

@@ -7,7 +7,6 @@ import * as voteActions from '../../actions/voteActions';
 import CommentList from '../newComments/CommentList';
 import RecipeForm from './RecipeForm';
 import CommentForm from '../newComments/CommentForm';
-import history from '../history';
 
 class RecipePage extends React.Component {
   constructor(props, context) {
@@ -22,7 +21,7 @@ class RecipePage extends React.Component {
       canVoteDown: this.props.canVoteDown,
       comments: this.props.recipeComments,
       allComments: this.props.allComments,
-      userVote: this.props.userVotes,
+      userRecipeVote: this.props.userRecipeVotes,
       didVote: this.props.didVote,
       renderFooter: this.props.renderFooter,
 
@@ -48,7 +47,6 @@ class RecipePage extends React.Component {
     this.createComment = this.createComment.bind(this);
     this.deleteRecipe = this.deleteRecipe.bind(this);
     this.deleteComment = this.deleteComment.bind(this);
-    this.redirect = this.redirect.bind(this);
     this.renderCommentForm = this.renderCommentForm.bind(this);
     this.renderComments = this.renderComments.bind(this);
     this.showComments = this.showComments.bind(this);
@@ -134,18 +132,20 @@ class RecipePage extends React.Component {
     this.setState({ saving: true, isCommenting: false });
     let oldComment;
     const comment = this.state.comment;
+    console.log('New comment--->', comment);
+    console.log('Event from createComment---', event);
     if (!this.state.previous_comment) {
       oldComment = 0;
     } else {
       oldComment = this.state.previous_comment;
     }
 
-    console.log('THERE', this.state.allComments);
     comment.previous_comment = oldComment;
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
+    console.log('Current comment, previous comment--->', comment, oldComment);
     const newComment = this.props.actions.commentActions.createComment(
       comment,
       oldComment,
@@ -212,10 +212,6 @@ class RecipePage extends React.Component {
     });
   }
 
-  redirect() {
-    history.push('/recipes');
-  }
-
   voteUp() {
     this.props.actions.recipeActions.updateRecipe(this.state.recipe, 1);
     if (this.state.didVote) {
@@ -244,6 +240,16 @@ class RecipePage extends React.Component {
     );
   }
 
+  renderDownVote() {
+    return (
+      <li onClick={this.voteDown}>
+        <i className="material-icons" style={{ cursor: 'pointer' }}>
+          keyboard_arrow_down
+        </i>
+      </li>
+    );
+  }
+
   renderFooter() {
     return (
       <div>
@@ -260,16 +266,6 @@ class RecipePage extends React.Component {
           Delete
         </button>
       </div>
-    );
-  }
-
-  renderDownVote() {
-    return (
-      <li onClick={this.voteDown}>
-        <i className="material-icons" style={{ cursor: 'pointer' }}>
-          keyboard_arrow_down
-        </i>
-      </li>
     );
   }
 
@@ -374,7 +370,7 @@ function mapStateToProps(state, ownProps) {
   };
 
   let recipeComments = {};
-  let userVotes = {};
+  let userRecipeVotes = {};
   let canVote = true;
   let canVoteUp = false;
   let canVoteDown = false;
@@ -389,24 +385,24 @@ function mapStateToProps(state, ownProps) {
   if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);
     recipeComments = collectRecipeComments(state.comments, recipeId);
-    userVotes = collectUserVotes(state.votes, recipeId);
+    userRecipeVotes = collectUserVotes(state.votes, recipeId);
 
     if (recipe.user_id === user_id) {
       canVote = false;
       renderFooter = true;
-    } else if (userVotes[0]) {
-      if (userVotes[0].user_id === user_id) {
+    } else if (userRecipeVotes[0]) {
+      if (userRecipeVotes[0].user_id === user_id) {
         didVote = true;
 
-        if (userVotes[0].down) {
+        if (userRecipeVotes[0].down) {
           canVoteUp = true;
         }
 
-        if (userVotes[0].up) {
+        if (userRecipeVotes[0].up) {
           canVoteDown = true;
         }
 
-        if (!userVotes[0].up && !userVotes[0].down) {
+        if (!userRecipeVotes[0].up && !userRecipeVotes[0].down) {
           canVoteUp = true;
           canVoteDown = true;
         }
@@ -421,7 +417,7 @@ function mapStateToProps(state, ownProps) {
     recipe: recipe,
     recipeComments: recipeComments,
     canVote: canVote,
-    userVote: userVotes[0],
+    userVote: userRecipeVotes[0],
     canVoteUp: canVoteUp,
     canVoteDown: canVoteDown,
     didVote: didVote,

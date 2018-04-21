@@ -47,6 +47,18 @@ export function updateComment(comment, nextComment) {
   };
 }
 
+export function updateCommentVotes(comment) {
+  return function(dispatch) {
+    return CommentService.updateCommentVotes(comment)
+      .then(responseComment => {
+        dispatch(updateCommentSuccess(responseComment));
+      })
+      .catch(err => {
+        throw err;
+      });
+  };
+}
+
 export function loadCommentsSuccess(comments) {
   return { type: types.LOAD_COMMENTS_SUCCESS, comments };
 }

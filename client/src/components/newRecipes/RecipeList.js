@@ -24,7 +24,7 @@ class RecipeList extends React.Component {
           <li className="list-group-item" key={recipe.id}>
             <Link to={'/recipes/' + recipe.id}>
               <button className="waves-effect waves-teal btn-flat">
-                <i class="material-icons left">cloud</i>
+                <i className="material-icons left">cloud</i>
                 {recipe.name}
               </button>
             </Link>

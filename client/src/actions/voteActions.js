@@ -14,6 +14,7 @@ export function loadVotes() {
 }
 
 export function updateVote(vote, bool) {
+  console.log(vote, bool);
   return function(dispatch) {
     return VoteService.updateVote(vote, bool)
       .then(responseVote => {
@@ -26,6 +27,7 @@ export function updateVote(vote, bool) {
 }
 
 export function createVote(vote, bool) {
+  console.log(vote, bool);
   return function(dispatch) {
     return VoteService.createVote(vote, bool)
       .then(responseVote => {

@@ -1,6 +1,9 @@
 import * as types from './actionTypes';
 import sessionApi from '../services/SessionApi';
 import auth from '../auth/authenticator';
+import { loadRecipes } from './recipeActions';
+import { loadComments } from './commentActions';
+import { loadVotes } from './voteActions';
 
 export function loginSuccess() {
   return { type: types.LOG_IN_SUCCESS };
@@ -20,8 +23,11 @@ export function loginUser(credentials) {
         const name = user.fname + ' ' + user.lname;
         sessionStorage.setItem('jwt', jwt);
         sessionStorage.setItem('user_id', user.id);
-        sessionStorage.setItem('email', user.email)
-        sessionStorage.setItem('name', name)
+        sessionStorage.setItem('email', user.email);
+        sessionStorage.setItem('name', name);
+        dispatch(loadComments());
+        dispatch(loadRecipes());
+        dispatch(loadVotes());
         dispatch(loginSuccess());
       })
       .catch(error => {
@@ -41,8 +47,11 @@ export function signupUser(credentials) {
         const name = response.data.user.fname + response.data.user.lname;
         sessionStorage.setItem('jwt', jwt);
         sessionStorage.setItem('user_id', id);
-        sessionStorage.setItem('email', email)
-        sessionStorage.setItem('name', name)
+        sessionStorage.setItem('email', email);
+        sessionStorage.setItem('name', name);
+        dispatch(loadComments());
+        dispatch(loadRecipes());
+        dispatch(loadVotes());
         dispatch(signupSuccess());
       })
       .catch(error => {
