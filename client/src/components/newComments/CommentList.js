@@ -57,7 +57,7 @@ class CommentList extends React.Component {
   voteUp(comment) {
     this.props.actions.commentActions.updateCommentVotes(comment, 1);
     let userVote = this.getVoteById(comment.id);
-    if (userVote) {
+    if (userVote.id) {
       this.props.actions.commentVoteActions.updateCommentVote(userVote, 'up');
     } else {
       this.props.actions.commentVoteActions.createCommentVote(comment.id, 'up');
@@ -69,10 +69,7 @@ class CommentList extends React.Component {
     let userVote = this.getVoteById(comment.id);
     console.log(userVote.id, comment.id);
     if (userVote.id) {
-      this.props.actions.commentVoteActions.updateCommentVote(
-        userVote,
-        'down',
-      );
+      this.props.actions.commentVoteActions.updateCommentVote(userVote, 'down');
     } else {
       this.props.actions.commentVoteActions.createCommentVote(
         comment.id,
@@ -158,21 +155,26 @@ class CommentList extends React.Component {
     comment.index = index;
     let canVoteUp;
     let canVoteDown;
+    let voteMessage;
     const currentVote = this.getVoteById(comment.id);
     console.log(currentVote);
 
     if (currentVote) {
       if (currentVote.down) {
         canVoteUp = true;
+        voteMessage = 'You voted down';
       } else if (currentVote.up) {
         canVoteDown = true;
+        voteMessage = 'You voted up';
       } else {
         canVoteUp = true;
         canVoteDown = true;
+        voteMessage = 'You have no opinions...';
       }
     } else {
       canVoteUp = true;
       canVoteDown = true;
+      voteMessage = `You haven't voted yet...`;
     }
 
     console.log(currentVote);
@@ -182,8 +184,11 @@ class CommentList extends React.Component {
           <div className="card-content white-text">
             <li key={id}>
               <ul>
-                {canVoteUp ? this.renderUpVote(comment) : ''}
-                {canVoteDown ? this.renderDownVote(comment) : ''}
+                <p>
+                  {canVoteUp ? this.renderUpVote(comment) : ''}
+                  {canVoteDown ? this.renderDownVote(comment) : ''}
+                  {voteMessage}
+                </p>
               </ul>
               <h3>
                 Author: {comment.poster_name} : {comment.index}

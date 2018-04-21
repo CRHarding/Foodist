@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :update, :destroy]
   def index
-    @comments = Comment.all
+    @comments = Comment.order(comment_votes: :desc, created_at: :desc)
     render json: {
       message: "Got all the comments",
       data: @comments

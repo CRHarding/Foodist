@@ -24,6 +24,7 @@ class RecipePage extends React.Component {
       userRecipeVote: this.props.userRecipeVotes,
       didVote: this.props.didVote,
       renderFooter: this.props.renderFooter,
+      voteMessage: this.props.voteMessage,
 
       currentComment: null,
       comment: {
@@ -102,6 +103,10 @@ class RecipePage extends React.Component {
 
     if (this.props.renderFooter !== nextProps.renderFooter) {
       this.setState({ renderFooter: nextProps.renderFooter });
+    }
+
+    if (this.props.voteMessage !== nextProps.voteMessage) {
+      this.setState({ voteMessage: nextProps.voteMessage });
     }
 
     this.setState({ saving: false, isEditing: false });
@@ -297,8 +302,11 @@ class RecipePage extends React.Component {
           <div className="card blue-grey darken-1">
             <div className="card-content white-text">
               <ul>
-                {this.state.canVoteUp ? this.renderUpVote() : ''}
-                {this.state.canVoteDown ? this.renderDownVote() : ''}
+                <p>
+                  {this.state.canVoteUp ? this.renderUpVote() : ''}
+                  {this.state.canVoteDown ? this.renderDownVote() : ''}
+                  {this.state.voteMessage}
+                </p>
               </ul>
               <h4>Name: {this.state.recipe.name}</h4>
               <p>Ingredients: {this.state.recipe.ingredient_list}</p>
@@ -376,6 +384,7 @@ function mapStateToProps(state, ownProps) {
   let canVoteDown = false;
   let didVote = false;
   let renderFooter = false;
+  let voteMessage = '';
 
   const allComments = state.comments;
 
@@ -396,20 +405,24 @@ function mapStateToProps(state, ownProps) {
 
         if (userRecipeVotes[0].down) {
           canVoteUp = true;
+          voteMessage = 'You voted down';
         }
 
         if (userRecipeVotes[0].up) {
           canVoteDown = true;
+          voteMessage = 'You voted up';
         }
 
         if (!userRecipeVotes[0].up && !userRecipeVotes[0].down) {
           canVoteUp = true;
           canVoteDown = true;
+          voteMessage = 'You have no opinion...';
         }
       }
     } else {
       canVoteUp = true;
       canVoteDown = true;
+      voteMessage = `You haven't voted yet...`;
     }
   }
 
@@ -423,6 +436,7 @@ function mapStateToProps(state, ownProps) {
     didVote: didVote,
     allComments: allComments,
     renderFooter: renderFooter,
+    voteMessage: voteMessage,
   };
 }
 

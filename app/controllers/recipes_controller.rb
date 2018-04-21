@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :update, :destroy]
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.order(votes: :desc, created_at: :desc)
     render json: {
       message: "Got all the recipes",
       data: @recipes
