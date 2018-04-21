@@ -13,8 +13,9 @@ class CommentList extends React.Component {
       comments: Array.from(this.props.comments),
       user: this.props.user,
       previous_id: this.props.previousCommentId,
-      didVote: false,
       userVotes: this.props.userVotes,
+      canVoteUp: this.props.canVoteUp,
+      canVoteDown: this.props.canVoteDown,
     };
     this.handleClick = this.handleClick.bind(this);
     this.renderNestedComments = this.renderNestedComments.bind(this);
@@ -26,13 +27,21 @@ class CommentList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log(nextProps);
+    console.log('NEXT PROPS, THIS.PROPS--->', nextProps, this.props);
     if (nextProps.comments !== this.props.comments) {
       this.setState({ comments: Array.from(nextProps.comments) });
     }
 
     if (nextProps.userVotes !== this.props.userVotes) {
       this.setState({ userVotes: nextProps.userVotes });
+    }
+
+    if (this.props.canVoteUp !== nextProps.canVoteUp) {
+      this.setState({ canVoteUp: nextProps.canVoteUp });
+    }
+
+    if (this.props.canVoteDown !== nextProps.canVoteDown) {
+      this.setState({ canVoteDown: nextProps.canVoteDown });
     }
   }
 
@@ -46,21 +55,29 @@ class CommentList extends React.Component {
   }
 
   voteUp(comment) {
-    console.log(comment);
     this.props.actions.commentActions.updateCommentVotes(comment, 1);
-    if (this.state.didVote) {
-      this.props.actions.commentVoteActions.updateVote(this.props.userVote.id, 'up');
+    let userVote = this.getVoteById(comment.id);
+    if (userVote) {
+      this.props.actions.commentVoteActions.updateCommentVote(userVote, 'up');
     } else {
-      this.props.actions.commentVoteActions.createVote(comment.id, 'up');
+      this.props.actions.commentVoteActions.createCommentVote(comment.id, 'up');
     }
   }
 
   voteDown(comment) {
     this.props.actions.commentActions.updateCommentVotes(comment, -1);
-    if (this.state.didVote) {
-      this.props.actions.commentVoteActions.updateVote(this.props.userVote.id, 'down');
+    let userVote = this.getVoteById(comment.id);
+    console.log(userVote.id, comment.id);
+    if (userVote.id) {
+      this.props.actions.commentVoteActions.updateCommentVote(
+        userVote,
+        'down',
+      );
     } else {
-      this.props.actions.commentVoteActions.createVote(comment.id, 'down');
+      this.props.actions.commentVoteActions.createCommentVote(
+        comment.id,
+        'down',
+      );
     }
   }
 
@@ -101,27 +118,12 @@ class CommentList extends React.Component {
 
   renderUser(comment, id, index) {
     comment.index = index;
-    let canVoteUp;
-    let canVoteDown;
-    const currentVote = this.getVoteById(id);
-    console.log(currentVote);
-    if (currentVote) {
-      if (currentVote.down) {
-        canVoteUp = true;
-      } else if (currentVote.up) {
-        canVoteDown = true;
-      }
-    }
 
     return (
       <div className="col s9">
         <div className="card blue-grey lighten-1">
           <div className="card-content white-text">
             <li key={id}>
-              <ul>
-                {canVoteUp ? this.renderUpVote(comment) : ''}
-                {canVoteDown ? this.renderDownVote(comment) : ''}
-              </ul>
               <h3>
                 Author: {comment.poster_name} : {comment.index}
               </h3>
@@ -144,11 +146,11 @@ class CommentList extends React.Component {
   }
 
   getVoteById(id) {
-    console.log(this.state.userVotes, id);
-    if (this.state.userVotes) {
-      let vote = this.state.userVotes.find(vote => vote.user_id === id);
-      console.log(vote);
+    if (this.state.userVotes.length > 0) {
+      let vote = this.state.userVotes.find(vote => vote.voter_id === id);
       return Object.assign({}, vote);
+    } else {
+      return null;
     }
   }
 
@@ -156,20 +158,24 @@ class CommentList extends React.Component {
     comment.index = index;
     let canVoteUp;
     let canVoteDown;
-    const currentVote = this.getVoteById(id);
+    const currentVote = this.getVoteById(comment.id);
     console.log(currentVote);
 
-    if (currentVote.down) {
-      canVoteUp = true;
-    } else if (currentVote.up) {
-      canVoteDown = true;
+    if (currentVote) {
+      if (currentVote.down) {
+        canVoteUp = true;
+      } else if (currentVote.up) {
+        canVoteDown = true;
+      } else {
+        canVoteUp = true;
+        canVoteDown = true;
+      }
     } else {
       canVoteUp = true;
       canVoteDown = true;
     }
 
-    console.log(canVoteUp, canVoteDown);
-
+    console.log(currentVote);
     return (
       <div className="col s9">
         <div className="card blue-grey darken-3">
@@ -240,9 +246,9 @@ function mapStateToProps(state, ownProps) {
   const userId = parseInt(sessionStorage.user_id);
 
   let userCommentVotes = {};
-  const allComments = state.comments;
+  const allComments = ownProps.comments;
 
-  userCommentVotes = collectUserVotes(state.votes, userId);
+  userCommentVotes = collectUserVotes(state.commentVotes, userId);
 
   return {
     comments: ownProps.comments,

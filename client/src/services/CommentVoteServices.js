@@ -61,11 +61,12 @@ class CommentVoteServices {
 
     return axios({
       method: 'PUT',
-      url: `/api/comment_votes/${vote}`,
+      url: `/api/comment_votes/${vote.id}`,
       headers: headers,
       data: {
+        id: vote.id,
         user_id: sessionStorage.user_id,
-        voter_id: vote.id,
+        voter_id: vote.voter_id,
         up: up,
         down: down,
       },

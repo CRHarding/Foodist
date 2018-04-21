@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import initialState from './initialState';
 
-export default function commentVoteReducer(state = initialState.votes, action) {
+export default function commentVoteReducer(state = initialState.commentVotes, action) {
   switch (action.type) {
     case types.LOAD_COMMENT_VOTES_SUCCESS:
       return action.comments.data.data;
