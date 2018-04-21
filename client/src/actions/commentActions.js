@@ -13,7 +13,6 @@ export function loadComments() {
 
 export function createComment(comment, id) {
   return function(dispatch) {
-    console.log(comment, id);
     return CommentService.createComment(comment, id)
       .then(newComment => {
         if (id.title) {
@@ -48,7 +47,6 @@ export function updateComment(comment, nextComment) {
 }
 
 export function updateCommentVotes(comment, num) {
-  console.log(num);
   return function(dispatch) {
     return CommentService.updateCommentVotes(comment, num)
       .then(responseComment => {

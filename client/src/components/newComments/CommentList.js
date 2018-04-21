@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import * as commentActions from '../../actions/commentActions';
-import * as voteActions from '../../actions/voteActions';
+import * as commentVoteActions from '../../actions/commentVoteActions';
 import { bindActionCreators } from 'redux';
 
 let arr = [];
@@ -14,7 +14,7 @@ class CommentList extends React.Component {
       user: this.props.user,
       previous_id: this.props.previousCommentId,
       didVote: false,
-      userVotes: null,
+      userVotes: this.props.userVotes,
     };
     this.handleClick = this.handleClick.bind(this);
     this.renderNestedComments = this.renderNestedComments.bind(this);
@@ -26,8 +26,13 @@ class CommentList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log(nextProps);
     if (nextProps.comments !== this.props.comments) {
       this.setState({ comments: Array.from(nextProps.comments) });
+    }
+
+    if (nextProps.userVotes !== this.props.userVotes) {
+      this.setState({ userVotes: nextProps.userVotes });
     }
   }
 
@@ -44,18 +49,18 @@ class CommentList extends React.Component {
     console.log(comment);
     this.props.actions.commentActions.updateCommentVotes(comment, 1);
     if (this.state.didVote) {
-      this.props.actions.voteActions.updateVote(this.props.userVote.id, 'up');
+      this.props.actions.commentVoteActions.updateVote(this.props.userVote.id, 'up');
     } else {
-      this.props.actions.voteActions.createVote(comment.id, 'up');
+      this.props.actions.commentVoteActions.createVote(comment.id, 'up');
     }
   }
 
   voteDown(comment) {
     this.props.actions.commentActions.updateCommentVotes(comment, -1);
     if (this.state.didVote) {
-      this.props.actions.voteActions.updateVote(this.props.userVote.id, 'down');
+      this.props.actions.commentVoteActions.updateVote(this.props.userVote.id, 'down');
     } else {
-      this.props.actions.voteActions.createVote(comment.id, 'down');
+      this.props.actions.commentVoteActions.createVote(comment.id, 'down');
     }
   }
 
@@ -99,6 +104,7 @@ class CommentList extends React.Component {
     let canVoteUp;
     let canVoteDown;
     const currentVote = this.getVoteById(id);
+    console.log(currentVote);
     if (currentVote) {
       if (currentVote.down) {
         canVoteUp = true;
@@ -106,8 +112,6 @@ class CommentList extends React.Component {
         canVoteDown = true;
       }
     }
-
-    console.log(comment);
 
     return (
       <div className="col s9">
@@ -140,9 +144,10 @@ class CommentList extends React.Component {
   }
 
   getVoteById(id) {
-    console.log(this.state.userVotes);
+    console.log(this.state.userVotes, id);
     if (this.state.userVotes) {
-      let vote = this.state.userVotes.find(vote => vote.voter_id === id);
+      let vote = this.state.userVotes.find(vote => vote.user_id === id);
+      console.log(vote);
       return Object.assign({}, vote);
     }
   }
@@ -152,19 +157,19 @@ class CommentList extends React.Component {
     let canVoteUp;
     let canVoteDown;
     const currentVote = this.getVoteById(id);
-    if (currentVote) {
-      if (currentVote.down) {
-        canVoteUp = true;
-      } else if (currentVote.up) {
-        canVoteDown = true;
-      }
+    console.log(currentVote);
+
+    if (currentVote.down) {
+      canVoteUp = true;
+    } else if (currentVote.up) {
+      canVoteDown = true;
     } else {
       canVoteUp = true;
       canVoteDown = true;
     }
 
-    console.log(comment);
-    
+    console.log(canVoteUp, canVoteDown);
+
     return (
       <div className="col s9">
         <div className="card blue-grey darken-3">
@@ -249,7 +254,7 @@ function mapDispatchToProps(dispatch) {
   return {
     actions: {
       commentActions: bindActionCreators(commentActions, dispatch),
-      voteActions: bindActionCreators(voteActions, dispatch),
+      commentVoteActions: bindActionCreators(commentVoteActions, dispatch),
     },
   };
 }

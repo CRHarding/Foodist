@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415172441) do
+ActiveRecord::Schema.define(version: 20180421193852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comment_votes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "voter_id"
+    t.boolean "up"
+    t.boolean "down"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer "poster_id"

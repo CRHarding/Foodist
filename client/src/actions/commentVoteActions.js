@@ -1,9 +1,9 @@
-import VoteService from '../services/VoteServices';
+import CommentVoteService from '../services/CommentVoteServices';
 import * as types from './actionTypes';
 
 export function loadVotes() {
   return function(dispatch) {
-    return VoteService.getAllVotes()
+    return CommentVoteService.getAllVotes()
       .then(votes => {
         dispatch(loadVotesSuccess(votes));
       })
@@ -14,8 +14,9 @@ export function loadVotes() {
 }
 
 export function updateVote(vote, bool) {
+  console.log(vote, bool);
   return function(dispatch) {
-    return VoteService.updateVote(vote, bool)
+    return CommentVoteService.updateVote(vote, bool)
       .then(responseVote => {
         dispatch(updateVoteSuccess(responseVote));
       })
@@ -26,8 +27,9 @@ export function updateVote(vote, bool) {
 }
 
 export function createVote(vote, bool) {
+  console.log(vote, bool);
   return function(dispatch) {
-    return VoteService.createVote(vote, bool)
+    return CommentVoteService.createVote(vote, bool)
       .then(responseVote => {
         dispatch(createVoteSuccess(responseVote));
         return responseVote;
@@ -38,14 +40,14 @@ export function createVote(vote, bool) {
   };
 }
 
-export function loadVotesSuccess(recipes) {
-  return { type: types.LOAD_VOTES_SUCCESS, recipes };
+export function loadVotesSuccess(comments) {
+  return { type: types.LOAD_COMMENT_VOTES_SUCCESS, comments };
 }
 
-export function updateVoteSuccess(recipe) {
-  return { type: types.UPDATE_VOTE_SUCCESS, recipe };
+export function updateVoteSuccess(comment) {
+  return { type: types.UPDATE_COMMENT_VOTE_SUCCESS, comment };
 }
 
-export function createVoteSuccess(recipe) {
-  return { type: types.CREATE_VOTE_SUCCESS, recipe };
+export function createVoteSuccess(comment) {
+  return { type: types.CREATE_COMMENT_VOTE_SUCCESS, comment };
 }

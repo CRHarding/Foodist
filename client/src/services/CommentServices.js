@@ -22,7 +22,6 @@ class CommentServices {
 
   createComment(comment, previousComment) {
     const headers = this.requestHeaders();
-    console.log(comment, previousComment);
     return axios({
       method: 'POST',
       url: '/api/comments',
@@ -42,7 +41,6 @@ class CommentServices {
   }
 
   updateComment(comment, nextComment) {
-    console.log(comment, nextComment);
     const newComment = nextComment.data.comment;
     if (!newComment) {
       nextComment.id === 0;
@@ -68,7 +66,6 @@ class CommentServices {
   }
 
   updateCommentVotes(comment, num) {
-    console.log(num);
     comment.comment_votes = comment.comment_votes + num;
     const headers = this.requestHeaders();
     return axios({
