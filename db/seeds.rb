@@ -37,7 +37,7 @@ Comment.create ([
     title: "Bad!",
     description: "This thing sucks. Add in pepper!",
     previous_comment: 0,
-    next_comment: 2,
+    next_comments: [],
     comment_votes: 0
   },
   {
@@ -47,8 +47,8 @@ Comment.create ([
     recipe_id: 3,
     title: "I love this!!!",
     description: "Best recipe ever!",
-    previous_comment: 1,
-    next_comment: 3,
+    previous_comment: 0,
+    next_comments: [],
     comment_votes: 0
   },
   {
@@ -58,8 +58,8 @@ Comment.create ([
     recipe_id: 3,
     title: "This guy sucks...",
     description: "What's the deal with this guy?",
-    previous_comment: 2,
-    next_comment: 0,
+    previous_comment: 0,
+    next_comments: [],
     comment_votes: 0
   }
 ])

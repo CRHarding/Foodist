@@ -16,7 +16,8 @@ export function createComment(comment, id) {
     return CommentService.createComment(comment, id)
       .then(newComment => {
         if (id.title) {
-          return CommentService.updateComment(comment, newComment)
+          console.log(id, newComment);
+          return CommentService.updateComment(id, newComment)
             .then(responseComment => {
               dispatch(createCommentSuccess(newComment));
               dispatch(updateCommentSuccess(responseComment));

@@ -27,7 +27,6 @@ class CommentList extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log('NEXT PROPS, THIS.PROPS--->', nextProps, this.props);
     if (nextProps.comments !== this.props.comments) {
       this.setState({ comments: Array.from(nextProps.comments) });
     }
@@ -67,7 +66,6 @@ class CommentList extends React.Component {
   voteDown(comment) {
     this.props.actions.commentActions.updateCommentVotes(comment, -1);
     let userVote = this.getVoteById(comment.id);
-    console.log(userVote.id, comment.id);
     if (userVote.id) {
       this.props.actions.commentVoteActions.updateCommentVote(userVote, 'down');
     } else {
@@ -114,16 +112,15 @@ class CommentList extends React.Component {
   }
 
   renderUser(comment, id, index) {
-    comment.index = index;
-
+    let cardStyle = {
+      margin: '0px 0px 0px 155px',
+    };
     return (
       <div className="col s9">
-        <div className="card blue-grey lighten-1">
+        <div className="card blue-grey lighten-1" style={cardStyle}>
           <div className="card-content white-text">
             <li key={id}>
-              <h3>
-                Author: {comment.poster_name} : {comment.index}
-              </h3>
+              <h3>Author: {comment.poster_name}</h3>
               <h4>Title: {comment.title}</h4>
               <p>Comment: {comment.description}</p>
               <p>Votes: {comment.comment_votes}</p>
@@ -152,12 +149,10 @@ class CommentList extends React.Component {
   }
 
   renderNonUser(comment, id, index) {
-    comment.index = index;
     let canVoteUp;
     let canVoteDown;
     let voteMessage;
     const currentVote = this.getVoteById(comment.id);
-    console.log(currentVote);
 
     if (currentVote) {
       if (currentVote.down) {
@@ -177,12 +172,18 @@ class CommentList extends React.Component {
       voteMessage = `You haven't voted yet...`;
     }
 
-    console.log(currentVote);
+    index = index * 250;
+    index = index.toString();
+
+    let cardStyle = {
+      padding: `${index}px`,
+    };
+
     return (
       <div className="col s9">
         <div className="card blue-grey darken-3">
           <div className="card-content white-text">
-            <li key={id}>
+            <li key={id} style={cardStyle}>
               <ul>
                 <p>
                   {canVoteUp ? this.renderUpVote(comment) : ''}
@@ -191,7 +192,7 @@ class CommentList extends React.Component {
                 </p>
               </ul>
               <h3>
-                Author: {comment.poster_name} : {comment.index}
+                Author: {comment.poster_name}
               </h3>
               <h4>Title: {comment.title}</h4>
               <p>Comment: {comment.description}</p>
@@ -213,23 +214,16 @@ class CommentList extends React.Component {
 
   render() {
     return (
-      <div className="row">
+      <div className="container">
         <ul>
           {this.state.comments.map((comment, id) => (
-            <div>
+            <div className="row">
               {comment.poster_id === parseInt(sessionStorage.user_id)
                 ? this.renderUser(comment, id, 0)
                 : this.renderNonUser(comment, id, 0)}
               {comment.next_comment !== 0
                 ? this.renderNestedComments(comment, 0)
                 : ''}
-            </div>
-          ))}
-          {arr.map((comment, id) => (
-            <div className="col s10">
-              {comment.poster_id === parseInt(sessionStorage.user_id)
-                ? this.renderUser(comment, id)
-                : this.renderNonUser(comment, id)}
             </div>
           ))}
         </ul>
@@ -247,16 +241,27 @@ function collectUserVotes(votes, userId) {
   return selected.filter(el => el !== undefined);
 }
 
+function collectBaseComments(comments) {
+  let selected = comments.map(comment => {
+    if (comment.previous_comment === 0 || !comment.previous_comment) {
+      return comment;
+    }
+  });
+  selected = selected.filter(el => el !== undefined)
+  return selected;
+}
+
 function mapStateToProps(state, ownProps) {
   const userId = parseInt(sessionStorage.user_id);
 
   let userCommentVotes = {};
   const allComments = ownProps.comments;
-
+  const baseComments = collectBaseComments(allComments);
   userCommentVotes = collectUserVotes(state.commentVotes, userId);
 
   return {
-    comments: ownProps.comments,
+    baseComments: baseComments,
+    comments: allComments,
     userVotes: userCommentVotes,
   };
 }
@@ -271,3 +276,11 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
+
+// {arr.map((comment, id) => (
+//   <div className="col s10">
+//     {comment.poster_id === parseInt(sessionStorage.user_id)
+//       ? this.renderUser(comment, id)
+//       : this.renderNonUser(comment, id)}
+//   </div>
+// ))}

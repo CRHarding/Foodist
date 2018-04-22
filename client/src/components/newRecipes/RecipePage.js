@@ -56,60 +56,83 @@ class RecipePage extends React.Component {
     console.log(sessionStorage);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.recipe.id !== nextProps.recipe.id) {
-      this.setState({ recipe: nextProps.recipe });
+  static getDerivedStateFromProps(nextProps, prevState) {
+    let saving;
+    let isEditing;
+    let voteMessage;
+    let renderFooter;
+    let didVote;
+    let canVoteDown;
+    let canVoteUp;
+    let canVote;
+    let allComments;
+    let comments;
+    let recipe;
+
+    if (prevState.recipe.id !== nextProps.recipe.id) {
+      recipe = nextProps.recipe;
     } else {
-      this.setState({ recipe: this.props.recipe });
+      recipe = prevState.recipe;
     }
 
-    if (this.props.comments) {
-      if (this.props.comments.length < nextProps.comments.length) {
-        this.setState({ comments: nextProps.comments });
+    if (prevState.comments && nextProps.comments) {
+      if (prevState.comments.length < nextProps.comments.length) {
+        comments = nextProps.comments;
       }
     }
 
-    if (this.props.allComments) {
-      if (this.props.allComments.length < nextProps.allComments.length) {
-        this.setState({ allComments: nextProps.allComments });
+    if (prevState.allComments) {
+      if (prevState.allComments.length < nextProps.allComments.length) {
+        allComments = nextProps.allComments;
       }
     }
 
-    if (this.props.recipe.votes !== nextProps.recipe.votes) {
-      this.setState({ recipe: nextProps.recipe });
+    if (prevState.recipe.votes !== nextProps.recipe.votes) {
+      recipe.votes = nextProps.recipe.votes;
     } else {
-      this.setState({ recipe: this.props.recipe });
+      recipe.votes = prevState.recipe.votes;
     }
 
-    if (this.props.recipe.user_id !== nextProps.recipe.user_id) {
+    if (prevState.recipe.user_id !== nextProps.recipe.user_id) {
       if (nextProps.recipe.user_id === parseInt(sessionStorage.user_id)) {
-        this.setState({ canVote: false });
+        canVote = false;
       } else {
-        this.setState({ canVote: true });
+        canVote = true;
       }
     }
 
-    if (this.props.canVoteUp !== nextProps.canVoteUp) {
-      this.setState({ canVoteUp: nextProps.canVoteUp });
+    if (prevState.canVoteUp !== nextProps.canVoteUp) {
+      canVoteUp = nextProps.canVoteUp;
     }
 
-    if (this.props.canVoteDown !== nextProps.canVoteDown) {
-      this.setState({ canVoteDown: nextProps.canVoteDown });
+    if (prevState.canVoteDown !== nextProps.canVoteDown) {
+      canVoteDown = nextProps.canVoteDown;
     }
 
-    if (this.props.didVote !== nextProps.didVote) {
-      this.setState({ didVote: nextProps.didVote });
+    if (prevState.didVote !== nextProps.didVote) {
+      didVote = nextProps.didVote;
     }
 
-    if (this.props.renderFooter !== nextProps.renderFooter) {
-      this.setState({ renderFooter: nextProps.renderFooter });
+    if (prevState.renderFooter !== nextProps.renderFooter) {
+      renderFooter = nextProps.renderFooter;
     }
 
-    if (this.props.voteMessage !== nextProps.voteMessage) {
-      this.setState({ voteMessage: nextProps.voteMessage });
+    if (prevState.voteMessage !== nextProps.voteMessage) {
+      voteMessage = nextProps.voteMessage;
     }
-
-    this.setState({ saving: false, isEditing: false });
+    return {
+      saving: false,
+      isEditing: false,
+      voteMessage: voteMessage,
+      renderFooter: renderFooter,
+      didVote: didVote,
+      canVoteDown: canVoteDown,
+      canVoteUp: canVoteUp,
+      canVote: canVote,
+      allComments: allComments,
+      comments: comments,
+      recipe: recipe,
+    };
   }
 
   updateRecipeState(event) {
@@ -145,7 +168,7 @@ class RecipePage extends React.Component {
       oldComment = this.state.previous_comment;
     }
 
-    comment.previous_comment = oldComment;
+    comment.previous_comment = oldComment.id;
     comment.recipe_id = this.state.recipe.id;
     comment.poster_id = sessionStorage.user_id;
     comment.poster_name = sessionStorage.name;

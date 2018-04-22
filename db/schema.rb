@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180421193852) do
+ActiveRecord::Schema.define(version: 20180422152519) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,12 +30,12 @@ ActiveRecord::Schema.define(version: 20180421193852) do
     t.string "description"
     t.integer "comment_votes"
     t.integer "previous_comment"
-    t.integer "next_comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "title"
     t.string "poster_email"
     t.string "poster_name"
+    t.integer "next_comments", default: [], null: false, array: true
   end
 
   create_table "recipes", force: :cascade do |t|
