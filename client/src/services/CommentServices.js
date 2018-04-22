@@ -20,7 +20,7 @@ class CommentServices {
       });
   }
 
-  createComment(comment, previousComment) {
+  createComment(newComment, oldComment) {
     const headers = this.requestHeaders();
     return axios({
       method: 'POST',
@@ -30,37 +30,33 @@ class CommentServices {
         poster_email: sessionStorage.email,
         poster_name: sessionStorage.name,
         poster_id: sessionStorage.user_id,
-        recipe_id: comment.recipe_id,
-        title: comment.title,
-        description: comment.description,
-        previous_comment: previousComment.id,
-        next_comment: 0,
+        recipe_id: newComment.recipe_id,
+        title: newComment.title,
+        description: newComment.description,
+        previous_comment: oldComment.id,
+        next_comments: [],
         comment_votes: 0,
       },
     });
   }
 
-  updateComment(comment, nextComment) {
-    const newComment = nextComment.data.comment;
-    if (!newComment) {
-      nextComment.id === 0;
-    }
-    console.log(comment, nextComment);
+  updateComment(oldComment, nextComment) {
+    console.log(oldComment);
     const headers = this.requestHeaders();
     return axios({
       method: 'PUT',
-      url: `/api/comments/${comment.previous_comment.id}`,
+      url: `/api/comments/${oldComment.id}`,
       headers: headers,
       data: {
-        poster_email: comment.previous_comment.poster_email,
-        poster_name: comment.previous_comment.poster_name,
-        poster_id: comment.previous_comment.poster_id,
-        recipe_id: comment.previous_comment.recipe_id,
-        title: comment.previous_comment.title,
-        description: comment.previous_comment.description,
-        previous_comment: comment.previous_comment.id,
-        next_comment: newComment.id,
-        comment_votes: comment.previous_comment.comment_votes,
+        poster_email: oldComment.previous_comment.poster_email,
+        poster_name: oldComment.previous_comment.poster_name,
+        poster_id: oldComment.previous_comment.poster_id,
+        recipe_id: oldComment.previous_comment.recipe_id,
+        title: oldComment.previous_comment.title,
+        description: oldComment.previous_comment.description,
+        previous_comment: oldComment.previous_comment.id,
+        next_comments: oldComment.next_comments,
+        comment_votes: oldComment.previous_comment.comment_votes,
       },
     });
   }
@@ -80,7 +76,7 @@ class CommentServices {
         title: comment.title,
         description: comment.description,
         previous_comment: comment.previous_comment,
-        next_comment: comment.next_comment,
+        next_comments: comment.next_comments,
         comment_votes: comment.comment_votes,
       },
     });
@@ -99,7 +95,7 @@ class CommentServices {
         title: comment.title,
         description: comment.description,
         previous_comment: comment.previous_comment,
-        next_comment: comment.next_comment,
+        next_comments: comment.next_comments,
         comment_votes: comment.comment_votes,
       },
     });

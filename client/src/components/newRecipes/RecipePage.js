@@ -14,7 +14,6 @@ class RecipePage extends React.Component {
     this.state = {
       isEditing: false,
       isCommenting: false,
-      saving: false,
       recipe: this.props.recipe,
       canVote: this.props.canVote,
       canVoteUp: this.props.canVoteUp,
@@ -57,7 +56,6 @@ class RecipePage extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    let saving;
     let isEditing;
     let voteMessage;
     let renderFooter;
@@ -121,7 +119,6 @@ class RecipePage extends React.Component {
       voteMessage = nextProps.voteMessage;
     }
     return {
-      saving: false,
       isEditing: false,
       voteMessage: voteMessage,
       renderFooter: renderFooter,
@@ -151,17 +148,16 @@ class RecipePage extends React.Component {
 
   saveRecipe(event) {
     event.preventDefault();
-    this.setState({ saving: true });
     this.props.actions.recipeActions.updateRecipe(this.state.recipe, 0);
   }
 
   createComment(event) {
     event.preventDefault();
-    this.setState({ saving: true, isCommenting: false });
+    this.setState({ isCommenting: false });
     let oldComment;
     const comment = this.state.comment;
     console.log('New comment--->', comment);
-    console.log('Event from createComment---', event);
+
     if (!this.state.previous_comment) {
       oldComment = 0;
     } else {
@@ -193,7 +189,6 @@ class RecipePage extends React.Component {
                 description={this.state.comment.description}
                 onSave={this.createComment}
                 onChange={this.updateCommentState}
-                saving={this.state.saving}
               />
             </div>
           </div>
@@ -309,7 +304,6 @@ class RecipePage extends React.Component {
             instruction_list={this.state.recipe.instruction_list}
             onSave={this.saveRecipe}
             onChange={this.updateRecipeState}
-            saving={this.state.saving}
           />
         </div>
       );

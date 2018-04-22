@@ -11,13 +11,14 @@ export function loadComments() {
   };
 }
 
-export function createComment(comment, id) {
-  return function(dispatch) {
-    return CommentService.createComment(comment, id)
+export function createComment(newComment, oldComment) {
+  return function (dispatch) {
+    return CommentService.createComment(newComment, oldComment)
       .then(newComment => {
-        if (id.title) {
-          console.log(id, newComment);
-          return CommentService.updateComment(id, newComment)
+        if (oldComment.title) {
+          oldComment.next_comments.push(newComment.data.comment.id);
+          console.log(oldComment, newComment.data.comment);
+          return CommentService.updateComment(oldComment, newComment)
             .then(responseComment => {
               dispatch(createCommentSuccess(newComment));
               dispatch(updateCommentSuccess(responseComment));
@@ -26,6 +27,7 @@ export function createComment(comment, id) {
               throw err;
             });
         }
+
         dispatch(createCommentSuccess(newComment));
         return newComment;
       })
