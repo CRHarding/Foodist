@@ -1,6 +1,6 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { Router, Route, Redirect, Switch } from 'react-router-dom';
+import { Router, Route, Redirect } from 'react-router-dom';
 import RecipesPage from '../components/newRecipes/RecipesPage';
 import RecipePage from '../components/newRecipes/RecipePage';
 import history from '../components/history';

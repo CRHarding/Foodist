@@ -56,7 +56,6 @@ class RecipePage extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    let isEditing;
     let voteMessage;
     let renderFooter;
     let didVote;
@@ -76,12 +75,16 @@ class RecipePage extends React.Component {
     if (prevState.comments && nextProps.comments) {
       if (prevState.comments.length < nextProps.comments.length) {
         comments = nextProps.comments;
+      } else {
+        comments = prevState.comments;
       }
     }
 
     if (prevState.allComments) {
       if (prevState.allComments.length < nextProps.allComments.length) {
         allComments = nextProps.allComments;
+      } else {
+        allComments = prevState.allComments;
       }
     }
 
@@ -92,7 +95,7 @@ class RecipePage extends React.Component {
     }
 
     if (prevState.recipe.user_id !== nextProps.recipe.user_id) {
-      if (nextProps.recipe.user_id === parseInt(sessionStorage.user_id)) {
+      if (nextProps.recipe.user_id === parseInt(sessionStorage.user_id, 10)) {
         canVote = false;
       } else {
         canVote = true;
@@ -101,23 +104,34 @@ class RecipePage extends React.Component {
 
     if (prevState.canVoteUp !== nextProps.canVoteUp) {
       canVoteUp = nextProps.canVoteUp;
+    } else {
+      canVoteUp = prevState.canVoteUp;
     }
 
     if (prevState.canVoteDown !== nextProps.canVoteDown) {
       canVoteDown = nextProps.canVoteDown;
+    } else {
+      canVoteDown = prevState.canVoteDown;
     }
 
     if (prevState.didVote !== nextProps.didVote) {
       didVote = nextProps.didVote;
+    } else {
+      didVote = prevState.didVote;
     }
 
     if (prevState.renderFooter !== nextProps.renderFooter) {
       renderFooter = nextProps.renderFooter;
+    } else {
+      renderFooter = prevState.renderFooter;
     }
 
     if (prevState.voteMessage !== nextProps.voteMessage) {
       voteMessage = nextProps.voteMessage;
+    } else {
+      voteMessage = prevState.voteMessage;
     }
+
     return {
       isEditing: false,
       voteMessage: voteMessage,
@@ -170,10 +184,7 @@ class RecipePage extends React.Component {
     comment.poster_name = sessionStorage.name;
     comment.poster_email = sessionStorage.email;
     console.log('Current comment, previous comment--->', comment, oldComment);
-    const newComment = this.props.actions.commentActions.createComment(
-      comment,
-      oldComment,
-    );
+    this.props.actions.commentActions.createComment(comment, oldComment);
   }
 
   renderCommentForm() {
@@ -367,7 +378,7 @@ function collectRecipeComments(comments, id) {
 function collectUserVotes(votes, recipeId) {
   let selected = votes.map(vote => {
     if (
-      vote.user_id === parseInt(sessionStorage.user_id) &&
+      vote.user_id === parseInt(sessionStorage.user_id, 10) &&
       vote.voter_id === recipeId
     ) {
       return vote;
@@ -379,10 +390,6 @@ function collectUserVotes(votes, recipeId) {
 function getRecipeById(recipes, id) {
   let recipe = recipes.find(recipe => recipe.id === id);
   return Object.assign({}, recipe);
-}
-
-function getVoteId(votes) {
-  let voteId = votes;
 }
 
 function mapStateToProps(state, ownProps) {
@@ -405,8 +412,8 @@ function mapStateToProps(state, ownProps) {
 
   const allComments = state.comments;
 
-  const user_id = parseInt(sessionStorage.user_id);
-  const recipeId = parseInt(ownProps.match.params.id);
+  const user_id = parseInt(sessionStorage.user_id, 10);
+  const recipeId = parseInt(ownProps.match.params.id, 10);
 
   if (recipeId && state.recipes.length > 0 && state.comments) {
     recipe = getRecipeById(state.recipes, recipeId);

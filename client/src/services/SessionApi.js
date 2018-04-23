@@ -12,7 +12,6 @@ class SessionApi {
   }
 
   static signup(credentials) {
-    console.log(credentials);
     return axios({
       method: 'POST',
       url: '/api/users',

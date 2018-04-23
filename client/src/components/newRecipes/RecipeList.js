@@ -1,5 +1,4 @@
 import React from 'react';
-import RecipePage from './RecipePage';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 

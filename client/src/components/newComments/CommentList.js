@@ -4,8 +4,6 @@ import * as commentActions from '../../actions/commentActions';
 import * as commentVoteActions from '../../actions/commentVoteActions';
 import { bindActionCreators } from 'redux';
 
-let arr = [];
-
 class CommentList extends React.Component {
   constructor(props) {
     super(props);
@@ -53,10 +51,25 @@ class CommentList extends React.Component {
     this.props.commentSubmit(comment);
   }
 
+  getVoteById(id) {
+    if (this.state.userVotes.length > 0) {
+      let vote = this.state.userVotes.find(vote => vote.voter_id === id);
+      console.log(vote);
+      if (vote) {
+        return Object.assign({}, vote);
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
   voteUp(comment) {
     this.props.actions.commentActions.updateCommentVotes(comment, 1);
     let userVote = this.getVoteById(comment.id);
-    if (userVote.id) {
+    console.log(userVote);
+    if (userVote && userVote.id) {
       this.props.actions.commentVoteActions.updateCommentVote(userVote, 'up');
     } else {
       this.props.actions.commentVoteActions.createCommentVote(comment.id, 'up');
@@ -66,7 +79,8 @@ class CommentList extends React.Component {
   voteDown(comment) {
     this.props.actions.commentActions.updateCommentVotes(comment, -1);
     let userVote = this.getVoteById(comment.id);
-    if (userVote.id) {
+    console.log(userVote);
+    if (userVote) {
       this.props.actions.commentVoteActions.updateCommentVote(userVote, 'down');
     } else {
       this.props.actions.commentVoteActions.createCommentVote(
@@ -104,7 +118,7 @@ class CommentList extends React.Component {
       );
     }
 
-    if (comment.poster_id === parseInt(sessionStorage.user_id)) {
+    if (comment.poster_id === parseInt(sessionStorage.user_id, 10)) {
       this.renderUser(comment, comment.id, index);
     } else {
       this.renderNonUser(comment, comment.id, index);
@@ -137,15 +151,6 @@ class CommentList extends React.Component {
         </div>
       </div>
     );
-  }
-
-  getVoteById(id) {
-    if (this.state.userVotes.length > 0) {
-      let vote = this.state.userVotes.find(vote => vote.voter_id === id);
-      return Object.assign({}, vote);
-    } else {
-      return null;
-    }
   }
 
   renderNonUser(comment, id, index) {
@@ -191,9 +196,7 @@ class CommentList extends React.Component {
                   {voteMessage}
                 </p>
               </ul>
-              <h3>
-                Author: {comment.poster_name}
-              </h3>
+              <h3>Author: {comment.poster_name}</h3>
               <h4>Title: {comment.title}</h4>
               <p>Comment: {comment.description}</p>
               <p>Votes: {comment.comment_votes}</p>
@@ -218,7 +221,7 @@ class CommentList extends React.Component {
         <ul>
           {this.state.comments.map((comment, id) => (
             <div className="row">
-              {comment.poster_id === parseInt(sessionStorage.user_id)
+              {comment.poster_id === parseInt(sessionStorage.user_id, 10)
                 ? this.renderUser(comment, id, 0)
                 : this.renderNonUser(comment, id, 0)}
               {comment.next_comment !== 0
@@ -233,12 +236,9 @@ class CommentList extends React.Component {
 }
 
 function collectUserVotes(votes, userId) {
-  let selected = votes.map(vote => {
-    if (vote.user_id === userId) {
-      return vote;
-    }
-  });
-  return selected.filter(el => el !== undefined);
+  let selected = votes.filter(vote => vote.user_id === userId)
+  console.log(selected);
+  return selected;
 }
 
 function collectBaseComments(comments) {
@@ -247,12 +247,12 @@ function collectBaseComments(comments) {
       return comment;
     }
   });
-  selected = selected.filter(el => el !== undefined)
+  selected = selected.filter(el => el !== undefined);
   return selected;
 }
 
 function mapStateToProps(state, ownProps) {
-  const userId = parseInt(sessionStorage.user_id);
+  const userId = parseInt(sessionStorage.user_id, 10);
 
   let userCommentVotes = {};
   const allComments = ownProps.comments;
