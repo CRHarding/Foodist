@@ -1,12 +1,26 @@
 import React from 'react';
+import CommentForm from './CommentForm';
 
-export const Comment = ({ comment, allComments, votes, voteUp, voteDown, commentClick }) => {
-  console.log(comment, allComments, votes);
+export const Comment = ({
+  comment,
+  allComments,
+  votes,
+  voteUp,
+  voteDown,
+  commentClick,
+  renderCommentForm,
+  recipe,
+  createComment,
+  updateCommentState,
+}) => {
+
   if (!comment.id) {
     comment = allComments.find(searchComment => searchComment.id === comment);
   }
 
-  console.log(comment);
+  let toggleComment = false;
+
+  console.log(toggleComment);
   const nestedComments = (comment.next_comments || []).map(comment => {
     return (
       <Comment comment={comment} allComments={allComments} votes={votes} />
@@ -25,7 +39,8 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                commentClick = {() => commentClick(comment)}
+                commentClick={() => commentClick(comment)}
+                toggleComment={() => toggleComment(comment)}
               >
                 Comment
               </button>
@@ -33,6 +48,14 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
           </div>
           {nestedComments}
         </div>
+        {toggleComment
+          ? renderCommentForm(
+              recipe,
+              comment,
+              createComment,
+              updateCommentState,
+            )
+          : ''}
       </div>
     );
   } else {
@@ -59,6 +82,7 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
       canVoteDown = true;
       voteMessage = `You haven't voted yet...`;
     }
+
     return (
       <div className="col s9">
         <div className="card blue-grey darken-3">
@@ -76,6 +100,7 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
               <button
                 className="waves-effect waves-light btn"
                 commentClick={() => commentClick(comment)}
+                toggleComment={() => !toggleComment}
               >
                 Comment
               </button>
@@ -83,10 +108,39 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
           </div>
           {nestedComments}
         </div>
+        {toggleComment
+          ? renderCommentForm(
+              recipe,
+              comment,
+              createComment,
+              updateCommentState,
+            )
+          : ''}
       </div>
     );
   }
 };
+
+function renderCommentForm(recipe, comment, createComment, updateCommentState) {
+  return (
+    <div className="row">
+      <div className="col s6 m6">
+        <div className="card light-grey darken-1">
+          <div className="card-content black-text">
+            <CommentForm
+              recipe={this.state.recipe}
+              comment={this.state.comment}
+              name={this.state.comment.name}
+              description={this.state.comment.description}
+              onSave={createComment}
+              onChange={updateCommentState}
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function getVoteById(id, votes) {
   if (votes.length > 0) {
@@ -103,16 +157,24 @@ function getVoteById(id, votes) {
 
 function renderUpVote(comment, voteUp) {
   return (
-      <i onClick={() => voteUp(comment)} className="material-icons" style={{ cursor: 'pointer' }}>
-        keyboard_arrow_up
-      </i>
+    <i
+      onClick={() => voteUp(comment)}
+      className="material-icons"
+      style={{ cursor: 'pointer' }}
+    >
+      keyboard_arrow_up
+    </i>
   );
 }
 
 function renderDownVote(comment, voteDown) {
   return (
-      <i onClick={() => voteDown(comment)} className="material-icons" style={{ cursor: 'pointer' }}>
-        keyboard_arrow_down
-      </i>
+    <i
+      onClick={() => voteDown(comment)}
+      className="material-icons"
+      style={{ cursor: 'pointer' }}
+    >
+      keyboard_arrow_down
+    </i>
   );
 }

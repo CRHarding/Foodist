@@ -4,6 +4,7 @@ import * as commentActions from '../../actions/commentActions';
 import * as commentVoteActions from '../../actions/commentVoteActions';
 import { bindActionCreators } from 'redux';
 import { Comment } from './Comment';
+import CommentForm from './CommentForm';
 
 class CommentList extends React.Component {
   constructor(props) {
@@ -15,6 +16,8 @@ class CommentList extends React.Component {
       userVotes: this.props.userVotes,
       canVoteUp: this.props.canVoteUp,
       canVoteDown: this.props.canVoteDown,
+      toggleComment: false,
+      recipe: this.props.recipe,
     };
     this.handleClick = this.handleClick.bind(this);
     this.voteUp = this.voteUp.bind(this);
@@ -36,6 +39,10 @@ class CommentList extends React.Component {
 
     if (this.props.canVoteDown !== nextProps.canVoteDown) {
       this.setState({ canVoteDown: nextProps.canVoteDown });
+    }
+
+    if (this.props.toggleComment !== nextProps.toggleComment) {
+      this.setState({ toggleComment: nextProps.toggleComment });
     }
   }
 
@@ -94,6 +101,9 @@ class CommentList extends React.Component {
                 voteUp={this.voteUp}
                 voteDown={this.voteDown}
                 commentClick={() => this.handleClick(comment)}
+                recipe={this.state.recipe}
+                createComment
+                updateCommentState
               />
             );
           })}

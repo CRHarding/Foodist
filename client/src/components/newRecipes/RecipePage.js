@@ -217,7 +217,9 @@ class RecipePage extends React.Component {
       <div className="row">
         <CommentList
           comments={this.props.recipeComments}
-          commentSubmit={this.toggleComment}
+          recipe={this.state.recipe}
+          onSave={this.createComment}
+          onChange={this.updateCommentState}
         />
       </div>
     );
