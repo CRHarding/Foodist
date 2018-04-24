@@ -11,17 +11,31 @@ class CommentList extends React.Component {
     super(props);
     this.state = {
       comments: Array.from(this.props.comments),
+      recipe: this.props.recipe,
       user: this.props.user,
       previous_id: this.props.previousCommentId,
       userVotes: this.props.userVotes,
       canVoteUp: this.props.canVoteUp,
       canVoteDown: this.props.canVoteDown,
       toggleComment: false,
-      recipe: this.props.recipe,
+      comment: {
+        title: '',
+        description: '',
+        poster_id: 0,
+        recipe_id: 0,
+        previous_comment: null,
+        next_comment: null,
+        comment_votes: 0,
+        showComments: false,
+        poster_email: '',
+        poster_name: '',
+      },
     };
     this.handleClick = this.handleClick.bind(this);
     this.voteUp = this.voteUp.bind(this);
     this.voteDown = this.voteDown.bind(this);
+    this.toggleComment = this.toggleComment.bind(this);
+    this.renderCommentForm = this.renderCommentForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -88,6 +102,34 @@ class CommentList extends React.Component {
     }
   }
 
+  toggleComment(comment) {
+    this.setState({
+      toggleComment: !this.state.toggleComment,
+      comment: comment,
+    });
+  }
+
+  renderCommentForm() {
+    return (
+      <div className="row">
+        <div className="col s6 m6">
+          <div className="card light-grey darken-1">
+            <div className="card-content black-text">
+              <CommentForm
+                recipe={this.state.recipe}
+                comment={this.state.comment}
+                name={this.state.comment.name}
+                description={this.state.comment.description}
+                onSave={this.createComment}
+                onChange={this.updateCommentState}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="container">
@@ -101,9 +143,11 @@ class CommentList extends React.Component {
                 voteUp={this.voteUp}
                 voteDown={this.voteDown}
                 commentClick={() => this.handleClick(comment)}
+                toggleComment={() => this.toggleComment(comment)}
+                showForm={this.state.toggleComment}
+                createComment={this.createComment}
+                updateCommentState={this.updateCommentState}
                 recipe={this.state.recipe}
-                createComment
-                updateCommentState
               />
             );
           })}

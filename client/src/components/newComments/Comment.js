@@ -8,19 +8,18 @@ export const Comment = ({
   voteUp,
   voteDown,
   commentClick,
-  renderCommentForm,
-  recipe,
+  showForm,
   createComment,
   updateCommentState,
+  toggleComment,
+  recipe,
 }) => {
-
   if (!comment.id) {
     comment = allComments.find(searchComment => searchComment.id === comment);
   }
 
-  let toggleComment = false;
+  console.log(showForm);
 
-  console.log(toggleComment);
   const nestedComments = (comment.next_comments || []).map(comment => {
     return (
       <Comment comment={comment} allComments={allComments} votes={votes} />
@@ -39,8 +38,7 @@ export const Comment = ({
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                commentClick={() => commentClick(comment)}
-                toggleComment={() => toggleComment(comment)}
+                onClick={() => toggleComment(comment)}
               >
                 Comment
               </button>
@@ -48,14 +46,7 @@ export const Comment = ({
           </div>
           {nestedComments}
         </div>
-        {toggleComment
-          ? renderCommentForm(
-              recipe,
-              comment,
-              createComment,
-              updateCommentState,
-            )
-          : ''}
+        {showForm ? renderCommentForm(recipe, comment, createComment, updateCommentState) : ''}
       </div>
     );
   } else {
@@ -99,8 +90,7 @@ export const Comment = ({
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                commentClick={() => commentClick(comment)}
-                toggleComment={() => !toggleComment}
+                onClick={() => toggleComment(comment)}
               >
                 Comment
               </button>
@@ -108,30 +98,24 @@ export const Comment = ({
           </div>
           {nestedComments}
         </div>
-        {toggleComment
-          ? renderCommentForm(
-              recipe,
-              comment,
-              createComment,
-              updateCommentState,
-            )
-          : ''}
+        {showForm ? renderCommentForm(recipe, comment, createComment, updateCommentState) : ''}
       </div>
     );
   }
 };
 
 function renderCommentForm(recipe, comment, createComment, updateCommentState) {
+  console.log(recipe, comment, createComment, updateCommentState);
   return (
     <div className="row">
       <div className="col s6 m6">
         <div className="card light-grey darken-1">
           <div className="card-content black-text">
             <CommentForm
-              recipe={this.state.recipe}
-              comment={this.state.comment}
-              name={this.state.comment.name}
-              description={this.state.comment.description}
+              recipe={recipe}
+              comment={comment}
+              name={comment.name}
+              description={comment.description}
               onSave={createComment}
               onChange={updateCommentState}
             />
