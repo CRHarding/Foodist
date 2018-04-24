@@ -12,21 +12,20 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
       <Comment comment={comment} allComments={allComments} votes={votes} />
     );
   });
-  const card = 'card-content white-text col s12';
+
   if (comment.poster_id === parseInt(sessionStorage.user_id)) {
     return (
       <div className="col s9">
         <div className="card blue-grey lighten-1">
           <div className={'card-content white-text'}>
-            <li key={comment.id}>
-              <h3>Author: {comment.poster_name}</h3>
-              <h4>Title: {comment.title}</h4>
-              <p>Comment: {comment.description}</p>
-            </li>
+            <h3>Author: {comment.poster_name}</h3>
+            <h4>Title: {comment.title}</h4>
+            <p>Comment: {comment.description}</p>
+            <p>Votes: {comment.comment_votes}</p>
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                onClick={() => this.props.click(comment)}
+                commentClick = {() => commentClick(comment)}
               >
                 Comment
               </button>
@@ -64,22 +63,19 @@ export const Comment = ({ comment, allComments, votes, voteUp, voteDown, comment
       <div className="col s9">
         <div className="card blue-grey darken-3">
           <div className={'card-content white-text'}>
-            <li key={comment.id}>
-              <ul>
-                <p>
-                  {canVoteUp ? renderUpVote(comment, voteUp) : ''}
-                  {canVoteDown ? renderDownVote(comment, voteDown) : ''}
-                  {voteMessage}
-                </p>
-              </ul>
-              <h3>Author: {comment.poster_name}</h3>
-              <h4>Title: {comment.title}</h4>
-              <p>Comment: {comment.description}</p>
-            </li>
+            <p>
+              {canVoteUp ? renderUpVote(comment, voteUp) : ''}
+              {canVoteDown ? renderDownVote(comment, voteDown) : ''}
+              {voteMessage}
+            </p>
+            <h3>Author: {comment.poster_name}</h3>
+            <h4>Title: {comment.title}</h4>
+            <p>Comment: {comment.description}</p>
+            <p>Votes: {comment.comment_votes}</p>
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                onClick={() => commentClick(comment)}
+                commentClick={() => commentClick(comment)}
               >
                 Comment
               </button>
@@ -107,20 +103,16 @@ function getVoteById(id, votes) {
 
 function renderUpVote(comment, voteUp) {
   return (
-    <li onClick={() => voteUp(comment)}>
-      <i className="material-icons" style={{ cursor: 'pointer' }}>
+      <i onClick={() => voteUp(comment)} className="material-icons" style={{ cursor: 'pointer' }}>
         keyboard_arrow_up
       </i>
-    </li>
   );
 }
 
 function renderDownVote(comment, voteDown) {
   return (
-    <li onClick={() => voteDown(comment)}>
-      <i className="material-icons" style={{ cursor: 'pointer' }}>
+      <i onClick={() => voteDown(comment)} className="material-icons" style={{ cursor: 'pointer' }}>
         keyboard_arrow_down
       </i>
-    </li>
   );
 }

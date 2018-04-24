@@ -41,7 +41,7 @@ class CommentServices {
   }
 
   updateComment(oldComment, nextComment) {
-    console.log(oldComment);
+    console.log(oldComment, nextComment);
     const headers = this.requestHeaders();
     return axios({
       method: 'PUT',
