@@ -1,5 +1,4 @@
 import React from 'react';
-import CommentForm from './CommentForm';
 
 export const Comment = ({
   comment,
@@ -8,25 +7,23 @@ export const Comment = ({
   voteUp,
   voteDown,
   commentClick,
-  showForm,
-  createComment,
-  updateCommentState,
-  toggleComment,
-  recipe,
 }) => {
   if (!comment.id) {
     comment = allComments.find(searchComment => searchComment.id === comment);
   }
 
-  console.log(showForm);
-
-  const nestedComments = (comment.next_comments || []).map(comment => {
+  const nestedComments = (comment.next_comments || []).map((comment, id) => {
     return (
-      <Comment comment={comment} allComments={allComments} votes={votes} />
+      <Comment
+        comment={comment}
+        allComments={allComments}
+        votes={votes}
+        key={id}
+      />
     );
   });
-
-  if (comment.poster_id === parseInt(sessionStorage.user_id)) {
+  console.log(comment.previous_comment);
+  if (comment.poster_id === parseInt(sessionStorage.user_id, 10)) {
     return (
       <div className="col s9">
         <div className="card blue-grey lighten-1">
@@ -38,7 +35,7 @@ export const Comment = ({
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                onClick={() => toggleComment(comment)}
+                onClick={() => commentClick(comment)}
               >
                 Comment
               </button>
@@ -46,7 +43,6 @@ export const Comment = ({
           </div>
           {nestedComments}
         </div>
-        {showForm ? renderCommentForm(recipe, comment, createComment, updateCommentState) : ''}
       </div>
     );
   } else {
@@ -90,7 +86,7 @@ export const Comment = ({
             <div className="card-action">
               <button
                 className="waves-effect waves-light btn"
-                onClick={() => toggleComment(comment)}
+                onClick={() => commentClick(comment)}
               >
                 Comment
               </button>
@@ -98,33 +94,10 @@ export const Comment = ({
           </div>
           {nestedComments}
         </div>
-        {showForm ? renderCommentForm(recipe, comment, createComment, updateCommentState) : ''}
       </div>
     );
   }
 };
-
-function renderCommentForm(recipe, comment, createComment, updateCommentState) {
-  console.log(recipe, comment, createComment, updateCommentState);
-  return (
-    <div className="row">
-      <div className="col s6 m6">
-        <div className="card light-grey darken-1">
-          <div className="card-content black-text">
-            <CommentForm
-              recipe={recipe}
-              comment={comment}
-              name={comment.name}
-              description={comment.description}
-              onSave={createComment}
-              onChange={updateCommentState}
-            />
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function getVoteById(id, votes) {
   if (votes.length > 0) {

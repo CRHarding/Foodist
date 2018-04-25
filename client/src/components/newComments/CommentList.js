@@ -4,38 +4,21 @@ import * as commentActions from '../../actions/commentActions';
 import * as commentVoteActions from '../../actions/commentVoteActions';
 import { bindActionCreators } from 'redux';
 import { Comment } from './Comment';
-import CommentForm from './CommentForm';
 
 class CommentList extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       comments: Array.from(this.props.comments),
-      recipe: this.props.recipe,
       user: this.props.user,
       previous_id: this.props.previousCommentId,
       userVotes: this.props.userVotes,
       canVoteUp: this.props.canVoteUp,
       canVoteDown: this.props.canVoteDown,
-      toggleComment: false,
-      comment: {
-        title: '',
-        description: '',
-        poster_id: 0,
-        recipe_id: 0,
-        previous_comment: null,
-        next_comment: null,
-        comment_votes: 0,
-        showComments: false,
-        poster_email: '',
-        poster_name: '',
-      },
     };
     this.handleClick = this.handleClick.bind(this);
     this.voteUp = this.voteUp.bind(this);
     this.voteDown = this.voteDown.bind(this);
-    this.toggleComment = this.toggleComment.bind(this);
-    this.renderCommentForm = this.renderCommentForm.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -54,14 +37,11 @@ class CommentList extends React.Component {
     if (this.props.canVoteDown !== nextProps.canVoteDown) {
       this.setState({ canVoteDown: nextProps.canVoteDown });
     }
-
-    if (this.props.toggleComment !== nextProps.toggleComment) {
-      this.setState({ toggleComment: nextProps.toggleComment });
-    }
   }
 
   handleClick(comment) {
-    this.props.commentSubmit(comment);
+    console.log(comment, this.props);
+    this.props.handleClick(comment);
   }
 
   getVoteById(id) {
@@ -102,52 +82,20 @@ class CommentList extends React.Component {
     }
   }
 
-  toggleComment(comment) {
-    this.setState({
-      toggleComment: !this.state.toggleComment,
-      comment: comment,
-    });
-  }
-
-  renderCommentForm() {
-    return (
-      <div className="row">
-        <div className="col s6 m6">
-          <div className="card light-grey darken-1">
-            <div className="card-content black-text">
-              <CommentForm
-                recipe={this.state.recipe}
-                comment={this.state.comment}
-                name={this.state.comment.name}
-                description={this.state.comment.description}
-                onSave={this.createComment}
-                onChange={this.updateCommentState}
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div className="container">
         <div className="row">
-          {this.state.comments.map(comment => {
+          {this.state.comments.map((comment, id) => {
             return (
               <Comment
+                key={id}
                 comment={comment}
                 allComments={this.state.comments}
                 votes={this.state.userVotes}
                 voteUp={this.voteUp}
                 voteDown={this.voteDown}
                 commentClick={() => this.handleClick(comment)}
-                toggleComment={() => this.toggleComment(comment)}
-                showForm={this.state.toggleComment}
-                createComment={this.createComment}
-                updateCommentState={this.updateCommentState}
-                recipe={this.state.recipe}
               />
             );
           })}

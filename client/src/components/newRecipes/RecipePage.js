@@ -220,6 +220,7 @@ class RecipePage extends React.Component {
           recipe={this.state.recipe}
           onSave={this.createComment}
           onChange={this.updateCommentState}
+          handleClick={this.toggleComment}
         />
       </div>
     );
